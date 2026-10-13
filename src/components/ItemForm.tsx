@@ -51,7 +51,10 @@ export function ItemForm({
 
   const [name, setName] = useState(initial?.name ?? '');
   const [category, setCategory] = useState<Category>(initial?.category ?? 'dairy');
-  const [quantity, setQuantity] = useState(initial?.quantity ?? 1);
+  // Kept as text so the field can be cleared and retyped; parsed where a number is needed.
+  const [quantityText, setQuantityText] = useState(String(initial?.quantity ?? 1));
+  const parsedQuantity = Number(quantityText.replace(',', '.'));
+  const quantity = Number.isFinite(parsedQuantity) && parsedQuantity > 0 ? parsedQuantity : 1;
   const [unit, setUnit] = useState<Unit>(initial?.unit ?? 'pcs');
   const [storage, setStorage] = useState<Storage>(initial?.storage ?? 'fridge');
   const [price, setPrice] = useState(initial?.price_lei != null ? String(initial.price_lei) : '');
@@ -120,23 +123,25 @@ export function ItemForm({
                 <button
                   type="button"
                   aria-label={t('less')}
-                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  onClick={() => setQuantityText(String(Math.max(1, quantity - 1)))}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-track text-[22px] font-bold"
                 >
                   −
                 </button>
+                <input type="hidden" name="quantity" value={quantity} />
                 <input
-                  name="quantity"
                   inputMode="decimal"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value.replace(',', '.')) || 1)}
+                  value={quantityText}
+                  onChange={(e) => setQuantityText(e.target.value.replace(/[^\d.,]/g, '').slice(0, 7))}
+                  onFocus={(e) => e.target.select()}
+                  onBlur={() => setQuantityText(String(quantity))}
                   aria-labelledby="qty-label"
-                  className="w-14 bg-transparent text-center font-pixel text-[28px] font-black outline-none"
+                  className="w-20 bg-transparent text-center font-pixel text-[28px] font-black outline-none"
                 />
                 <button
                   type="button"
                   aria-label={t('more')}
-                  onClick={() => setQuantity((q) => q + 1)}
+                  onClick={() => setQuantityText(String(quantity + 1))}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-lime text-[22px] font-bold text-[#121212]"
                 >
                   +
