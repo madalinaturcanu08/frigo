@@ -14,11 +14,24 @@ function credentials(formData: FormData) {
   };
 }
 
+/** Supabase Auth error codes we can explain to the user; anything else shows the generic message. */
+const SIGNUP_ERRORS: Record<string, string> = {
+  user_already_exists: 'emailTaken',
+  email_exists: 'emailTaken',
+  over_email_send_rate_limit: 'emailRateLimit',
+  email_address_invalid: 'emailInvalid',
+  weak_password: 'passwordTooShort',
+  unexpected_failure: 'databaseError',
+};
+
 export async function login(_prev: AuthState, formData: FormData): Promise<AuthState> {
   const { email, password } = credentials(formData);
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) return { error: 'invalidLogin' };
+  if (error) {
+    console.error('[login]', error.code, error.status, error.message);
+    return { error: error.code === 'email_not_confirmed' ? 'emailNotConfirmed' : 'invalidLogin' };
+  }
   redirect('/');
 }
 
@@ -37,7 +50,10 @@ export async function signup(_prev: AuthState, formData: FormData): Promise<Auth
       data: { display_name: displayName || undefined, language: await getLocale() },
     },
   });
-  if (error) return { error: 'signupFailed' };
+  if (error) {
+    console.error('[signup]', error.code, error.status, error.message);
+    return { error: SIGNUP_ERRORS[error.code ?? ''] ?? 'signupFailed' };
+  }
   // With "Confirm email" on (Supabase default) there is no session until the link is clicked.
   if (!data.session) return { info: 'checkEmail' };
   redirect('/');

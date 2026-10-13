@@ -21,9 +21,24 @@
     "edit": "Edit {name}",
     "usedIt": "Used it",
     "tossed": "Tossed",
-    "units": { "pcs": "pcs", "g": "g", "kg": "kg", "ml": "ml", "l": "L", "pack": "pack" },
-    "storage": { "fridge": "Fridge", "freezer": "Freezer", "pantry": "Pantry" },
-    "state": { "expired": "Expired", "soon": "Use soon", "fresh": "Fresh" },
+    "units": {
+      "pcs": "pcs",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "L",
+      "pack": "pack"
+    },
+    "storage": {
+      "fridge": "Fridge",
+      "freezer": "Freezer",
+      "pantry": "Pantry"
+    },
+    "state": {
+      "expired": "Expired",
+      "soon": "Use soon",
+      "fresh": "Fresh"
+    },
     "category": {
       "dairy": "Dairy",
       "cheese": "Cheese",
@@ -48,7 +63,12 @@
     "empty": "Your fridge is empty.",
     "emptyCta": "Add the first thing",
     "filterLabel": "Show",
-    "filter": { "all": "All", "soon": "Use soon", "expired": "Expired", "fresh": "Fresh" },
+    "filter": {
+      "all": "All",
+      "soon": "Use soon",
+      "expired": "Expired",
+      "fresh": "Fresh"
+    },
     "note": {
       "expired": "Check before tossing",
       "soon": "Today and the next {days} days",
@@ -71,7 +91,13 @@
     "estimated": "estimated",
     "keepDate": "Keep date",
     "autoDate": "Guess for me (~{days} d)",
-    "quick": { "2": "2 days", "5": "5 days", "7": "1 week", "14": "2 weeks", "30": "1 month" },
+    "quick": {
+      "2": "2 days",
+      "5": "5 days",
+      "7": "1 week",
+      "14": "2 weeks",
+      "30": "1 month"
+    },
     "pickDate": "Date:",
     "price": "Price (optional)",
     "priceHint": "Used to show how much money you saved.",
@@ -90,7 +116,11 @@
       "saveFailed": "Couldn't save. Check your connection and try again."
     }
   },
-  "add": { "kicker": "Add one thing", "title": "Add item", "submit": "Add to fridge" },
+  "add": {
+    "kicker": "Add one thing",
+    "title": "Add item",
+    "submit": "Add to fridge"
+  },
   "edit": {
     "kicker": "Edit item",
     "submit": "Save changes",
@@ -156,7 +186,12 @@
       "invalidLogin": "Wrong email or password.",
       "passwordTooShort": "The password needs at least 8 characters.",
       "signupFailed": "Couldn't create the account. Maybe this email is already registered?",
-      "confirmFailed": "That link didn't work or has expired. Try logging in."
+      "confirmFailed": "That link didn't work or has expired. Try logging in.",
+      "emailTaken": "This email already has an account. Try logging in.",
+      "emailRateLimit": "Too many sign-ups in a short time. Wait an hour and try again.",
+      "emailInvalid": "That email address doesn’t look right.",
+      "databaseError": "The database isn’t set up yet. Run the SQL from docs/SETUP.md in Supabase.",
+      "emailNotConfirmed": "Open the link we emailed you first, then log in."
     }
   },
   "settings": {

@@ -21,9 +21,24 @@
     "edit": "Editează {name}",
     "usedIt": "L-am folosit",
     "tossed": "Aruncat",
-    "units": { "pcs": "buc", "g": "g", "kg": "kg", "ml": "ml", "l": "l", "pack": "pachet" },
-    "storage": { "fridge": "Frigider", "freezer": "Congelator", "pantry": "Cămară" },
-    "state": { "expired": "Expirat", "soon": "De folosit", "fresh": "Proaspăt" },
+    "units": {
+      "pcs": "buc",
+      "g": "g",
+      "kg": "kg",
+      "ml": "ml",
+      "l": "l",
+      "pack": "pachet"
+    },
+    "storage": {
+      "fridge": "Frigider",
+      "freezer": "Congelator",
+      "pantry": "Cămară"
+    },
+    "state": {
+      "expired": "Expirat",
+      "soon": "De folosit",
+      "fresh": "Proaspăt"
+    },
     "category": {
       "dairy": "Lactate",
       "cheese": "Brânzeturi",
@@ -48,7 +63,12 @@
     "empty": "Frigiderul tău e gol.",
     "emptyCta": "Adaugă primul produs",
     "filterLabel": "Arată",
-    "filter": { "all": "Toate", "soon": "De folosit", "expired": "Expirate", "fresh": "Proaspete" },
+    "filter": {
+      "all": "Toate",
+      "soon": "De folosit",
+      "expired": "Expirate",
+      "fresh": "Proaspete"
+    },
     "note": {
       "expired": "Verifică înainte să arunci",
       "soon": "Azi și următoarele {days} zile",
@@ -71,7 +91,13 @@
     "estimated": "estimat",
     "keepDate": "Păstrează data",
     "autoDate": "Ghicește tu (~{days} z)",
-    "quick": { "2": "2 zile", "5": "5 zile", "7": "1 săptămână", "14": "2 săptămâni", "30": "1 lună" },
+    "quick": {
+      "2": "2 zile",
+      "5": "5 zile",
+      "7": "1 săptămână",
+      "14": "2 săptămâni",
+      "30": "1 lună"
+    },
     "pickDate": "Data:",
     "price": "Preț (opțional)",
     "priceHint": "Ca să vezi câți bani ai economisit.",
@@ -90,7 +116,11 @@
       "saveFailed": "Nu s-a salvat. Verifică conexiunea și încearcă din nou."
     }
   },
-  "add": { "kicker": "Adaugă un produs", "title": "Adaugă produs", "submit": "Adaugă în frigider" },
+  "add": {
+    "kicker": "Adaugă un produs",
+    "title": "Adaugă produs",
+    "submit": "Adaugă în frigider"
+  },
   "edit": {
     "kicker": "Editează produsul",
     "submit": "Salvează",
@@ -156,7 +186,12 @@
       "invalidLogin": "Email sau parolă greșită.",
       "passwordTooShort": "Parola trebuie să aibă cel puțin 8 caractere.",
       "signupFailed": "Nu am putut crea contul. Poate emailul e deja înregistrat?",
-      "confirmFailed": "Linkul nu a funcționat sau a expirat. Încearcă să intri în cont."
+      "confirmFailed": "Linkul nu a funcționat sau a expirat. Încearcă să intri în cont.",
+      "emailTaken": "Există deja un cont cu acest email. Încearcă să intri în cont.",
+      "emailRateLimit": "Prea multe înregistrări într-un timp scurt. Așteaptă o oră și încearcă din nou.",
+      "emailInvalid": "Adresa de email nu pare corectă.",
+      "databaseError": "Baza de date nu e configurată încă. Rulează SQL-ul din docs/SETUP.md în Supabase.",
+      "emailNotConfirmed": "Deschide mai întâi linkul primit pe email, apoi intră în cont."
     }
   },
   "settings": {

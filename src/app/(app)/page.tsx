@@ -19,7 +19,7 @@ export default async function FridgePage() {
 
   return (
     <>
-      <PageHeader kicker={t('hello', { name: profile?.display_name ?? '' })} title={t('title')} />
+      <PageHeader kicker={t('hello', { name: profile?.display_name || user.email?.split('@')[0] || '' })} title={t('title')} />
       <FridgeView items={(items ?? []) as ItemCardData[]} />
     </>
   );

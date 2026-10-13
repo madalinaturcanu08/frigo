@@ -33,3 +33,9 @@ insert into public.shelf_life (category, storage, days, source) values
   ('other',      'freezer',  60,  'Frigo default — no specific guidance'),
   ('other',      'pantry',   30,  'Frigo default — no specific guidance')
 on conflict (category, storage) do update set days = excluded.days, source = excluded.source;
+
+-- Profiles for accounts created before the on_auth_user_created trigger existed. Safe to run again.
+insert into public.profiles (id, display_name, language)
+select id, coalesce(raw_user_meta_data ->> 'display_name', split_part(email, '@', 1)), coalesce(raw_user_meta_data ->> 'language', 'ro')
+from auth.users
+on conflict (id) do nothing;
