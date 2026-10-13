@@ -1,26 +1,257 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+/* ── Design tokens (from the Frigo Web design) ─────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --expired: oklch(0.66 0.19 27);
+  --soon: oklch(0.83 0.15 80);
+  --fresh: oklch(0.76 0.16 145);
+  --edge: #121212; /* outline on lime / status chips — same in both themes */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --bg: #f5f7f2;
+  --card: #ffffff;
+  --ink: #121212;
+  --hero-ink: #121212;
+  --muted: #5b6168;
+  --line: #121212;
+  --lime: #e3f46e;
+  --sky1: #7db8ee;
+  --sky2: #d6eafb;
+  --cloud: rgba(255, 255, 255, 0.95);
+  --hill1: #93c454;
+  --hill2: #619d36;
+  --track: #e8ebe3;
+  --shadow: 0 3px 0 #121212;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme='light']) {
+    --bg: #0f1217;
+    --card: #1a1e25;
+    --ink: #f1f3ec;
+    --hero-ink: #f1f3ec;
+    --muted: #9ca3ac;
+    --line: #3a414c;
+    --lime: #d8ec5e;
+    --sky1: #12203c;
+    --sky2: #2f4c7c;
+    --cloud: rgba(190, 210, 245, 0.22);
+    --hill1: #3f6e2a;
+    --hill2: #2a4b1c;
+    --track: #2a3039;
+    --shadow: 0 3px 0 #05070a;
+    color-scheme: dark;
   }
 }
 
+:root[data-theme='dark'] {
+  --bg: #0f1217;
+  --card: #1a1e25;
+  --ink: #f1f3ec;
+  --hero-ink: #f1f3ec;
+  --muted: #9ca3ac;
+  --line: #3a414c;
+  --lime: #d8ec5e;
+  --sky1: #12203c;
+  --sky2: #2f4c7c;
+  --cloud: rgba(190, 210, 245, 0.22);
+  --hill1: #3f6e2a;
+  --hill2: #2a4b1c;
+  --track: #2a3039;
+  --shadow: 0 3px 0 #05070a;
+  color-scheme: dark;
+}
+
+/* Literal family names (not the next/font variables) so Cyrillic falls through to Rubik / Onest
+   instead of the Arial-based fallback that next/font adds. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-hero-ink: var(--hero-ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-lime: var(--lime);
+  --color-track: var(--track);
+  --color-edge: var(--edge);
+  --color-expired: var(--expired);
+  --color-soon: var(--soon);
+  --color-fresh: var(--fresh);
+  --shadow-card: var(--shadow);
+  --font-sans: 'Outfit', 'Onest', system-ui, sans-serif;
+  --font-display: 'Archivo Black', 'Rubik', system-ui, sans-serif;
+  --font-pixel: 'Doto', ui-monospace, monospace;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Outfit', 'Onest', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8a9098;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ── Building blocks reused across screens ─────────────────────────────── */
+@layer components {
+  .card {
+    background: var(--card);
+    border: 2px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  /* small uppercase label above form fields and stat cards */
+  .kicker {
+    font-family: 'Archivo Black', 'Rubik', system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* rounded selectable chip; add .is-on for the selected state */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 2px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .pill.is-on {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn-lime,
+  .btn-ghost,
+  .btn-ink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 6px 20px;
+    text-align: center;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.12s;
+  }
+  .btn-lime {
+    background: var(--lime);
+    color: #121212;
+    border: 2px solid var(--edge);
+  }
+  .btn-ghost {
+    background: var(--card);
+    color: var(--ink);
+    border: 2px solid var(--line);
+  }
+  .btn-ink {
+    min-height: 56px;
+    background: var(--ink);
+    color: var(--bg);
+    border: 2px solid var(--ink);
+    font-family: 'Archivo Black', 'Rubik', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .btn-lime:hover,
+  .btn-ghost:hover,
+  .btn-ink:hover {
+    transform: translateY(-1px);
+  }
+  .btn-lime:disabled,
+  .btn-ghost:disabled,
+  .btn-ink:disabled {
+    opacity: 0.45;
+    cursor: default;
+    transform: none;
+  }
+
+  .status-chip {
+    white-space: nowrap;
+    font-family: 'Archivo Black', 'Rubik', system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #121212;
+    border: 2px solid var(--edge);
+    border-radius: 999px;
+    padding: 6px 14px;
+  }
+
+  .field {
+    height: 54px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 16px;
+    border: 2px solid var(--line);
+    background: var(--bg);
+    color: var(--ink);
+    padding: 0 18px;
+    font-size: 17px;
+    outline: none;
+  }
+  .field:focus-visible {
+    box-shadow: 0 0 0 3px var(--lime);
+  }
+
+  /* sky + dotted hills backdrop used by the hero cards */
+  .sky {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--line);
+    background: linear-gradient(180deg, var(--sky1), var(--sky2));
+    box-shadow: var(--shadow);
+  }
+  .sky-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 5px 5px;
+  }
+  .cloud {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--cloud);
+  }
+  .hill-a,
+  .hill-b {
+    position: absolute;
+    border-radius: 50%;
+    background-size: 7px 7px;
+  }
+  .hill-a {
+    background-color: var(--hill1);
+    background-image: radial-gradient(var(--hill2) 1.3px, transparent 1.5px);
+  }
+  .hill-b {
+    background-color: var(--hill2);
+    background-image: radial-gradient(var(--hill1) 1.3px, transparent 1.5px);
+  }
+
+  .stripes {
+    background: repeating-linear-gradient(45deg, var(--track) 0 4px, var(--card) 4px 8px);
+  }
 }

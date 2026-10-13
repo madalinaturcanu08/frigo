@@ -1,0 +1,286 @@
+'use client';
+
+import { useActionState, useState } from 'react';
+import { useFormatter, useTranslations } from 'next-intl';
+import type { ItemFormState } from '@/app/actions/items';
+import {
+  CATEGORIES,
+  CATEGORY_EMOJI,
+  STORAGES,
+  UNITS,
+  lookupShelfDays,
+  type Category,
+  type ShelfLifeRow,
+  type Storage,
+  type Unit,
+} from '@/lib/categories';
+import { addDays, parseISODate, toISODate } from '@/lib/dates';
+import { estimateExpiry } from '@/lib/expiry';
+import { ItemCard } from './ItemCard';
+
+const QUICK_DAYS = [2, 5, 7, 14, 30] as const;
+
+type DateMode = { kind: 'auto' } | { kind: 'keep' } | { kind: 'days'; days: number } | { kind: 'date'; date: string };
+
+export interface ItemFormValues {
+  name: string;
+  category: Category;
+  quantity: number;
+  unit: Unit;
+  storage: Storage;
+  price_lei: number | null;
+  expires_at?: string;
+  expiry_estimated?: boolean;
+}
+
+export function ItemForm({
+  action,
+  shelfLife,
+  initial,
+  submitLabel,
+}: {
+  action: (state: ItemFormState, formData: FormData) => Promise<ItemFormState>;
+  shelfLife: ShelfLifeRow[];
+  initial?: ItemFormValues;
+  submitLabel: string;
+}) {
+  const t = useTranslations('form');
+  const ti = useTranslations('item');
+  const format = useFormatter();
+  const [state, formAction, pending] = useActionState(action, undefined);
+
+  const [name, setName] = useState(initial?.name ?? '');
+  const [category, setCategory] = useState<Category>(initial?.category ?? 'dairy');
+  const [quantity, setQuantity] = useState(initial?.quantity ?? 1);
+  const [unit, setUnit] = useState<Unit>(initial?.unit ?? 'pcs');
+  const [storage, setStorage] = useState<Storage>(initial?.storage ?? 'fridge');
+  const [price, setPrice] = useState(initial?.price_lei != null ? String(initial.price_lei) : '');
+  const [mode, setMode] = useState<DateMode>(initial?.expires_at ? { kind: 'keep' } : { kind: 'auto' });
+
+  const today = new Date();
+  const estimatedDays = lookupShelfDays(shelfLife, category, storage);
+  const expiresAt =
+    mode.kind === 'keep'
+      ? initial!.expires_at!
+      : mode.kind === 'days'
+        ? toISODate(addDays(today, mode.days))
+        : mode.kind === 'date'
+          ? mode.date
+          : estimateExpiry(estimatedDays, today);
+  const estimated = mode.kind === 'auto' || (mode.kind === 'keep' && !!initial?.expiry_estimated);
+  // Only send a date the user actually chose; empty means "estimate" (add) or "keep" (edit).
+  const submittedDate = mode.kind === 'days' || mode.kind === 'date' ? expiresAt : '';
+
+  const dateText = format.dateTime(parseISODate(expiresAt), { weekday: 'short', day: 'numeric', month: 'short' });
+
+  return (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-start gap-6">
+      <form action={formAction} className="card flex flex-col gap-6 rounded-[28px] p-[clamp(18px,3vw,30px)]">
+        <label className="flex flex-col gap-2">
+          <span className="kicker">{t('name')}</span>
+          <input
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder={t('namePlaceholder')}
+            maxLength={80}
+            required
+            autoFocus={!initial}
+            autoComplete="off"
+            className="field"
+          />
+        </label>
+
+        <fieldset className="flex flex-col gap-2">
+          <legend className="kicker mb-2">{t('category')}</legend>
+          <input type="hidden" name="category" value={category} />
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((c) => (
+              <button
+                key={c}
+                type="button"
+                aria-pressed={category === c}
+                onClick={() => setCategory(c)}
+                className={`pill ${category === c ? 'is-on' : ''}`}
+              >
+                <span aria-hidden>{CATEGORY_EMOJI[c]}</span>
+                {ti(`category.${c}`)}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        <div className="flex flex-wrap gap-6">
+          <div className="flex flex-col gap-2">
+            <span className="kicker" id="qty-label">
+              {t('quantity')}
+            </span>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 rounded-full border-2 border-line p-1" aria-labelledby="qty-label">
+                <button
+                  type="button"
+                  aria-label={t('less')}
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-track text-[22px] font-bold"
+                >
+                  −
+                </button>
+                <input
+                  name="quantity"
+                  inputMode="decimal"
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value.replace(',', '.')) || 1)}
+                  aria-labelledby="qty-label"
+                  className="w-14 bg-transparent text-center font-pixel text-[28px] font-black outline-none"
+                />
+                <button
+                  type="button"
+                  aria-label={t('more')}
+                  onClick={() => setQuantity((q) => q + 1)}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-lime text-[22px] font-bold text-[#121212]"
+                >
+                  +
+                </button>
+              </div>
+              <select
+                name="unit"
+                value={unit}
+                onChange={(e) => setUnit(e.target.value as Unit)}
+                aria-label={t('unit')}
+                className="h-12 rounded-full border-2 border-line bg-card px-3 font-semibold"
+              >
+                {UNITS.map((u) => (
+                  <option key={u} value={u}>
+                    {ti(`units.${u}`)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <fieldset className="flex flex-col gap-2">
+            <legend className="kicker mb-2">{t('storedIn')}</legend>
+            <input type="hidden" name="storage" value={storage} />
+            <div className="flex gap-0.5 rounded-full border-2 border-line p-1">
+              {STORAGES.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  aria-pressed={storage === s}
+                  onClick={() => setStorage(s)}
+                  className={`flex h-10 items-center rounded-full px-4 text-sm font-semibold ${
+                    storage === s ? 'bg-ink text-bg' : 'text-ink'
+                  }`}
+                >
+                  {ti(`storage.${s}`)}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+        </div>
+
+        <fieldset className="flex flex-col gap-2.5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2.5">
+            <legend className="kicker">{t('bestBefore')}</legend>
+            <div className="text-sm font-semibold">
+              {dateText}
+              {estimated && <span className="text-muted"> · {t('estimated')}</span>}
+            </div>
+          </div>
+          <input type="hidden" name="expires_at" value={submittedDate} />
+          <div className="flex flex-wrap gap-2">
+            {initial?.expires_at && (
+              <button
+                type="button"
+                aria-pressed={mode.kind === 'keep'}
+                onClick={() => setMode({ kind: 'keep' })}
+                className={`pill ${mode.kind === 'keep' ? 'is-on' : ''}`}
+              >
+                {t('keepDate')}
+              </button>
+            )}
+            {!initial?.expires_at && (
+              <button
+                type="button"
+                aria-pressed={mode.kind === 'auto'}
+                onClick={() => setMode({ kind: 'auto' })}
+                className={`pill ${mode.kind === 'auto' ? 'is-on' : ''}`}
+              >
+                {t('autoDate', { days: estimatedDays })}
+              </button>
+            )}
+            {QUICK_DAYS.map((d) => (
+              <button
+                key={d}
+                type="button"
+                aria-pressed={mode.kind === 'days' && mode.days === d}
+                onClick={() => setMode({ kind: 'days', days: d })}
+                className={`pill ${mode.kind === 'days' && mode.days === d ? 'is-on' : ''}`}
+              >
+                {t(`quick.${d}`)}
+              </button>
+            ))}
+            <label className={`pill ${mode.kind === 'date' ? 'is-on' : ''}`}>
+              <span>{t('pickDate')}</span>
+              <input
+                type="date"
+                value={mode.kind === 'date' ? mode.date : ''}
+                min={toISODate(addDays(today, -30))}
+                onChange={(e) => e.target.value && setMode({ kind: 'date', date: e.target.value })}
+                className="w-[118px] bg-transparent text-sm outline-none [color-scheme:inherit]"
+              />
+            </label>
+          </div>
+        </fieldset>
+
+        <label className="flex flex-col gap-2">
+          <span className="kicker">{t('price')}</span>
+          <div className="relative">
+            <input
+              name="price_lei"
+              inputMode="decimal"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              placeholder="0.00"
+              className="field pr-14"
+            />
+            <span className="absolute top-1/2 right-[18px] -translate-y-1/2 font-semibold text-muted">lei</span>
+          </div>
+          <span className="text-[13px] text-muted">{t('priceHint')}</span>
+        </label>
+
+        {state?.error && (
+          <p role="alert" className="m-0 rounded-2xl border-2 border-edge bg-expired px-4 py-3 font-semibold text-[#121212]">
+            {t(`errors.${state.error}`)}
+          </p>
+        )}
+
+        <button type="submit" disabled={!name.trim() || pending} className="btn-ink">
+          {pending ? t('saving') : submitLabel}
+        </button>
+      </form>
+
+      <div className="flex flex-col gap-2.5">
+        <div className="kicker">{t('preview')}</div>
+        <ItemCard
+          preview
+          item={{
+            id: 'preview',
+            name: name.trim() || t('newItem'),
+            category,
+            quantity,
+            unit,
+            storage,
+            expires_at: expiresAt,
+            expiry_estimated: estimated,
+          }}
+        />
+        {estimated && (
+          <p className="m-0 text-sm text-muted">
+            {t('estimateExplain', { days: estimatedDays, category: ti(`category.${category}`), storage: ti(`storage.${storage}`) })}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
