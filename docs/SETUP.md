@@ -40,3 +40,8 @@ expires within 2 days. Nothing is sent on days when nothing is about to expire.
 Works in Chrome, Edge and Firefox on computers and Android, and Safari on Mac. On iPhone, Safari only allows
 notifications for sites added to the Home Screen, so iPhone users see the yellow "Use soon" banner on the
 Fridge page instead.
+
+**Variable names:** if you connected Supabase through Vercel's Supabase integration, it creates
+`NEXT_PUBLIC_SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` instead of
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` and `SUPABASE_SECRET_KEY`. Frigo accepts either name
+(`src/lib/supabase/env.ts`). Make sure `NEXT_PUBLIC_SUPABASE_URL` points to the same project you ran the SQL in.
