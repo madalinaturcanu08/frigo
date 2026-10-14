@@ -22,3 +22,21 @@ during development you can turn it off in *Authentication → Sign In / Provider
 Turn it back on before the pilot.
 
 **Check RLS works:** create two accounts, add an item with one — the other must not see it.
+
+## Daily reminders (session 4)
+
+Frigo sends one browser notification each morning (about 9:00 in Moldova) listing food that is expired or
+expires within 2 days. Nothing is sent on days when nothing is about to expire.
+
+1. `.env.local` already has `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` and `CRON_SECRET`
+   (generated for you). Add **`SUPABASE_SECRET_KEY`**: Supabase → *Project Settings → API Keys → Secret keys*.
+   It is only used on the server by the daily job. Never paste it anywhere else.
+2. **Vercel:** *Project → Settings → Environment Variables* — add the same five values
+   (`SUPABASE_SECRET_KEY`, `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `CRON_SECRET`),
+   then redeploy. The schedule lives in `vercel.json` (`0 6 * * *` = 06:00 UTC); Vercel's free plan runs it
+   once a day, at some point during that hour.
+3. In Frigo: **Settings → Notifications → Turn on reminders**, allow notifications, then **Send a test now**.
+
+Works in Chrome, Edge and Firefox on computers and Android, and Safari on Mac. On iPhone, Safari only allows
+notifications for sites added to the Home Screen, so iPhone users see the yellow "Use soon" banner on the
+Fridge page instead.

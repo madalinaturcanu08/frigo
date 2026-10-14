@@ -199,9 +199,33 @@
     "title": "Setări",
     "language": "Limba",
     "notifications": "Notificări",
-    "notificationsSoon": "Mementourile zilnice despre expirare vin în versiunea următoare.",
     "account": "Cont",
     "signedInAs": "Conectat ca {email}",
     "logout": "Ieși din cont"
+  },
+  "reminders": {
+    "title": "{count, plural, one {# produs de folosit curând} few {# produse de folosit curând} other {# de produse de folosit curând}}",
+    "bodyMore": "{names} și încă {count}",
+    "nothingTitle": "Frigiderul tău e în regulă",
+    "nothingBody": "Nimic nu expiră în următoarele zile. Așa va arăta mementoul tău."
+  },
+  "banner": {
+    "label": "De folosit curând",
+    "more": "{names} și încă {count}"
+  },
+  "notifications": {
+    "title": "Memento zilnic",
+    "lead": "În fiecare dimineață Frigo îți spune ce mâncare să folosești mai întâi. Doar în zilele când ceva e pe cale să expire.",
+    "on": "Mementourile sunt pornite în acest browser.",
+    "off": "Mementourile sunt oprite în acest browser.",
+    "turnOn": "Pornește mementourile",
+    "turnOff": "Oprește",
+    "test": "Trimite un test acum",
+    "testSent": "Trimis! Verifică notificările.",
+    "testNone": "Niciun browser nu este abonat încă.",
+    "denied": "Notificările sunt blocate pentru acest site. Permite-le din setările browserului (iconița cu lacăt de lângă adresă), apoi reîncarcă pagina.",
+    "unsupported": "Acest browser nu poate afișa notificări (pe iPhone site-ul trebuie adăugat pe ecranul principal). Vei vedea în continuare ce să folosești mai întâi pe pagina Frigider.",
+    "failed": "Nu am putut porni mementourile. Încearcă din nou.",
+    "working": "O clipă…"
   }
 }

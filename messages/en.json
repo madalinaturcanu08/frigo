@@ -199,9 +199,33 @@
     "title": "Settings",
     "language": "Language",
     "notifications": "Notifications",
-    "notificationsSoon": "Daily expiry reminders are coming in the next version.",
     "account": "Account",
     "signedInAs": "Signed in as {email}",
     "logout": "Log out"
+  },
+  "reminders": {
+    "title": "{count, plural, one {# item to use soon} other {# items to use soon}}",
+    "bodyMore": "{names} and {count} more",
+    "nothingTitle": "Your fridge is in good shape",
+    "nothingBody": "Nothing expires in the next few days. This is how your reminder will look."
+  },
+  "banner": {
+    "label": "Use soon",
+    "more": "{names} and {count} more"
+  },
+  "notifications": {
+    "title": "Daily reminder",
+    "lead": "Every morning Frigo tells you which food to use first. Only on days when something is about to expire.",
+    "on": "Reminders are on in this browser.",
+    "off": "Reminders are off in this browser.",
+    "turnOn": "Turn on reminders",
+    "turnOff": "Turn off",
+    "test": "Send a test now",
+    "testSent": "Sent! Check your notifications.",
+    "testNone": "No browser is subscribed yet.",
+    "denied": "Notifications are blocked for this site. Allow them in your browser settings (the lock icon next to the address), then reload.",
+    "unsupported": "This browser can't show notifications (on iPhone they need the site added to the Home Screen). You'll still see what to use first on the Fridge page.",
+    "failed": "Couldn't turn on reminders. Try again.",
+    "working": "One moment…"
   }
 }

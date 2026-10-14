@@ -5,6 +5,7 @@ import { useEffect, useOptimistic, useRef, useState, useTransition } from 'react
 import { useTranslations } from 'next-intl';
 import { closeItem, reopenItem } from '@/app/actions/items';
 import { SOON_DAYS, expiryState, sortByExpiry, type ExpiryState } from '@/lib/expiry';
+import { itemsToUse, nameList } from '@/lib/reminders';
 import { ItemCard, type ItemCardData } from './ItemCard';
 import { SkyHero } from './SkyHero';
 import { Toast } from './Toast';
@@ -16,6 +17,7 @@ const CHIP: Record<ExpiryState, string> = { expired: 'bg-expired', soon: 'bg-soo
 
 export function FridgeView({ items }: { items: ItemCardData[] }) {
   const t = useTranslations('fridge');
+  const tb = useTranslations('banner');
   const [filter, setFilter] = useState<Filter>('all');
   const [toast, setToast] = useState<{ message: string; undoId?: string } | null>(null);
   const [, startTransition] = useTransition();
@@ -47,9 +49,27 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
   const byState = (s: ExpiryState) => sorted.filter((i) => expiryState(i.expires_at) === s);
   const counts = { all: sorted.length, soon: byState('soon').length, expired: byState('expired').length, fresh: byState('fresh').length };
   const needYou = counts.soon + counts.expired;
+  const reminder = nameList(itemsToUse(sorted));
 
   return (
     <div className="flex flex-col gap-[26px]">
+      {needYou > 0 && (
+        <div
+          role="status"
+          className="flex items-center gap-3 rounded-[20px] border-2 border-edge bg-soon px-4 py-3 text-[#121212] shadow-card"
+        >
+          <span aria-hidden className="text-xl">
+            🔔
+          </span>
+          <span className="flex min-w-0 flex-col">
+            <span className="font-display text-[11px] tracking-[1px] uppercase">{tb('label')}</span>
+            <span className="truncate text-[15px] font-semibold">
+              {reminder.rest > 0 ? tb('more', { names: reminder.names, count: reminder.rest }) : reminder.names}
+            </span>
+          </span>
+        </div>
+      )}
+
       <SkyHero className="min-h-[230px]">
         <div className="flex flex-col gap-[18px] px-[30px] py-7 max-sm:px-5">
           <div className="flex flex-wrap items-end gap-4">

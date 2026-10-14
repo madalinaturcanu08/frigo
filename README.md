@@ -13,7 +13,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 1 | Setup — Next.js, Supabase auth, all tables + RLS | ✅ done |
 | 2 | Fridge — add / edit items, expiry states | ✅ done |
 | 3 | Stats — Used it / Tossed, stats page | ✅ done |
-| 4–11 | Notifications, barcode, recipes, receipt AI, insights, offline, tests | ⏳ next |
+| 4 | Daily expiry reminders — browser notifications + in-app banner (no installable app, by choice) | ✅ done |
+| 5–11 | Barcode, recipes, receipt AI, insights, offline, tests | ⏳ next |
 
 ## What works now
 
@@ -27,7 +28,9 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 - **Edit item** — change anything, mark used/tossed, or delete a mistake.
 - **Stats** — money saved (lei), items saved, % used in time, money tossed this month; a used-vs-tossed
   chart by week or month (with a table view); which categories get tossed most.
-- **Settings** — language, account, log out. Light / dark theme toggle on every page.
+- **Daily reminder** — one browser notification each morning listing what to use first (only when something is
+  about to expire), plus a yellow "Use soon" banner on the Fridge page for every device, including iPhone.
+- **Settings** — language, notifications (on/off + send a test), account, log out. Light / dark theme toggle on every page.
 
 ## Tech
 
@@ -42,11 +45,13 @@ src/
     (app)/           fridge (/), add, items/[id], stats, settings — signed-in pages
     actions/         server actions: auth, items, settings
     auth/callback/   email-confirmation link target
+    api/cron/expiry/ daily reminder job (Vercel Cron, see vercel.json)
   components/        UI (FridgeView, ItemCard, ItemForm, StatsChart, …)
   lib/               expiry + stats logic (pure, unit-tested), Supabase clients
   i18n/              next-intl config
   proxy.ts           refreshes the session, redirects signed-out users to /welcome
 messages/            en.json · ro.json · ru.json
+public/sw.js         service worker — shows the daily reminder notification
 supabase/            migrations/0001_init.sql (schema + RLS) · seed.sql (shelf-life table)
 tests/unit/          Vitest
 ```
