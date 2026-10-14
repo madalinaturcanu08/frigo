@@ -1,14 +1,14 @@
 import { getTranslations } from 'next-intl/server';
 import { Logo } from '@/components/Logo';
 import { Nav } from '@/components/Nav';
-import { requireUser } from '@/lib/supabase/server';
+import { getProfile, requireUser } from '@/lib/supabase/server';
 
 export default async function AppLayout({ children }: LayoutProps<'/'>) {
   const { supabase, user } = await requireUser();
   const t = await getTranslations('nav');
 
-  const [{ data: profile }, { count }] = await Promise.all([
-    supabase.from('profiles').select('display_name').eq('id', user.id).maybeSingle(),
+  const [profile, { count }] = await Promise.all([
+    getProfile(user.id),
     supabase.from('fridge_items').select('id', { count: 'exact', head: true }).eq('status', 'active'),
   ]);
   const name = profile?.display_name || user.email?.split('@')[0] || '';
