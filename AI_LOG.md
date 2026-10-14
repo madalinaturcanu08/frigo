@@ -76,8 +76,12 @@ offered three options; I chose **option A: browser notifications + an in-app ban
 - Yellow "Use soon" banner on the Fridge page — works on every device, including iPhone.
 - Keys: VAPID key pair and cron secret generated into `.env.local` (not committed).
 - 3 new unit tests (which items to remind about, name list, Moldovan date on a UTC server).
+- Asked: "change it so I can input digits normally" (best-before date). Half-typed dates were being wiped,
+  same cause as the quantity field; now typing day, month, year works.
 
 **What I (the student) must check / do by hand**
 - [ ] Add `SUPABASE_SECRET_KEY` to `.env.local`, and all 5 new variables to Vercel (docs/SETUP.md).
-- [ ] Turn on reminders in Chrome or Safari, press "Send a test now", confirm the notification arrives.
+- [x] Turn on reminders in Chrome or Safari, press "Send a test now", confirm the notification arrives.
+  (First test showed nothing: the push service accepted the message, but macOS was hiding Chrome's notifications.
+  Fixed in macOS System Settings → Notifications.)
 - [ ] Next morning: confirm the automatic reminder arrived.

@@ -58,7 +58,22 @@ export function ItemForm({
   const [unit, setUnit] = useState<Unit>(initial?.unit ?? 'pcs');
   const [storage, setStorage] = useState<Storage>(initial?.storage ?? 'fridge');
   const [price, setPrice] = useState(initial?.price_lei != null ? String(initial.price_lei) : '');
-  const [mode, setMode] = useState<DateMode>(initial?.expires_at ? { kind: 'keep' } : { kind: 'auto' });
+  const defaultMode: DateMode = initial?.expires_at ? { kind: 'keep' } : { kind: 'auto' };
+  const [mode, setMode] = useState<DateMode>(defaultMode);
+  // What is in the date box, even half-typed: the browser reports "" until all parts are filled in,
+  // so the box can't be driven by `mode` alone or it would wipe the digits being typed.
+  const [dateInput, setDateInput] = useState('');
+
+  function chooseMode(next: DateMode) {
+    setMode(next);
+    setDateInput('');
+  }
+
+  function typeDate(value: string) {
+    setDateInput(value);
+    if (value && Number(value.slice(0, 4)) >= 2000) setMode({ kind: 'date', date: value });
+    else if (mode.kind === 'date') setMode(defaultMode);
+  }
 
   const today = new Date();
   const estimatedDays = lookupShelfDays(shelfLife, category, storage);
@@ -198,7 +213,7 @@ export function ItemForm({
               <button
                 type="button"
                 aria-pressed={mode.kind === 'keep'}
-                onClick={() => setMode({ kind: 'keep' })}
+                onClick={() => chooseMode({ kind: 'keep' })}
                 className={`pill ${mode.kind === 'keep' ? 'is-on' : ''}`}
               >
                 {t('keepDate')}
@@ -208,7 +223,7 @@ export function ItemForm({
               <button
                 type="button"
                 aria-pressed={mode.kind === 'auto'}
-                onClick={() => setMode({ kind: 'auto' })}
+                onClick={() => chooseMode({ kind: 'auto' })}
                 className={`pill ${mode.kind === 'auto' ? 'is-on' : ''}`}
               >
                 {t('autoDate', { days: estimatedDays })}
@@ -219,7 +234,7 @@ export function ItemForm({
                 key={d}
                 type="button"
                 aria-pressed={mode.kind === 'days' && mode.days === d}
-                onClick={() => setMode({ kind: 'days', days: d })}
+                onClick={() => chooseMode({ kind: 'days', days: d })}
                 className={`pill ${mode.kind === 'days' && mode.days === d ? 'is-on' : ''}`}
               >
                 {t(`quick.${d}`)}
@@ -229,10 +244,13 @@ export function ItemForm({
               <span>{t('pickDate')}</span>
               <input
                 type="date"
-                value={mode.kind === 'date' ? mode.date : ''}
+                value={dateInput}
                 min={toISODate(addDays(today, -30))}
-                onChange={(e) => e.target.value && setMode({ kind: 'date', date: e.target.value })}
-                className="w-[118px] bg-transparent text-sm outline-none [color-scheme:inherit]"
+                onChange={(e) => typeDate(e.target.value)}
+                className={`w-[118px] bg-transparent text-sm outline-none ${
+                  // the calendar icon follows the page theme; flip it on the inverted (selected) chip
+                  mode.kind === 'date' ? '[&::-webkit-calendar-picker-indicator]:invert' : ''
+                }`}
               />
             </label>
           </div>
