@@ -45,3 +45,11 @@ Fridge page instead.
 `NEXT_PUBLIC_SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` instead of
 `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` and `SUPABASE_SECRET_KEY`. Frigo accepts either name
 (`src/lib/supabase/env.ts`). Make sure `NEXT_PUBLIC_SUPABASE_URL` points to the same project you ran the SQL in.
+
+## Barcode scanning (session 5)
+
+Run [`supabase/migrations/0002_products_pack_size.sql`](../supabase/migrations/0002_products_pack_size.sql) in the
+SQL Editor (adds pack size + source to the shared `products` list). Nothing else to set up: ZXing runs in the
+browser and Open Food Facts is a free, open API with no key.
+
+The camera only works on `https://` pages (Vercel) or `http://localhost`. On a phone, test on the Vercel link.

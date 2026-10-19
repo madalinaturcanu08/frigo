@@ -14,7 +14,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 2 | Fridge — add / edit items, expiry states | ✅ done |
 | 3 | Stats — Used it / Tossed, stats page | ✅ done |
 | 4 | Daily expiry reminders — browser notifications + in-app banner (no installable app, by choice) | ✅ done |
-| 5–11 | Barcode, recipes, receipt AI, insights, offline, tests | ⏳ next |
+| 5 | Barcode scanning — camera (ZXing) + Open Food Facts + shared product list | ✅ done |
+| 6–11 | Recipes, receipt AI, insights, offline, tests | ⏳ next |
 
 ## What works now
 
@@ -25,6 +26,9 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 - **Add item** in 3 taps: name → category → *Add*. No date on the package? Frigo estimates it from the
   `shelf_life` table (category × fridge/freezer/pantry) and marks it "estimated" (shown as `~`).
   Optional quantity, unit, storage place, exact date and price in lei. Live preview card.
+- **Scan a barcode** on Add item: the camera reads it (or type the number), Frigo fills in name, category and
+  pack size — first from its own product list, then from Open Food Facts. A product nobody has scanned before is
+  typed in once and remembered for everyone (great for Moldovan products, which Open Food Facts often lacks).
 - **Edit item** — change anything, mark used/tossed, or delete a mistake.
 - **Stats** — money saved (lei), items saved, % used in time, money tossed this month; a used-vs-tossed
   chart by week or month (with a table view); which categories get tossed most.
@@ -34,7 +38,7 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 
 ## Tech
 
-Next.js 16 (App Router, Server Actions) · TypeScript · Tailwind CSS 4 · Supabase (Postgres + Auth + RLS) ·
+Next.js 16 (App Router, Server Actions) · TypeScript · ZXing (barcodes) · Open Food Facts API · Tailwind CSS 4 · Supabase (Postgres + Auth + RLS) ·
 next-intl (ro/ru/en, cookie-based, no locale in the URL) · Recharts · Vitest.
 Fonts: Archivo Black, Outfit, Doto (+ Rubik / Onest for Cyrillic).
 

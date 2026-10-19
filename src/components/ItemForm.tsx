@@ -1,8 +1,9 @@
 'use client';
 
-import { useActionState, useState } from 'react';
+import { useActionState, useRef, useState } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 import type { ItemFormState } from '@/app/actions/items';
+import { lookupBarcode } from '@/app/actions/products';
 import {
   CATEGORIES,
   CATEGORY_EMOJI,
@@ -16,9 +17,17 @@ import {
 } from '@/lib/categories';
 import { addDays, parseISODate, toISODate } from '@/lib/dates';
 import { estimateExpiry } from '@/lib/expiry';
+import { BarcodeScanner } from './BarcodeScanner';
 import { ItemCard } from './ItemCard';
 
 const QUICK_DAYS = [2, 5, 7, 14, 30] as const;
+
+type ScanState =
+  | { kind: 'idle' }
+  | { kind: 'looking'; barcode: string }
+  | { kind: 'found'; barcode: string; source: 'cache' | 'off' }
+  | { kind: 'unknown'; barcode: string }
+  | { kind: 'error' };
 
 type DateMode = { kind: 'auto' } | { kind: 'keep' } | { kind: 'days'; days: number } | { kind: 'date'; date: string };
 
@@ -45,6 +54,7 @@ export function ItemForm({
   submitLabel: string;
 }) {
   const t = useTranslations('form');
+  const tb = useTranslations('barcode');
   const ti = useTranslations('item');
   const format = useFormatter();
   const [state, formAction, pending] = useActionState(action, undefined);
@@ -56,6 +66,40 @@ export function ItemForm({
   const parsedQuantity = Number(quantityText.replace(',', '.'));
   const quantity = Number.isFinite(parsedQuantity) && parsedQuantity > 0 ? parsedQuantity : 1;
   const [unit, setUnit] = useState<Unit>(initial?.unit ?? 'pcs');
+  const [scannerOpen, setScannerOpen] = useState(false);
+  const [scan, setScan] = useState<ScanState>({ kind: 'idle' });
+  const nameRef = useRef<HTMLInputElement>(null);
+  const scannedBarcode = scan.kind === 'found' || scan.kind === 'unknown' ? scan.barcode : '';
+
+  async function handleBarcode(code: string) {
+    setScannerOpen(false);
+    setScan({ kind: 'looking', barcode: code });
+    try {
+      const result = await lookupBarcode(code);
+      if (result.status === 'found') {
+        setName(result.name);
+        setCategory(result.category);
+        if (result.quantity && result.unit) {
+          setQuantityText(String(result.quantity));
+          setUnit(result.unit);
+        }
+        setScan({ kind: 'found', barcode: result.barcode, source: result.source });
+      } else if (result.status === 'unknown') {
+        // Don't leave a previous scan's product in the fields — it would be saved under the new barcode.
+        if (scan.kind === 'found') {
+          setName('');
+          setQuantityText('1');
+          setUnit('pcs');
+        }
+        setScan({ kind: 'unknown', barcode: result.barcode });
+        nameRef.current?.focus();
+      } else {
+        setScan({ kind: 'error' });
+      }
+    } catch {
+      setScan({ kind: 'error' });
+    }
+  }
   const [storage, setStorage] = useState<Storage>(initial?.storage ?? 'fridge');
   const [price, setPrice] = useState(initial?.price_lei != null ? String(initial.price_lei) : '');
   const defaultMode: DateMode = initial?.expires_at ? { kind: 'keep' } : { kind: 'auto' };
@@ -94,9 +138,53 @@ export function ItemForm({
   return (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-start gap-6">
       <form action={formAction} className="card flex flex-col gap-6 rounded-[28px] p-[clamp(18px,3vw,30px)]">
+        {!initial && (
+          <div className="flex flex-col gap-2.5">
+            <input type="hidden" name="barcode" value={scannedBarcode} />
+            <div className="flex flex-wrap items-center gap-2.5">
+              <button type="button" onClick={() => setScannerOpen(true)} className="btn-lime">
+                <svg aria-hidden width="20" height="16" viewBox="0 0 20 16" fill="currentColor">
+                  <rect x="0" y="0" width="2" height="16" />
+                  <rect x="4" y="0" width="1" height="16" />
+                  <rect x="7" y="0" width="3" height="16" />
+                  <rect x="12" y="0" width="1" height="16" />
+                  <rect x="15" y="0" width="2" height="16" />
+                  <rect x="19" y="0" width="1" height="16" />
+                </svg>
+                {tb('scan')}
+              </button>
+              {scan.kind !== 'idle' && scan.kind !== 'looking' && (
+                <button type="button" onClick={() => setScan({ kind: 'idle' })} className="text-sm font-semibold text-muted underline">
+                  {tb('clear')}
+                </button>
+              )}
+            </div>
+            {scan.kind !== 'idle' && (
+              <p
+                role="status"
+                className={`m-0 rounded-2xl border-2 px-4 py-2.5 text-sm font-semibold ${
+                  scan.kind === 'found'
+                    ? 'border-edge bg-fresh text-[#121212]'
+                    : scan.kind === 'error'
+                      ? 'border-edge bg-expired text-[#121212]'
+                      : scan.kind === 'unknown'
+                        ? 'border-edge bg-soon text-[#121212]'
+                        : 'border-line text-muted'
+                }`}
+              >
+                {scan.kind === 'looking' && tb('looking', { barcode: scan.barcode })}
+                {scan.kind === 'found' && tb(scan.source === 'off' ? 'foundOff' : 'foundCache')}
+                {scan.kind === 'unknown' && tb('unknown', { barcode: scan.barcode })}
+                {scan.kind === 'error' && tb('error')}
+              </p>
+            )}
+          </div>
+        )}
+
         <label className="flex flex-col gap-2">
           <span className="kicker">{t('name')}</span>
           <input
+            ref={nameRef}
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -304,6 +392,8 @@ export function ItemForm({
           </p>
         )}
       </div>
+
+      {scannerOpen && <BarcodeScanner onDetected={handleBarcode} onClose={() => setScannerOpen(false)} />}
     </div>
   );
 }

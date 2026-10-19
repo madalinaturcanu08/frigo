@@ -85,3 +85,41 @@ offered three options; I chose **option A: browser notifications + an in-app ban
   (First test showed nothing: the push service accepted the message, but macOS was hiding Chrome's notifications.
   Fixed in macOS System Settings → Notifications.)
 - [ ] Next morning: confirm the automatic reminder arrived.
+
+---
+
+## 2026-10-14 — Faster tab switching
+
+**Prompt:** "make the app be more smooth since it's really slow when changing from one tab to another".
+
+The AI found three causes: three login checks to Supabase per click, the Vercel server in the US while the
+database is in Frankfurt, and no loading screen. Fixes: verify the login token locally (`getClaims`, the project
+uses an asymmetric signing key), share lookups within one request, a loading skeleton, and `regions: ["fra1"]`
+in `vercel.json`. **Measured locally:** page loads went from ~500–800 ms to ~150–250 ms.
+
+---
+
+## 2026-10-14 — Session 5: barcode scanning
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompt:** "now we can move to the next step".
+
+**What the AI did**
+- "Scan barcode" button on Add item → camera window using **ZXing** (free, runs in the browser, loaded only when
+  the scanner opens). Only codes with a correct check digit are accepted, so a blurry frame can't misread a digit.
+  You can also type the number.
+- Lookup order: Frigo's shared `products` list → **Open Food Facts** (free, open data; Frigo identifies itself
+  with a User-Agent as they ask). Found products fill in name (Romanian/Russian/English when available),
+  category and pack size, and are saved to the shared list.
+- Unknown product: the user types it once; when they add it, it is saved to the shared list for everyone.
+  Existing products can't be overwritten by another user.
+- New migration `0002_products_pack_size.sql`.
+- 6 new unit tests: barcode check digits, pack sizes ("1,5 kg", "33 cl", "6 x 125 g"), category mapping.
+- Bug the AI caught while testing: after a known product, scanning an unknown one kept the old name → now cleared.
+
+**Checked:** typed-in barcodes (Nutella found with name, category and 400 g; an unknown 484… code shows the
+"new product" message). The camera itself could not be tested in the AI's browser (camera blocked there).
+
+**What I (the student) must check / do by hand**
+- [ ] Run `0002_products_pack_size.sql` in Supabase.
+- [ ] Scan a real product with the laptop camera (Chrome, localhost) and with a phone (Vercel link).
+- [ ] Scan a Moldovan product that Open Food Facts doesn't know, add it, then scan it again → "Found in Frigo's product list".

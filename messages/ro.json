@@ -227,5 +227,28 @@
     "unsupported": "Acest browser nu poate afișa notificări (pe iPhone site-ul trebuie adăugat pe ecranul principal). Vei vedea în continuare ce să folosești mai întâi pe pagina Frigider.",
     "failed": "Nu am putut porni mementourile. Încearcă din nou.",
     "working": "O clipă…"
+  },
+  "barcode": {
+    "scan": "Scanează codul de bare",
+    "clear": "Șterge codul",
+    "title": "Scanează un cod de bare",
+    "close": "Închide",
+    "hint": "Ține codul de bare în cadru. Se scanează singur.",
+    "typeLabel": "Sau scrie cifrele de sub codul de bare",
+    "find": "Caută",
+    "invalid": "Numărul nu pare a fi un cod de bare. Verifică cifrele.",
+    "looking": "Caut {barcode}…",
+    "foundOff": "Găsit în Open Food Facts. Verifică detaliile de mai jos.",
+    "foundCache": "Găsit în lista de produse Frigo. Verifică detaliile de mai jos.",
+    "unknown": "Produs nou ({barcode}). Scrie numele și categoria o singură dată — Frigo le va ține minte pentru toți.",
+    "error": "Nu am putut căuta codul. Verifică conexiunea sau completează detaliile singur.",
+    "camera": {
+      "starting": "Pornesc camera…",
+      "denied": "Accesul la cameră e blocat. Permite-l din setările browserului sau scrie cifrele mai jos.",
+      "nocamera": "Nu am găsit nicio cameră. Scrie cifrele mai jos.",
+      "error": "Camera nu a putut porni. Scrie cifrele mai jos."
+    },
+    "retry": "Încearcă din nou",
+    "flip": "Schimbă camera"
   }
 }

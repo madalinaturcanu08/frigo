@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { requireUser } from '@/lib/supabase/server';
 import { isCategory, isStorage, isUnit, lookupShelfDays, type ShelfLifeRow, type Storage } from '@/lib/categories';
 import { estimateExpiry } from '@/lib/expiry';
+import { isValidGtin } from '@/lib/barcode';
 
 export type ItemFormState = { error?: string } | undefined;
 
@@ -50,13 +51,24 @@ export async function addItem(_prev: ItemFormState, formData: FormData): Promise
 
   const { expires_at, ...rest } = parsed.data;
   const estimated = !expires_at;
+  const barcode = String(formData.get('barcode') ?? '');
+  const scanned = isValidGtin(barcode);
   const { error } = await supabase.from('fridge_items').insert({
     ...rest,
     expires_at: expires_at ?? estimateExpiry(await shelfDays(supabase, rest.category, rest.storage)),
     expiry_estimated: estimated,
-    source: 'manual',
+    source: scanned ? 'barcode' : 'manual',
   });
   if (error) return { error: 'saveFailed' };
+
+  if (scanned) {
+    // A product nobody had scanned before: remember what the user typed, for everyone's next scan.
+    // Existing rows are left alone (ignoreDuplicates), so one user can't rename a product for others.
+    await supabase.from('products').upsert(
+      { barcode, name: rest.name, category: rest.category, pack_quantity: rest.quantity, pack_unit: rest.unit, source: 'user' },
+      { onConflict: 'barcode', ignoreDuplicates: true },
+    );
+  }
 
   revalidatePath('/');
   redirect('/');

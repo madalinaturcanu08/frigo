@@ -227,5 +227,28 @@
     "unsupported": "This browser can't show notifications (on iPhone they need the site added to the Home Screen). You'll still see what to use first on the Fridge page.",
     "failed": "Couldn't turn on reminders. Try again.",
     "working": "One moment…"
+  },
+  "barcode": {
+    "scan": "Scan barcode",
+    "clear": "Remove barcode",
+    "title": "Scan a barcode",
+    "close": "Close",
+    "hint": "Hold the barcode inside the frame. It scans by itself.",
+    "typeLabel": "Or type the number under the barcode",
+    "find": "Find",
+    "invalid": "That number doesn't look like a barcode. Check the digits.",
+    "looking": "Looking up {barcode}…",
+    "foundOff": "Found in Open Food Facts. Check the details below.",
+    "foundCache": "Found in Frigo's product list. Check the details below.",
+    "unknown": "New product ({barcode}). Type its name and category once — Frigo will remember it for everyone.",
+    "error": "Couldn't look up the barcode. Check your connection, or fill the details in yourself.",
+    "camera": {
+      "starting": "Starting the camera…",
+      "denied": "Camera access is blocked. Allow it in your browser settings, or type the number below.",
+      "nocamera": "No camera found. Type the number below.",
+      "error": "The camera couldn't start. Type the number below."
+    },
+    "retry": "Try again",
+    "flip": "Switch camera"
   }
 }
