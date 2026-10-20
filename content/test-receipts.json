@@ -1,0 +1,136 @@
+{
+  "_note": "Fake receipts for testing receipt scanning (session 7). Fictional shop, marked as samples — not real fiscal receipts. `lines` is what is printed; `food` is the answer key: which lines are food and what they should become in the fridge. `look` controls how the picture is degraded to look like a phone photo. Generate the pictures with: node scripts/make-test-receipts.mjs",
+  "receipts": [
+    {
+      "id": "r1-clean",
+      "look": { "label": "Clean, flat scan", "rotate": 0, "blur": 0, "fade": 0, "noise": 0, "shadow": 0, "skew": 0 },
+      "date": "14.10.2026 18:42",
+      "lines": [
+        ["LAPTE JLC 2.5% 1L", "1 x 22.90", "22.90 A"],
+        ["PAINE ALBA FELIATA", "1 x 13.50", "13.50 B"],
+        ["OUA GAINA C1 10BUC", "1 x 32.00", "32.00 B"],
+        ["BR.TELEMEA VACI 250G", "1 x 41.75", "41.75 A"],
+        ["ROSII CHERRY 250G", "1 x 29.90", "29.90 B"],
+        ["SMANTANA 20% 400G", "1 x 27.40", "27.40 A"]
+      ],
+      "food": [
+        { "line": 0, "name": "Lapte", "category": "dairy", "quantity": 1, "unit": "l", "price": 22.9 },
+        { "line": 1, "name": "Pâine albă", "category": "bread", "quantity": 1, "unit": "pcs", "price": 13.5 },
+        { "line": 2, "name": "Ouă", "category": "eggs", "quantity": 10, "unit": "pcs", "price": 32 },
+        { "line": 3, "name": "Telemea", "category": "cheese", "quantity": 250, "unit": "g", "price": 41.75 },
+        { "line": 4, "name": "Roșii cherry", "category": "vegetables", "quantity": 250, "unit": "g", "price": 29.9 },
+        { "line": 5, "name": "Smântână", "category": "dairy", "quantity": 400, "unit": "g", "price": 27.4 }
+      ]
+    },
+    {
+      "id": "r2-phone-tilted",
+      "look": { "label": "Phone photo, slightly tilted", "rotate": -3.5, "blur": 0.6, "fade": 0.1, "noise": 0.15, "shadow": 0.25, "skew": 2 },
+      "date": "15.10.2026 09:13",
+      "lines": [
+        ["CHEFIR 2.5% 900ML", "1 x 21.30", "21.30 A"],
+        ["IAURT NATURAL 3.5% 400G", "2 x 18.90", "37.80 A"],
+        ["MERE GOLDEN", "1.245 x 16.90", "21.04 B"],
+        ["BANANE", "0.880 x 29.90", "26.31 B"],
+        ["PUI PIEPT FILE", "0.612 x 98.00", "59.98 A"],
+        ["CASTRAVETI", "0.734 x 34.90", "25.62 B"],
+        ["PUNGA MARE", "1 x 1.50", "1.50 A"]
+      ],
+      "food": [
+        { "line": 0, "name": "Chefir", "category": "dairy", "quantity": 900, "unit": "ml", "price": 21.3 },
+        { "line": 1, "name": "Iaurt natural", "category": "dairy", "quantity": 2, "unit": "pcs", "price": 37.8 },
+        { "line": 2, "name": "Mere Golden", "category": "fruit", "quantity": 1.245, "unit": "kg", "price": 21.04 },
+        { "line": 3, "name": "Banane", "category": "fruit", "quantity": 0.88, "unit": "kg", "price": 26.31 },
+        { "line": 4, "name": "Piept de pui", "category": "meat", "quantity": 0.612, "unit": "kg", "price": 59.98 },
+        { "line": 5, "name": "Castraveți", "category": "vegetables", "quantity": 0.734, "unit": "kg", "price": 25.62 }
+      ]
+    },
+    {
+      "id": "r3-faded",
+      "look": { "label": "Faded thermal paper", "rotate": 1.2, "blur": 0.4, "fade": 0.55, "noise": 0.25, "shadow": 0.1, "skew": 0 },
+      "date": "16.10.2026 20:05",
+      "lines": [
+        ["LAPTE BUSUIOCEL 3.2% 1L", "1 x 24.50", "24.50 A"],
+        ["CASCAVAL OLANDEZ 300G", "1 x 58.90", "58.90 A"],
+        ["CIRNATI AFUMATI 400G", "1 x 64.00", "64.00 A"],
+        ["CARTOFI", "2.150 x 9.90", "21.29 B"],
+        ["CEAPA GALBENA", "1.020 x 11.50", "11.73 B"],
+        ["MORCOVI", "0.690 x 12.90", "8.90 B"]
+      ],
+      "food": [
+        { "line": 0, "name": "Lapte", "category": "dairy", "quantity": 1, "unit": "l", "price": 24.5 },
+        { "line": 1, "name": "Cașcaval olandez", "category": "cheese", "quantity": 300, "unit": "g", "price": 58.9 },
+        { "line": 2, "name": "Cârnați afumați", "category": "meat", "quantity": 400, "unit": "g", "price": 64 },
+        { "line": 3, "name": "Cartofi", "category": "vegetables", "quantity": 2.15, "unit": "kg", "price": 21.29 },
+        { "line": 4, "name": "Ceapă", "category": "vegetables", "quantity": 1.02, "unit": "kg", "price": 11.73 },
+        { "line": 5, "name": "Morcovi", "category": "vegetables", "quantity": 0.69, "unit": "kg", "price": 8.9 }
+      ]
+    },
+    {
+      "id": "r4-romanian-russian",
+      "look": { "label": "Mixed Romanian / Russian, shadow", "rotate": 2.2, "blur": 0.5, "fade": 0.15, "noise": 0.15, "shadow": 0.45, "skew": -2 },
+      "date": "17.10.2026 12:30",
+      "lines": [
+        ["МОЛОКО 3.2% 1Л", "1 x 23.90", "23.90 A"],
+        ["ХЛЕБ ДАРНИЦКИЙ", "1 x 11.90", "11.90 B"],
+        ["СЫР БРЫНЗА 300Г", "1 x 44.50", "44.50 A"],
+        ["COLBASA DOCTORSKAIA", "0.350 x 129.00", "45.15 A"],
+        ["ЯЙЦА С0 10ШТ", "1 x 36.00", "36.00 B"],
+        ["REDUCERE CARD", "", "-5.00"],
+        ["SUC MERE 1L", "1 x 26.90", "26.90 A"]
+      ],
+      "food": [
+        { "line": 0, "name": "Молоко", "category": "dairy", "quantity": 1, "unit": "l", "price": 23.9 },
+        { "line": 1, "name": "Хлеб", "category": "bread", "quantity": 1, "unit": "pcs", "price": 11.9 },
+        { "line": 2, "name": "Брынза", "category": "cheese", "quantity": 300, "unit": "g", "price": 44.5 },
+        { "line": 3, "name": "Colbasă doctorskaia", "category": "meat", "quantity": 0.35, "unit": "kg", "price": 45.15 },
+        { "line": 4, "name": "Яйца", "category": "eggs", "quantity": 10, "unit": "pcs", "price": 36 },
+        { "line": 6, "name": "Suc de mere", "category": "drinks", "quantity": 1, "unit": "l", "price": 26.9 }
+      ]
+    },
+    {
+      "id": "r5-long-with-nonfood",
+      "look": { "label": "Long receipt with non-food items", "rotate": -1.5, "blur": 0.5, "fade": 0.2, "noise": 0.2, "shadow": 0.2, "skew": 1 },
+      "date": "18.10.2026 17:48",
+      "lines": [
+        ["DETERGENT VASE 500ML", "1 x 34.90", "34.90 A"],
+        ["HIRTIE IGIENICA 8BUC", "1 x 59.00", "59.00 A"],
+        ["PASTE FAINOASE 500G", "2 x 17.90", "35.80 A"],
+        ["OREZ BOB ROTUND 1KG", "1 x 29.90", "29.90 A"],
+        ["VARZA ALBA", "1.840 x 7.90", "14.54 B"],
+        ["ARDEI GRAS", "0.520 x 39.90", "20.75 B"],
+        ["CARNE TOCATA PORC/VITA", "0.800 x 89.00", "71.20 A"],
+        ["UNT 72.5% 200G", "1 x 39.90", "39.90 A"],
+        ["SAPUN LICHID", "1 x 24.90", "24.90 A"],
+        ["COMPOT CASA 3L", "1 x 45.00", "45.00 A"]
+      ],
+      "food": [
+        { "line": 2, "name": "Paste făinoase", "category": "other", "quantity": 2, "unit": "pcs", "price": 35.8 },
+        { "line": 3, "name": "Orez", "category": "other", "quantity": 1, "unit": "kg", "price": 29.9 },
+        { "line": 4, "name": "Varză albă", "category": "vegetables", "quantity": 1.84, "unit": "kg", "price": 14.54 },
+        { "line": 5, "name": "Ardei gras", "category": "vegetables", "quantity": 0.52, "unit": "kg", "price": 20.75 },
+        { "line": 6, "name": "Carne tocată", "category": "meat", "quantity": 0.8, "unit": "kg", "price": 71.2 },
+        { "line": 7, "name": "Unt", "category": "dairy", "quantity": 200, "unit": "g", "price": 39.9 },
+        { "line": 9, "name": "Compot", "category": "drinks", "quantity": 3, "unit": "l", "price": 45 }
+      ]
+    },
+    {
+      "id": "r6-hard",
+      "look": { "label": "Hard: blurry, faded, in perspective", "rotate": 4.5, "blur": 1.1, "fade": 0.45, "noise": 0.35, "shadow": 0.5, "skew": 6 },
+      "date": "19.10.2026 08:21",
+      "lines": [
+        ["LAPTE JLC 1.5% 1L", "1 x 21.90", "21.90 A"],
+        ["PAINE NEAGRA", "1 x 12.50", "12.50 B"],
+        ["URDA 250G", "1 x 23.40", "23.40 A"],
+        ["PESTE SCUMBRIE AFUM.", "0.410 x 119.00", "48.79 A"],
+        ["PATRUNJEL LEGATURA", "1 x 6.00", "6.00 B"]
+      ],
+      "food": [
+        { "line": 0, "name": "Lapte", "category": "dairy", "quantity": 1, "unit": "l", "price": 21.9 },
+        { "line": 1, "name": "Pâine neagră", "category": "bread", "quantity": 1, "unit": "pcs", "price": 12.5 },
+        { "line": 2, "name": "Urdă", "category": "cheese", "quantity": 250, "unit": "g", "price": 23.4 },
+        { "line": 3, "name": "Scrumbie afumată", "category": "fish", "quantity": 0.41, "unit": "kg", "price": 48.79 },
+        { "line": 4, "name": "Pătrunjel", "category": "vegetables", "quantity": 1, "unit": "pcs", "price": 6 }
+      ]
+    }
+  ]
+}

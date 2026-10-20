@@ -1,6 +1,7 @@
 'use client';
 
 import { useActionState, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useFormatter, useTranslations } from 'next-intl';
 import type { ItemFormState } from '@/app/actions/items';
@@ -184,6 +185,9 @@ export function ItemForm({
                 </svg>
                 {tb('scan')}
               </button>
+              <Link href="/add/receipt" className="btn-ghost">
+                🧾 {tb('receipt')}
+              </Link>
               {scan.kind !== 'idle' && scan.kind !== 'looking' && (
                 <button type="button" onClick={() => setScan({ kind: 'idle' })} className="text-sm font-semibold text-muted underline">
                   {tb('clear')}

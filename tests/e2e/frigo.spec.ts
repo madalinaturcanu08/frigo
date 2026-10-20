@@ -131,6 +131,34 @@ test('offline: food added without internet is synced later', async ({ page, cont
     .toBe(1);
 });
 
+test('a receipt photo becomes fridge items, and a correction is remembered next time', async ({ page }) => {
+  test.slow(); // reading a photo takes a few seconds (and downloads the reading models the first time)
+  // Both browser engines share the test account: start without remembered corrections.
+  await admin().from('receipt_corrections').delete().eq('user_id', userId());
+  // English UI; the sample receipt is the tilted phone photo (6 foods + a shopping bag).
+  await page.goto('/add/receipt');
+  await page.getByRole('button', { name: /Tilted photo/ }).click();
+  await expect(page.getByRole('heading', { name: 'Found 6 food items' })).toBeVisible({ timeout: 90_000 });
+  await expect(page.getByText('not food')).toBeVisible(); // the bag is suggested but unticked
+
+  // Fix one name — Frigo should remember it for this receipt line.
+  const chicken = page.getByRole('textbox', { name: 'Name' }).nth(4);
+  await expect(chicken).toHaveValue('Pui');
+  await chicken.fill(`Piept de pui ${run()}`);
+  await page.getByRole('button', { name: 'Add 6 to fridge' }).click();
+  await page.waitForURL((url) => url.pathname === '/');
+  await expect(card(page, `Piept de pui ${run()}`)).toBeVisible();
+
+  const { data } = await admin().from('fridge_items').select('source, price_lei').eq('user_id', userId()).eq('name', `Piept de pui ${run()}`).single();
+  expect(data).toMatchObject({ source: 'receipt', price_lei: 59.98 });
+
+  // Same receipt again: the corrected name comes back, marked as remembered.
+  await page.goto('/add/receipt');
+  await page.getByRole('button', { name: /Tilted photo/ }).click();
+  await expect(page.getByRole('textbox', { name: 'Name' }).nth(4)).toHaveValue(`Piept de pui ${run()}`, { timeout: 90_000 });
+  await expect(page.getByText('remembered')).toBeVisible();
+});
+
 test('Settings shows which pages are saved for offline use', async ({ page }) => {
   await page.goto('/settings');
   await expect(page.getByText(/[5-9] pages saved for offline/)).toBeVisible({ timeout: 20_000 });

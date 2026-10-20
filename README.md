@@ -18,7 +18,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 6 | Recipes — 14 Moldovan starter recipes (ro/ru/en), ranked by what expires first | ✅ done |
 | 9 | Insights & streaks — no-waste streak + personal patterns from your own history (plain rules, no AI) | ✅ done |
 | 11 | Offline mode (changes kept on the device, synced later) + automated tests (Vitest + Playwright) | ✅ done |
-| 7–8, 10 | Receipt scanning + AI (waiting for real receipts), final polish | ⏳ next |
+| 7 | Receipt scanning — photo → text in the browser → review screen → fridge; tested, decision GO ([docs/RECEIPT_TEST.md](docs/RECEIPT_TEST.md)) | ✅ done |
+| 8, 10 | On-device AI clean-up for unknown receipt lines, final polish | ⏳ next |
 
 ## What works now
 
@@ -32,6 +33,9 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 - **Scan a barcode** on Add item: the camera reads it (or type the number), Frigo fills in name, category and
   pack size — first from its own product list, then from Open Food Facts. A product nobody has scanned before is
   typed in once and remembered for everyone (great for Moldovan products, which Open Food Facts often lacks).
+- **Scan a receipt** — take a photo (or try one of 6 sample receipts); Frigo reads it on the phone (Tesseract.js,
+  Romanian + Russian + English), suggests fridge items with a guessed date, leaves non-food unticked, and you
+  confirm or fix each one. Blurry photos are detected. Your corrections are remembered for next time.
 - **Recipes** — Moldovan recipes ranked by which of your food expires first (expired food is never suggested).
   "I cooked this" marks the ingredients it used as eaten, with Undo. Each recipe has its own page with steps.
   Recipes live in `content/recipes.json`; `npm run recipes` turns them into `supabase/recipes.sql`.

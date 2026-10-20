@@ -229,4 +229,24 @@ look like they are in a dirty environment, could you choose something more clean
 - The e2e tests now run in **two engines**: Chrome (Android) and WebKit (iPhone) — 18 runs, all passing.
 
 **To check by hand**
-- [ ] On the live site: open Frigo, turn on airplane mode, tap Used it / add food, turn airplane mode off → changes sync.
+- [x] On the live site: open Frigo, turn on airplane mode, tap Used it / add food, turn airplane mode off → changes sync.
+      (2026-10-20: works on my iPhone in Safari after the second fix.)
+
+---
+
+## 2026-10-20 — Session 7: receipt scanning test
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompts:** I shared a PDF of simple sample receipts and asked
+"does this work?"; then "sure, share the fake receipts with me also, I won't be able to give you 3–5 receipts tho".
+
+**What the AI did**
+- Said honestly that my PDF (clean English lines) would make reading look better than it is, and made 6 harder,
+  realistic fake receipts instead (fictional shop, marked as samples), with an answer key.
+- Measured Tesseract.js against the answer key, then wrote a receipt parser + Romanian/Russian abbreviation
+  dictionary and measured that too. Full results and the **GO decision** in `docs/RECEIPT_TEST.md`.
+- Built "Scan a receipt" and the Receipt review screen from the design; the photo is read on the device;
+  corrections are saved to `receipt_corrections` and reused next time.
+- 10 new unit tests (49 total) and a browser test for the whole receipt flow (20 browser tests total).
+
+**Limits:** no real receipts were tested. **To do:** if I can get even one real receipt, test it and add the
+result to `docs/RECEIPT_TEST.md`.
