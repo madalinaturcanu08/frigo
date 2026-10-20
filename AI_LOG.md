@@ -220,6 +220,13 @@ look like they are in a dirty environment, could you choose something more clean
   visit happens before the offline helper starts — so nothing was saved. The tests had missed it because they always
   refreshed the page first. Fix: when Frigo opens online it saves the main pages (Fridge, Add, Recipes, Stats,
   Settings) in the background. New test copies the phone case: one visit, no refresh, offline, switch tabs.
+- **Still broken on my iPhone (Safari):** the fridge showed empty and other tabs didn't open. The tests passed in
+  Safari's engine (WebKit), so the AI reasoned about what differs on a real phone: the iPhone still had the first
+  offline version running; the "save pages" request went to that old helper, which didn't understand it, and the
+  app then waited 10 minutes to ask again — leaving only an old, empty copy of the fridge. Fix: the helper now
+  saves the main pages by itself (when a new version starts, and every time Frigo opens online, max every
+  2 minutes), old saved copies are discarded, and **Settings → Offline** shows what is saved and when.
+- The e2e tests now run in **two engines**: Chrome (Android) and WebKit (iPhone) — 18 runs, all passing.
 
 **To check by hand**
 - [ ] On the live site: open Frigo, turn on airplane mode, tap Used it / add food, turn airplane mode off → changes sync.

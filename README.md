@@ -86,14 +86,14 @@ tests/unit/          Vitest
 
 ```bash
 npm test           # 39 unit tests: expiry, estimates, stats, reminders, barcodes, recipes, insights, offline queue
-npm run test:e2e   # 8 end-to-end tests in a real (phone-sized) browser against a production build
+npm run test:e2e   # 9 end-to-end flows × 2 engines (Chrome/Android + WebKit/iPhone) against a production build
 npm run lint
 npm run build
 ```
 
 The end-to-end tests need `SUPABASE_SECRET_KEY` in `.env.local`: they create a throwaway, already-confirmed
 account, run the main flows (add food, used it → stats, offline toss + sync, offline add + sync, opening offline,
-language switch) and delete the account afterwards. First time: `npx playwright install chromium`.
+language switch) and delete the account afterwards. First time: `npx playwright install chromium webkit`.
 
 ## Security
 

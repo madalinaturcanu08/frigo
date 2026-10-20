@@ -21,7 +21,11 @@ export default defineConfig({
     trace: 'retain-on-failure',
     serviceWorkers: 'allow',
   },
-  projects: [{ name: 'phone', use: { ...devices['Pixel 7'] } }],
+  projects: [
+    { name: 'phone', use: { ...devices['Pixel 7'] } },
+    // Safari's engine — iPhone users get WebKit whatever browser they pick.
+    { name: 'iphone', use: { ...devices['iPhone 15'] } },
+  ],
   webServer: {
     // A production build: offline mode (service worker caching) only runs there.
     command: `NEXT_DIST_DIR=.next-e2e npx next build && NEXT_DIST_DIR=.next-e2e npx next start -p ${PORT}`,

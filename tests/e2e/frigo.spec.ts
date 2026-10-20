@@ -6,8 +6,9 @@ import { admin, USER_FILE } from './admin';
 // logged in as a throwaway account that global-teardown deletes afterwards.
 
 const userId = () => JSON.parse(fs.readFileSync(USER_FILE, 'utf8')).id as string;
-// Same suffix for every test in a run, even if Playwright restarts the file after a failure.
-const run = userId().slice(0, 8);
+// Same suffix for every test in a run (even if Playwright restarts the file after a failure),
+// and different per browser engine, because both engines share the one test account.
+const run = () => `${userId().slice(0, 6)}${test.info().project.name === 'iphone' ? 'i' : 'a'}`;
 
 async function addItem(page: Page, name: string, when: '2 days' | '1 week' | 'guess' = '2 days') {
   await page.goto('/add');
@@ -28,46 +29,49 @@ test('signed-out visitors land on the welcome page', async ({ browser }) => {
 });
 
 test('adding food puts it on the fridge in the right colour group', async ({ page }) => {
-  await addItem(page, `Lapte ${run}`, '2 days');
+  await addItem(page, `Lapte ${run()}`, '2 days');
   const soon = page.locator('section', { has: page.getByRole('heading', { name: /Use soon/ }) });
-  await expect(soon.getByText(`Lapte ${run}`)).toBeVisible();
+  await expect(soon.getByText(`Lapte ${run()}`)).toBeVisible();
 
-  await addItem(page, `Mere ${run}`, '1 week');
+  await addItem(page, `Mere ${run()}`, '1 week');
   const fresh = page.locator('section', { has: page.getByRole('heading', { name: /Fresh/ }) });
-  await expect(fresh.getByText(`Mere ${run}`)).toBeVisible();
+  await expect(fresh.getByText(`Mere ${run()}`)).toBeVisible();
 });
 
 test('a guessed date comes from the shelf-life table and is marked as estimated', async ({ page }) => {
   await page.goto('/add');
-  await page.getByLabel('Name').fill(`Iaurt ${run}`);
+  await page.getByLabel('Name').fill(`Iaurt ${run()}`);
   // Dairy in the fridge = 7 days in supabase/seed.sql
   await expect(page.getByRole('button', { name: 'Guess for me (~7 d)' })).toBeVisible();
   await expect(page.getByText('estimated', { exact: false }).first()).toBeVisible();
 });
 
 test('"Used it" removes the item and counts it in the stats', async ({ page }) => {
+  await page.goto('/stats');
+  const foodSaved = page.locator('.card', { hasText: 'Food saved' }).locator('.font-pixel');
+  const before = Number(await foodSaved.textContent());
+
   await page.goto('/');
   const saved = page.waitForResponse((r) => r.request().method() === 'POST' && r.ok());
-  await card(page, `Lapte ${run}`).getByRole('button', { name: 'Used it' }).click();
+  await card(page, `Lapte ${run()}`).getByRole('button', { name: 'Used it' }).click();
   await saved; // the change reached the server before we leave the page
   await expect(page.getByRole('status').filter({ hasText: 'saved from the bin' })).toBeVisible();
-  await expect(card(page, `Lapte ${run}`)).toHaveCount(0);
+  await expect(card(page, `Lapte ${run()}`)).toHaveCount(0);
 
   await page.goto('/stats');
-  const foodSaved = page.locator('.card', { hasText: 'Food saved' });
-  await expect(foodSaved.locator('.font-pixel')).toHaveText('1');
+  await expect(foodSaved).toHaveText(String(before + 1));
 });
 
 test('offline: tossing food is kept on the phone and synced when the internet is back', async ({ page, context }) => {
-  await addItem(page, `Paine ${run}`, '2 days');
+  await addItem(page, `Paine ${run()}`, '2 days');
   // Let the service worker take control and keep a copy of the fridge page.
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.reload();
   await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
 
   await context.setOffline(true);
-  await card(page, `Paine ${run}`).getByRole('button', { name: 'Tossed' }).click();
-  await expect(card(page, `Paine ${run}`)).toHaveCount(0);
+  await card(page, `Paine ${run()}`).getByRole('button', { name: 'Tossed' }).click();
+  await expect(card(page, `Paine ${run()}`)).toHaveCount(0);
   await expect(page.getByRole('status').filter({ hasText: "You're offline" })).toContainText('1 change');
 
   await context.setOffline(false);
@@ -77,7 +81,7 @@ test('offline: tossing food is kept on the phone and synced when the internet is
     .from('fridge_items')
     .select('status, closed_at')
     .eq('user_id', userId())
-    .eq('name', `Paine ${run}`)
+    .eq('name', `Paine ${run()}`)
     .single();
   expect(data?.status).toBe('wasted');
   expect(data?.closed_at).not.toBeNull();
@@ -87,7 +91,7 @@ test('offline: pages open from the saved copy after a single visit, like on a ph
   // One normal visit — no reload — then the connection drops (this is what failed on a real iPhone at first).
   await page.goto('/');
   await expect
-    .poll(() => page.evaluate(async () => (await caches.open('frigo-pages-v1')).keys().then((k) => k.length)), {
+    .poll(() => page.evaluate(async () => (await caches.open('frigo-pages-v2')).keys().then((k) => k.length)), {
       timeout: 15_000,
     })
     .toBeGreaterThanOrEqual(5);
@@ -100,7 +104,7 @@ test('offline: pages open from the saved copy after a single visit, like on a ph
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Recipes', level: 1 })).toBeVisible();
   await page.goto('/');
-  await expect(page.getByText(`Mere ${run}`)).toBeVisible();
+  await expect(page.getByText(`Mere ${run()}`)).toBeVisible();
   await context.setOffline(false);
 });
 
@@ -111,20 +115,25 @@ test('offline: food added without internet is synced later', async ({ page, cont
   await page.reload();
   await page.goto('/add');
   await context.setOffline(true);
-  await page.getByLabel('Name').fill(`Oua ${run}`);
+  await page.getByLabel('Name').fill(`Oua ${run()}`);
   await page.getByRole('button', { name: 'Add to fridge' }).click();
   await page.waitForURL((url) => url.pathname === '/');
   const waiting = page.locator('section', { has: page.getByRole('heading', { name: /Added offline/ }) });
-  await expect(waiting.getByText(`Oua ${run}`)).toBeVisible();
+  await expect(waiting.getByText(`Oua ${run()}`)).toBeVisible();
 
   await context.setOffline(false);
   await expect
     .poll(
       async () =>
-        (await admin().from('fridge_items').select('id').eq('user_id', userId()).eq('name', `Oua ${run}`)).data?.length,
+        (await admin().from('fridge_items').select('id').eq('user_id', userId()).eq('name', `Oua ${run()}`)).data?.length,
       { timeout: 15_000 },
     )
     .toBe(1);
+});
+
+test('Settings shows which pages are saved for offline use', async ({ page }) => {
+  await page.goto('/settings');
+  await expect(page.getByText(/[5-9] pages saved for offline/)).toBeVisible({ timeout: 20_000 });
 });
 
 test('the language can be switched to Russian and back', async ({ page }) => {

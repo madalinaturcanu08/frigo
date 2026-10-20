@@ -5,8 +5,12 @@
 // No install prompt — Frigo stays a website.
 
 const CACHING = new URL(self.location.href).searchParams.get('cache') === '1';
-const PAGES = 'frigo-pages-v1';
-const STATIC = 'frigo-static-v1';
+// v2: copies saved by the first offline version could be stale (e.g. an empty fridge) — start fresh.
+const PAGES = 'frigo-pages-v2';
+const STATIC = 'frigo-static-v2';
+const MAIN_PAGES = ['/', '/add', '/recipes', '/stats', '/settings'];
+const WARM_EVERY_MS = 2 * 60_000;
+let lastWarm = 0;
 const KEEP = [PAGES, STATIC];
 
 self.addEventListener('install', () => self.skipWaiting());
@@ -16,7 +20,9 @@ self.addEventListener('activate', (event) => {
     caches
       .keys()
       .then((names) => Promise.all(names.filter((n) => !KEEP.includes(n) || !CACHING).map((n) => caches.delete(n))))
-      .then(() => self.clients.claim()),
+      .then(() => self.clients.claim())
+      // a new version saves the main pages straight away instead of waiting to be asked
+      .then(() => (CACHING ? maybeWarm(true) : undefined)),
   );
 });
 
@@ -36,6 +42,13 @@ async function warmPages(urls) {
       }
     }),
   );
+}
+
+/** Re-saves the main pages at most every 2 minutes; pages that redirect (logged out) are skipped. */
+function maybeWarm(force = false) {
+  if (!force && Date.now() - lastWarm < WARM_EVERY_MS) return Promise.resolve();
+  lastWarm = Date.now();
+  return warmPages(MAIN_PAGES);
 }
 
 self.addEventListener('message', (event) => {
@@ -63,11 +76,16 @@ async function cacheFirst(request) {
   return response;
 }
 
-async function networkFirstPage(request) {
+async function networkFirstPage(event) {
+  const { request } = event;
   try {
     const response = await fetch(request);
     // Only keep real pages, never redirects (e.g. to the login screen).
-    if (response.ok && !response.redirected) (await caches.open(PAGES)).put(new URL(request.url).pathname, response.clone());
+    if (response.ok && !response.redirected) {
+      (await caches.open(PAGES)).put(new URL(request.url).pathname, response.clone());
+      // Online and logged in: refresh the other main pages too, in the background.
+      event.waitUntil(maybeWarm());
+    }
     return response;
   } catch {
     const cache = await caches.open(PAGES);
@@ -94,7 +112,7 @@ self.addEventListener('fetch', (event) => {
   if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/auth/')) return;
 
   if (isStaticFile(url)) event.respondWith(cacheFirst(request));
-  else if (request.mode === 'navigate') event.respondWith(networkFirstPage(request));
+  else if (request.mode === 'navigate') event.respondWith(networkFirstPage(event));
 });
 
 self.addEventListener('push', (event) => {

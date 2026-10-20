@@ -24,14 +24,30 @@ const MAIN_PAGES = ['/', '/add', '/recipes', '/stats', '/settings'];
  * At most every 10 minutes per tab, so it doesn't make the server render pages for nothing.
  */
 export function warmOfflinePages(registration: ServiceWorkerRegistration | undefined) {
-  const worker = registration?.active;
-  if (!worker || !navigator.onLine) return;
+  // Ask whichever worker is in charge — while a new version takes over, the old and new one can differ.
+  const workers = new Set([registration?.active, navigator.serviceWorker.controller].filter(Boolean));
+  if (workers.size === 0 || !navigator.onLine) return;
   try {
     const last = Number(sessionStorage.getItem(WARM_KEY) || 0);
-    if (Date.now() - last < 10 * 60_000) return;
+    if (Date.now() - last < 2 * 60_000) return;
     sessionStorage.setItem(WARM_KEY, String(Date.now()));
   } catch {
     // storage blocked: warm anyway
   }
-  worker.postMessage({ type: 'warm', urls: [...new Set([...MAIN_PAGES, location.pathname])] });
+  for (const w of workers) w!.postMessage({ type: 'warm', urls: [...new Set([...MAIN_PAGES, location.pathname])] });
+}
+
+export const OFFLINE_PAGES_CACHE = 'frigo-pages-v2';
+
+/** What is saved for offline use on this device: number of pages and when the newest was saved. */
+export async function offlineStatus(): Promise<{ pages: string[]; savedAt: Date | null } | null> {
+  if (typeof caches === 'undefined' || !navigator.serviceWorker?.controller) return null;
+  const cache = await caches.open(OFFLINE_PAGES_CACHE);
+  const requests = await cache.keys();
+  let newest: Date | null = null;
+  for (const r of requests) {
+    const date = (await cache.match(r))?.headers.get('date');
+    if (date && (!newest || new Date(date) > newest)) newest = new Date(date);
+  }
+  return { pages: requests.map((r) => new URL(r.url).pathname), savedAt: newest };
 }

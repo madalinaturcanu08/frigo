@@ -220,7 +220,8 @@
     "account": "Account",
     "signedInAs": "Signed in as {email}",
     "logout": "Log out",
-    "credits": "Photo credits"
+    "credits": "Photo credits",
+    "offline": "Offline"
   },
   "reminders": {
     "title": "{count, plural, one {# item to use soon} other {# items to use soon}}",
@@ -353,6 +354,11 @@
   "offline": {
     "offline": "You're offline. {count, plural, =0 {Frigo shows your fridge as it was last time.} one {# change will sync when you're back online.} other {# changes will sync when you're back online.}}",
     "waiting": "{count, plural, one {# change waiting to sync…} other {# changes waiting to sync…}}",
-    "syncing": "{count, plural, one {Syncing # change…} other {Syncing # changes…}}"
+    "syncing": "{count, plural, one {Syncing # change…} other {Syncing # changes…}}",
+    "devOnly": "Offline mode works on the live site (production build), not while developing.",
+    "notSaved": "Nothing saved for offline yet. Keep Frigo open for a few seconds while you have internet.",
+    "saved": "{count, plural, one {# page saved for offline} other {# pages saved for offline}}",
+    "updated": "updated {time}",
+    "howTo": "Without internet these pages still open, and Used it / Tossed / Add item sync later."
   }
 }
