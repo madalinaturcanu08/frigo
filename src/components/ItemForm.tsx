@@ -19,6 +19,7 @@ import { addDays, parseISODate, toISODate } from '@/lib/dates';
 import { estimateExpiry } from '@/lib/expiry';
 import { BarcodeScanner } from './BarcodeScanner';
 import { ItemCard } from './ItemCard';
+import { PhotoFrame } from './PhotoFrame';
 
 const QUICK_DAYS = [2, 5, 7, 14, 30] as const;
 
@@ -390,6 +391,14 @@ export function ItemForm({
           <p className="m-0 text-sm text-muted">
             {t('estimateExplain', { days: estimatedDays, category: ti(`category.${category}`), storage: ti(`storage.${storage}`) })}
           </p>
+        )}
+        {!initial && (
+          <PhotoFrame name="decor-add" alt="" className="mt-2 aspect-[4/3] rounded-[22px] border-2 border-line shadow-card" sizes="(max-width: 700px) 100vw, 420px">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-12 text-white">
+              <div className="font-display text-[11px] tracking-[1px] uppercase opacity-90">{t('tipLabel')}</div>
+              <p className="m-0 text-[15px] font-semibold">{t('tip')}</p>
+            </div>
+          </PhotoFrame>
         )}
       </div>
 

@@ -15,7 +15,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 3 | Stats — Used it / Tossed, stats page | ✅ done |
 | 4 | Daily expiry reminders — browser notifications + in-app banner (no installable app, by choice) | ✅ done |
 | 5 | Barcode scanning — camera (ZXing) + Open Food Facts + shared product list | ✅ done |
-| 6–11 | Recipes, receipt AI, insights, offline, tests | ⏳ next |
+| 6 | Recipes — 14 Moldovan starter recipes (ro/ru/en), ranked by what expires first | ✅ done |
+| 7–11 | Receipt scanning + AI, insights & streaks, offline, tests | ⏳ next |
 
 ## What works now
 
@@ -29,6 +30,9 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 - **Scan a barcode** on Add item: the camera reads it (or type the number), Frigo fills in name, category and
   pack size — first from its own product list, then from Open Food Facts. A product nobody has scanned before is
   typed in once and remembered for everyone (great for Moldovan products, which Open Food Facts often lacks).
+- **Recipes** — Moldovan recipes ranked by which of your food expires first (expired food is never suggested).
+  "I cooked this" marks the ingredients it used as eaten, with Undo. Each recipe has its own page with steps.
+  Recipes live in `content/recipes.json`; `npm run recipes` turns them into `supabase/recipes.sql`.
 - **Edit item** — change anything, mark used/tossed, or delete a mistake.
 - **Stats** — money saved (lei), items saved, % used in time, money tossed this month; a used-vs-tossed
   chart by week or month (with a table view); which categories get tossed most.
@@ -56,7 +60,9 @@ src/
   proxy.ts           refreshes the session, redirects signed-out users to /welcome
 messages/            en.json · ro.json · ru.json
 public/sw.js         service worker — shows the daily reminder notification
-supabase/            migrations/0001_init.sql (schema + RLS) · seed.sql (shelf-life table)
+supabase/            migrations/ (schema + RLS) · seed.sql (shelf-life table) · recipes.sql (generated)
+content/recipes.json recipes in 3 languages — edit here, then npm run recipes
+content/photos.json  photo credits (photos in public/photos/, from Unsplash)
 tests/unit/          Vitest
 ```
 

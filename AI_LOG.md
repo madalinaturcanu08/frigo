@@ -123,3 +123,50 @@ in `vercel.json`. **Measured locally:** page loads went from ~500–800 ms to ~1
 - [ ] Run `0002_products_pack_size.sql` in Supabase.
 - [ ] Scan a real product with the laptop camera (Chrome, localhost) and with a phone (Vercel link).
 - [ ] Scan a Moldovan product that Open Food Facts doesn't know, add it, then scan it again → "Found in Frigo's product list".
+
+---
+
+## 2026-10-19 — Session 6: recipes
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompt:** "lets continue the project".
+
+**What the AI did**
+- Wrote **14 starter recipes** in its own words (common home versions, not copied from any site), in Romanian,
+  Russian and English: mămăligă cu brânză, plăcinte, clătite, zeamă, colțunași, sarmale, ciorbă de legume, omletă,
+  salată, frigănele, ardei umpluți, mere coapte, compot, cartofi prăjiți. They are marked as AI drafts.
+- `content/recipes.json` is the one place to edit recipes; `npm run recipes` builds `supabase/recipes.sql`.
+- Matching (`src/lib/recipes.ts`): an ingredient matches a fridge item by name stem in any language
+  ("lapte", "молок", "milk") or by category. Expired food is never suggested (food safety). Ranking: most
+  soon-expiring food rescued first, then most ingredients you already have, then quickest.
+- Recipes screen from the design (filter switch, cards, coloured ingredient chips, "I cooked this" with Undo)
+  and a page per recipe with steps. The Fridge hero button now says "Cook with them →" when food is expiring.
+- Migration `0003_recipe_details.sql`. 7 new unit tests (27 in total).
+
+**What I (the student) must check / do by hand**
+- [ ] Run `0003` + `recipes.sql` in Supabase.
+- [ ] **Cook and taste** the recipes, then rewrite them in my own words — the plan asks for 20–30 Moldovan
+      recipes I wrote myself. Add the rest in `content/recipes.json`.
+- [ ] Check the Russian and Romanian recipe texts with a native speaker / family member.
+
+---
+
+## 2026-10-20 — Photos for recipes and decoration
+
+**Prompts:** "add generated photos or photos you can find on the web that would best suit the recipes tab and also
+other photos to decorate the site" → after a first set from Wikimedia Commons: "the pictures look too low quality and
+look like they are in a dirty environment, could you choose something more clean".
+
+**What the AI did**
+- Said honestly that it cannot generate photos, and that web photos must be free to use.
+- First searched Wikimedia Commons (free licences) — I rejected those as amateur-looking. Then searched **Unsplash**,
+  looked at every candidate, kept only "Free Photo" ones (no paid Unsplash+), and asked before downloading.
+- 17 photos in `public/photos/` (1200×900, ~100–300 KB): one per recipe + 3 decorative (welcome page, Add item tip,
+  Recipes banner). Credits in `content/photos.json`, a **Photo credits** page (`/credits`, linked from Settings and
+  the welcome page) and a "Photo: … / Unsplash" caption on each recipe page.
+- Noted that several photos are similar dishes, not the exact Moldovan recipe (caption says so).
+- Also: the AI's clipboard copy garbled Romanian/Russian letters in Supabase (wrong text encoding); it found and
+  fixed this (re-pasted with UTF-8) and checked the database for garbled text.
+
+**To do by hand**
+- [ ] Better for the competition: take my own photos of the dishes I cook, and swap them in (same file names in
+      `public/photos/`, update the author in `content/photos.json`).

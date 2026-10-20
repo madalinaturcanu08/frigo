@@ -53,3 +53,11 @@ SQL Editor (adds pack size + source to the shared `products` list). Nothing else
 browser and Open Food Facts is a free, open API with no key.
 
 The camera only works on `https://` pages (Vercel) or `http://localhost`. On a phone, test on the Vercel link.
+
+## Recipes (session 6)
+
+Run [`supabase/migrations/0003_recipe_details.sql`](../supabase/migrations/0003_recipe_details.sql), then
+[`supabase/recipes.sql`](../supabase/recipes.sql) in the SQL Editor.
+
+To add or change recipes: edit [`content/recipes.json`](../content/recipes.json), run `npm run recipes`, and paste the
+new `supabase/recipes.sql` again (it updates recipes in place, so running it twice is fine).

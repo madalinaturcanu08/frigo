@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { LanguagePicker } from '@/components/LanguagePicker';
+import { PhotoFrame } from '@/components/PhotoFrame';
 import { SkyHero } from '@/components/SkyHero';
 
 export default async function WelcomePage() {
@@ -16,6 +17,8 @@ export default async function WelcomePage() {
           <p className="m-0 max-w-[340px] text-[15px] text-hero-ink">{t('lead')}</p>
         </div>
       </SkyHero>
+
+      <PhotoFrame name="decor-welcome" alt={t('photoAlt')} eager className="aspect-[16/9] rounded-[26px] border-2 border-line shadow-card" sizes="(max-width: 560px) 100vw, 520px" />
 
       <section className="flex flex-col gap-2.5">
         <div className="kicker">{t('language')}</div>
@@ -40,6 +43,11 @@ export default async function WelcomePage() {
         </Link>
       </div>
       <p className="m-0 text-center text-[13px] text-muted">{t('free')}</p>
+      <p className="m-0 text-center text-[13px] text-muted">
+        <Link href="/credits" className="underline">
+          {t('credits')}
+        </Link>
+      </p>
     </>
   );
 }

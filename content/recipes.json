@@ -1,0 +1,258 @@
+{
+  "_note": "Starter recipes drafted by AI (Claude) in its own words, as common home-cooking versions. The student must check, cook and rewrite them before the competition (PLAN.md §8). After editing, run: node scripts/build-recipes-sql.mjs — then paste supabase/recipes.sql into the Supabase SQL Editor. Ingredient matching: if `keywords` is set, a fridge item matches when its name contains one of them (lowercase, no diacritics); otherwise any item of `category` matches.",
+  "recipes": [
+    {
+      "slug": "mamaliga-cu-branza",
+      "emoji": "🌽",
+      "minutes": 35,
+      "servings": 3,
+      "title": { "ro": "Mămăligă cu brânză și smântână", "ru": "Мамалыга с брынзой и сметаной", "en": "Mămăligă with brânză and sour cream" },
+      "ingredients": [
+        { "label": { "ro": "mălai", "ru": "кукурузная крупа", "en": "cornmeal" }, "category": "other", "keywords": ["malai", "mamalig", "кукуруз", "cornmeal", "polenta"] },
+        { "label": { "ro": "brânză", "ru": "брынза", "en": "brânză (white cheese)" }, "category": "cheese" },
+        { "label": { "ro": "smântână", "ru": "сметана", "en": "sour cream" }, "category": "dairy", "keywords": ["smantan", "сметан", "sour cream"] },
+        { "label": { "ro": "unt", "ru": "сливочное масло", "en": "butter" }, "category": "dairy", "keywords": ["unt", "масло", "butter"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Fierbe 1 litru de apă cu puțină sare.", "Presară mălaiul treptat și amestecă mereu, ca să nu se facă cocoloașe.", "Lasă mămăliga să fiarbă la foc mic 20–25 de minute, amestecând din când în când, până se desprinde de pe vas.", "Răstoarn-o pe un fund de lemn și taie felii cu ața.", "Servește cu brânză sfărâmată, smântână și, dacă ai, o bucată de unt."],
+        "ru": ["Вскипяти 1 литр воды с щепоткой соли.", "Постепенно всыпай кукурузную крупу, постоянно помешивая, чтобы не было комков.", "Вари на слабом огне 20–25 минут, иногда помешивая, пока мамалыга не начнёт отставать от стенок.", "Выложи её на деревянную доску и нарежь ниткой.", "Подавай с раскрошенной брынзой, сметаной и, если есть, кусочком масла."],
+        "en": ["Bring 1 litre of water to the boil with a pinch of salt.", "Pour in the cornmeal slowly, stirring all the time so no lumps form.", "Cook on low heat for 20–25 minutes, stirring now and then, until it pulls away from the pot.", "Turn it out onto a wooden board and slice it with a thread.", "Serve with crumbled brânză, sour cream and a knob of butter if you have one."]
+      }
+    },
+    {
+      "slug": "placinte-cu-branza",
+      "emoji": "🥟",
+      "minutes": 50,
+      "servings": 6,
+      "title": { "ro": "Plăcinte cu brânză", "ru": "Плацинды с брынзой", "en": "Plăcinte with cheese" },
+      "ingredients": [
+        { "label": { "ro": "făină", "ru": "мука", "en": "flour" }, "category": "other", "keywords": ["faina", "мук", "flour"] },
+        { "label": { "ro": "brânză", "ru": "брынза", "en": "brânză (white cheese)" }, "category": "cheese" },
+        { "label": { "ro": "ouă", "ru": "яйца", "en": "eggs" }, "category": "eggs" },
+        { "label": { "ro": "chefir sau lapte", "ru": "кефир или молоко", "en": "kefir or milk" }, "category": "dairy", "keywords": ["chefir", "kefir", "кефир", "lapte", "молок", "milk"] },
+        { "label": { "ro": "mărar", "ru": "укроп", "en": "dill" }, "category": "vegetables", "keywords": ["marar", "укроп", "dill"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Frământă un aluat moale din 500 g făină, un pahar de chefir sau lapte, un ou și puțină sare. Lasă-l 15 minute.", "Amestecă brânza cu un ou și mărar tocat.", "Împarte aluatul în 6 bile, întinde fiecare subțire, pune umplutura la mijloc și strânge marginile.", "Turtește ușor plăcintele și coace-le în tigaie cu puțin ulei, câte 3–4 minute pe fiecare parte, sau 20 de minute în cuptor la 200 °C."],
+        "ru": ["Замеси мягкое тесто из 500 г муки, стакана кефира или молока, одного яйца и щепотки соли. Оставь на 15 минут.", "Смешай брынзу с яйцом и рубленым укропом.", "Раздели тесто на 6 шариков, раскатай каждый тонко, выложи начинку в центр и защипни края.", "Слегка прижми плацинды и жарь на сковороде с небольшим количеством масла по 3–4 минуты с каждой стороны или выпекай 20 минут в духовке при 200 °C."],
+        "en": ["Knead a soft dough from 500 g flour, a glass of kefir or milk, one egg and a pinch of salt. Rest it for 15 minutes.", "Mix the brânză with an egg and chopped dill.", "Divide the dough into 6 balls, roll each one thin, put filling in the middle and pinch the edges together.", "Flatten the pies a little and fry them in a pan with a little oil, 3–4 minutes per side, or bake 20 minutes at 200 °C."]
+      }
+    },
+    {
+      "slug": "clatite",
+      "emoji": "🥞",
+      "minutes": 25,
+      "servings": 4,
+      "title": { "ro": "Clătite", "ru": "Блинчики", "en": "Crêpes (clătite)" },
+      "ingredients": [
+        { "label": { "ro": "lapte", "ru": "молоко", "en": "milk" }, "category": "dairy", "keywords": ["lapte", "молок", "milk"] },
+        { "label": { "ro": "ouă", "ru": "яйца", "en": "eggs" }, "category": "eggs" },
+        { "label": { "ro": "făină", "ru": "мука", "en": "flour" }, "category": "other", "keywords": ["faina", "мук", "flour"] },
+        { "label": { "ro": "brânză dulce sau gem", "ru": "творог или варенье", "en": "sweet cheese or jam" }, "category": "cheese", "optional": true }
+      ],
+      "steps": {
+        "ro": ["Bate 2 ouă cu 500 ml lapte, un praf de sare și o lingură de zahăr.", "Adaugă treptat 250 g făină și amestecă până nu mai sunt cocoloașe. Pune 2 linguri de ulei.", "Încinge o tigaie unsă, toarnă un polonic subțire de aluat și rotește tigaia.", "Întoarce clătita când marginile se rumenesc. Umple-le cu brânză dulce, gem sau ce ai în frigider."],
+        "ru": ["Взбей 2 яйца с 500 мл молока, щепоткой соли и ложкой сахара.", "Постепенно добавь 250 г муки и мешай, пока не исчезнут комочки. Влей 2 ложки масла.", "Разогрей смазанную сковороду, налей тонкий слой теста и наклони сковороду, чтобы оно растеклось.", "Переверни блинчик, когда края подрумянятся. Начини творогом, вареньем или тем, что есть в холодильнике."],
+        "en": ["Whisk 2 eggs with 500 ml milk, a pinch of salt and a spoon of sugar.", "Add 250 g flour bit by bit and stir until smooth. Add 2 spoons of oil.", "Heat a greased pan, pour in a thin ladle of batter and tilt the pan to spread it.", "Flip when the edges turn golden. Fill with sweet cheese, jam or whatever is in the fridge."]
+      }
+    },
+    {
+      "slug": "zeama-de-pui",
+      "emoji": "🍲",
+      "minutes": 60,
+      "servings": 6,
+      "title": { "ro": "Zeamă de găină", "ru": "Зама из курицы", "en": "Zeamă (Moldovan chicken soup)" },
+      "ingredients": [
+        { "label": { "ro": "carne de pui", "ru": "курица", "en": "chicken" }, "category": "meat", "keywords": ["pui", "gain", "gaina", "кур", "chicken"] },
+        { "label": { "ro": "morcov", "ru": "морковь", "en": "carrot" }, "category": "vegetables", "keywords": ["morcov", "морков", "carrot"] },
+        { "label": { "ro": "ceapă", "ru": "лук", "en": "onion" }, "category": "vegetables", "keywords": ["ceap", "лук", "onion"] },
+        { "label": { "ro": "tăiței", "ru": "лапша", "en": "noodles" }, "category": "other", "keywords": ["taitei", "лапш", "noodle", "paste"], "optional": true },
+        { "label": { "ro": "leuștean sau pătrunjel", "ru": "любисток или петрушка", "en": "lovage or parsley" }, "category": "vegetables", "keywords": ["leustean", "patrunjel", "любисток", "петруш", "lovage", "parsley"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Pune carnea de pui în 3 litri de apă rece și fierbe-o la foc mic, luând spuma.", "După 30 de minute adaugă morcovul și ceapa tăiate mărunt.", "Când legumele sunt moi, pune tăițeii și fierbe încă 5–7 minute.", "Acrește zeama cu borș sau puțin suc de lămâie, sărează și presară leuștean sau pătrunjel tocat."],
+        "ru": ["Залей курицу 3 литрами холодной воды и вари на слабом огне, снимая пену.", "Через 30 минут добавь мелко нарезанные морковь и лук.", "Когда овощи станут мягкими, положи лапшу и вари ещё 5–7 минут.", "Подкисли зама борщом или лимонным соком, посоли и посыпь рубленым любистком или петрушкой."],
+        "en": ["Put the chicken in 3 litres of cold water and simmer gently, skimming off the foam.", "After 30 minutes add the finely chopped carrot and onion.", "When the vegetables are soft, add the noodles and cook 5–7 more minutes.", "Sour the soup with borș or a little lemon juice, salt it and sprinkle with chopped lovage or parsley."]
+      }
+    },
+    {
+      "slug": "coltunasi-cu-branza",
+      "emoji": "🥟",
+      "minutes": 45,
+      "servings": 4,
+      "title": { "ro": "Colțunași cu brânză", "ru": "Колцунаши с брынзой", "en": "Colțunași (cheese dumplings)" },
+      "ingredients": [
+        { "label": { "ro": "făină", "ru": "мука", "en": "flour" }, "category": "other", "keywords": ["faina", "мук", "flour"] },
+        { "label": { "ro": "brânză", "ru": "брынза", "en": "brânză (white cheese)" }, "category": "cheese" },
+        { "label": { "ro": "ouă", "ru": "яйца", "en": "eggs" }, "category": "eggs" },
+        { "label": { "ro": "smântână", "ru": "сметана", "en": "sour cream" }, "category": "dairy", "keywords": ["smantan", "сметан", "sour cream"] }
+      ],
+      "steps": {
+        "ro": ["Fă un aluat tare din 400 g făină, un ou, apă călduță și sare. Lasă-l acoperit 20 de minute.", "Amestecă brânza cu un ou.", "Întinde aluatul subțire, taie cercuri cu un pahar, pune o linguriță de brânză și lipește marginile.", "Fierbe colțunașii în apă cu sare până ies la suprafață, apoi încă 2 minute. Servește cu smântână."],
+        "ru": ["Замеси крутое тесто из 400 г муки, яйца, тёплой воды и соли. Оставь под крышкой на 20 минут.", "Смешай брынзу с яйцом.", "Тонко раскатай тесто, вырежи кружки стаканом, положи ложечку брынзы и залепи края.", "Вари колцунаши в подсоленной воде, пока не всплывут, и ещё 2 минуты. Подавай со сметаной."],
+        "en": ["Make a firm dough from 400 g flour, an egg, warm water and salt. Cover and rest 20 minutes.", "Mix the brânză with an egg.", "Roll the dough thin, cut circles with a glass, add a teaspoon of cheese and seal the edges.", "Boil in salted water until they float, then 2 minutes more. Serve with sour cream."]
+      }
+    },
+    {
+      "slug": "sarmale",
+      "emoji": "🥬",
+      "minutes": 120,
+      "servings": 8,
+      "title": { "ro": "Sarmale în foi de varză", "ru": "Голубцы (сармале)", "en": "Sarmale (cabbage rolls)" },
+      "ingredients": [
+        { "label": { "ro": "varză", "ru": "капуста", "en": "cabbage" }, "category": "vegetables", "keywords": ["varz", "капуст", "cabbage"] },
+        { "label": { "ro": "carne tocată", "ru": "фарш", "en": "minced meat" }, "category": "meat", "keywords": ["tocat", "фарш", "mince", "minced"] },
+        { "label": { "ro": "orez", "ru": "рис", "en": "rice" }, "category": "other", "keywords": ["orez", "рис", "rice"] },
+        { "label": { "ro": "ceapă", "ru": "лук", "en": "onion" }, "category": "vegetables", "keywords": ["ceap", "лук", "onion"] },
+        { "label": { "ro": "suc de roșii", "ru": "томатный сок", "en": "tomato juice" }, "category": "sauces", "keywords": ["rosii", "tomat", "томат", "bulion"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Opărește frunzele de varză ca să se înmoaie și scoate-le cotorul gros.", "Amestecă carnea tocată cu orezul spălat, ceapa tocată și călită, sare și piper.", "Pune câte o lingură de umplutură pe fiecare frunză și rulează strâns.", "Așază sarmalele în oală, toarnă suc de roșii și apă cât să le acopere și fierbe la foc mic cam 1 oră și jumătate."],
+        "ru": ["Ошпарь капустные листья, чтобы они стали мягкими, и срежь толстые прожилки.", "Смешай фарш с промытым рисом, мелко нарезанным обжаренным луком, солью и перцем.", "Положи по ложке начинки на каждый лист и плотно сверни.", "Уложи голубцы в кастрюлю, залей томатным соком и водой, чтобы покрыть, и туши на слабом огне около полутора часов."],
+        "en": ["Blanch the cabbage leaves until soft and trim off the thick stem.", "Mix the minced meat with washed rice, chopped fried onion, salt and pepper.", "Put a spoon of filling on each leaf and roll it up tightly.", "Pack the rolls in a pot, cover with tomato juice and water and simmer gently for about 1½ hours."]
+      }
+    },
+    {
+      "slug": "ciorba-de-legume",
+      "emoji": "🥕",
+      "minutes": 45,
+      "servings": 5,
+      "title": { "ro": "Ciorbă de legume", "ru": "Овощная чорба", "en": "Vegetable ciorbă (sour soup)" },
+      "ingredients": [
+        { "label": { "ro": "cartofi", "ru": "картофель", "en": "potatoes" }, "category": "vegetables", "keywords": ["cartof", "картоф", "potato"] },
+        { "label": { "ro": "morcov", "ru": "морковь", "en": "carrot" }, "category": "vegetables", "keywords": ["morcov", "морков", "carrot"] },
+        { "label": { "ro": "ceapă", "ru": "лук", "en": "onion" }, "category": "vegetables", "keywords": ["ceap", "лук", "onion"] },
+        { "label": { "ro": "ardei", "ru": "перец", "en": "bell pepper" }, "category": "vegetables", "keywords": ["ardei", "перец", "pepper"], "optional": true },
+        { "label": { "ro": "roșii", "ru": "помидоры", "en": "tomatoes" }, "category": "vegetables", "keywords": ["rosi", "помидор", "томат", "tomato"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Taie toate legumele cubulețe mici.", "Călește ceapa și morcovul în puțin ulei, apoi toarnă 2,5 litri de apă.", "Adaugă cartofii și ardeiul și fierbe 20 de minute.", "Pune roșiile, acrește cu borș sau zeamă de varză, sărează și presară verdeață."],
+        "ru": ["Нарежь все овощи мелкими кубиками.", "Обжарь лук и морковь на небольшом количестве масла, затем влей 2,5 литра воды.", "Добавь картофель и перец и вари 20 минут.", "Положи помидоры, подкисли борщом или капустным рассолом, посоли и посыпь зеленью."],
+        "en": ["Cut all the vegetables into small cubes.", "Fry the onion and carrot in a little oil, then pour in 2.5 litres of water.", "Add the potatoes and pepper and cook for 20 minutes.", "Add the tomatoes, sour with borș or cabbage brine, salt and sprinkle with herbs."]
+      }
+    },
+    {
+      "slug": "omleta-cu-legume",
+      "emoji": "🍳",
+      "minutes": 15,
+      "servings": 2,
+      "title": { "ro": "Omletă cu legume", "ru": "Омлет с овощами", "en": "Vegetable omelette" },
+      "ingredients": [
+        { "label": { "ro": "ouă", "ru": "яйца", "en": "eggs" }, "category": "eggs" },
+        { "label": { "ro": "roșii", "ru": "помидоры", "en": "tomatoes" }, "category": "vegetables", "keywords": ["rosi", "помидор", "томат", "tomato"], "optional": true },
+        { "label": { "ro": "ardei", "ru": "перец", "en": "bell pepper" }, "category": "vegetables", "keywords": ["ardei", "перец", "pepper"], "optional": true },
+        { "label": { "ro": "brânză sau cașcaval", "ru": "брынза или сыр", "en": "cheese" }, "category": "cheese", "optional": true },
+        { "label": { "ro": "lapte", "ru": "молоко", "en": "milk" }, "category": "dairy", "keywords": ["lapte", "молок", "milk"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Taie mărunt legumele pe care le ai și călește-le 3 minute în tigaie.", "Bate 3–4 ouă cu un strop de lapte, sare și piper.", "Toarnă ouăle peste legume și ține la foc mic până se încheagă.", "Presară brânză rasă și servește cald."],
+        "ru": ["Мелко нарежь овощи, какие есть, и обжарь их 3 минуты на сковороде.", "Взбей 3–4 яйца с каплей молока, солью и перцем.", "Вылей яйца на овощи и держи на слабом огне, пока омлет не схватится.", "Посыпь тёртым сыром и подавай горячим."],
+        "en": ["Chop whatever vegetables you have and fry them for 3 minutes.", "Beat 3–4 eggs with a splash of milk, salt and pepper.", "Pour the eggs over the vegetables and keep on low heat until set.", "Sprinkle with grated cheese and serve warm."]
+      }
+    },
+    {
+      "slug": "salata-de-vara",
+      "emoji": "🥗",
+      "minutes": 10,
+      "servings": 3,
+      "title": { "ro": "Salată de roșii și castraveți", "ru": "Салат из помидоров и огурцов", "en": "Tomato and cucumber salad" },
+      "ingredients": [
+        { "label": { "ro": "roșii", "ru": "помидоры", "en": "tomatoes" }, "category": "vegetables", "keywords": ["rosi", "помидор", "томат", "tomato"] },
+        { "label": { "ro": "castraveți", "ru": "огурцы", "en": "cucumbers" }, "category": "vegetables", "keywords": ["castrav", "огур", "cucumber"] },
+        { "label": { "ro": "ceapă", "ru": "лук", "en": "onion" }, "category": "vegetables", "keywords": ["ceap", "лук", "onion"], "optional": true },
+        { "label": { "ro": "brânză", "ru": "брынза", "en": "brânză (white cheese)" }, "category": "cheese", "optional": true }
+      ],
+      "steps": {
+        "ro": ["Taie roșiile și castraveții felii, iar ceapa rondele subțiri.", "Pune sare, ulei de floarea-soarelui și un strop de oțet.", "Amestecă ușor și presară brânză sfărâmată deasupra."],
+        "ru": ["Нарежь помидоры и огурцы дольками, а лук — тонкими кольцами.", "Посоли, полей подсолнечным маслом и каплей уксуса.", "Аккуратно перемешай и сверху раскроши брынзу."],
+        "en": ["Slice the tomatoes and cucumbers, and the onion into thin rings.", "Add salt, sunflower oil and a drop of vinegar.", "Toss gently and crumble brânză on top."]
+      }
+    },
+    {
+      "slug": "friganele",
+      "emoji": "🍞",
+      "minutes": 15,
+      "servings": 2,
+      "title": { "ro": "Frigănele din pâine veche", "ru": "Гренки из чёрствого хлеба", "en": "Frigănele (French toast from old bread)" },
+      "ingredients": [
+        { "label": { "ro": "pâine", "ru": "хлеб", "en": "bread" }, "category": "bread" },
+        { "label": { "ro": "ouă", "ru": "яйца", "en": "eggs" }, "category": "eggs" },
+        { "label": { "ro": "lapte", "ru": "молоко", "en": "milk" }, "category": "dairy", "keywords": ["lapte", "молок", "milk"] }
+      ],
+      "steps": {
+        "ro": ["Bate 2 ouă cu 100 ml lapte și un praf de sare (sau zahăr, pentru varianta dulce).", "Înmoaie feliile de pâine în amestec pe ambele părți.", "Prăjește-le în tigaie cu puțin ulei sau unt până se rumenesc.", "Servește-le cu smântână, brânză sau gem. Bun mod de a salva pâinea de ieri!"],
+        "ru": ["Взбей 2 яйца со 100 мл молока и щепоткой соли (или сахара — для сладкого варианта).", "Обмакни ломтики хлеба в смесь с обеих сторон.", "Обжарь их на сковороде с небольшим количеством масла до румяности.", "Подавай со сметаной, брынзой или вареньем. Хороший способ спасти вчерашний хлеб!"],
+        "en": ["Beat 2 eggs with 100 ml milk and a pinch of salt (or sugar, for a sweet version).", "Dip the bread slices in the mix on both sides.", "Fry in a pan with a little oil or butter until golden.", "Serve with sour cream, cheese or jam. A good way to save yesterday's bread!"]
+      }
+    },
+    {
+      "slug": "ardei-umpluti",
+      "emoji": "🫑",
+      "minutes": 80,
+      "servings": 5,
+      "title": { "ro": "Ardei umpluți", "ru": "Фаршированные перцы", "en": "Stuffed peppers" },
+      "ingredients": [
+        { "label": { "ro": "ardei", "ru": "перец", "en": "bell peppers" }, "category": "vegetables", "keywords": ["ardei", "перец", "pepper"] },
+        { "label": { "ro": "carne tocată", "ru": "фарш", "en": "minced meat" }, "category": "meat", "keywords": ["tocat", "фарш", "mince", "minced"] },
+        { "label": { "ro": "orez", "ru": "рис", "en": "rice" }, "category": "other", "keywords": ["orez", "рис", "rice"] },
+        { "label": { "ro": "morcov", "ru": "морковь", "en": "carrot" }, "category": "vegetables", "keywords": ["morcov", "морков", "carrot"], "optional": true },
+        { "label": { "ro": "smântână", "ru": "сметана", "en": "sour cream" }, "category": "dairy", "keywords": ["smantan", "сметан", "sour cream"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Taie capacul ardeilor și scoate semințele.", "Amestecă carnea cu orezul spălat, morcovul ras, ceapă călită, sare și piper.", "Umple ardeii fără să-i îndesi, ca orezul să aibă loc să crească.", "Așază-i în oală, acoperă-i cu apă și suc de roșii și fierbe-i la foc mic 50–60 de minute. Servește cu smântână."],
+        "ru": ["Срежь у перцев верхушки и удали семена.", "Смешай фарш с промытым рисом, тёртой морковью, обжаренным луком, солью и перцем.", "Начини перцы, не утрамбовывая, чтобы рису было куда набухать.", "Уложи их в кастрюлю, залей водой с томатным соком и туши на слабом огне 50–60 минут. Подавай со сметаной."],
+        "en": ["Cut the tops off the peppers and remove the seeds.", "Mix the meat with washed rice, grated carrot, fried onion, salt and pepper.", "Fill the peppers loosely so the rice has room to swell.", "Stand them in a pot, cover with water and tomato juice and simmer 50–60 minutes. Serve with sour cream."]
+      }
+    },
+    {
+      "slug": "mere-coapte",
+      "emoji": "🍎",
+      "minutes": 35,
+      "servings": 4,
+      "title": { "ro": "Mere coapte cu nucă și miere", "ru": "Печёные яблоки с орехами и мёдом", "en": "Baked apples with walnuts and honey" },
+      "ingredients": [
+        { "label": { "ro": "mere", "ru": "яблоки", "en": "apples" }, "category": "fruit", "keywords": ["mere", "яблок", "apple"] },
+        { "label": { "ro": "nuci", "ru": "грецкие орехи", "en": "walnuts" }, "category": "other", "keywords": ["nuc", "орех", "walnut"], "optional": true },
+        { "label": { "ro": "brânză dulce sau iaurt", "ru": "творог или йогурт", "en": "sweet cheese or yogurt" }, "category": "dairy", "keywords": ["iaurt", "йогурт", "yogurt", "urda"], "optional": true }
+      ],
+      "steps": {
+        "ro": ["Scoate cotorul merelor cu un cuțit mic, fără să le tai până jos.", "Umple golul cu nucă mărunțită, miere și puțină scorțișoară.", "Coace-le 25–30 de minute la 180 °C, până se înmoaie.", "Servește-le calde, cu iaurt sau brânză dulce. Merg perfect merele puțin zbârcite!"],
+        "ru": ["Вырежи сердцевину яблок маленьким ножом, не прорезая до дна.", "Наполни углубление рублеными орехами, мёдом и щепоткой корицы.", "Запекай 25–30 минут при 180 °C, пока яблоки не станут мягкими.", "Подавай тёплыми с йогуртом или творогом. Отлично подходят слегка сморщенные яблоки!"],
+        "en": ["Core the apples with a small knife without cutting through the bottom.", "Fill the hole with chopped walnuts, honey and a little cinnamon.", "Bake 25–30 minutes at 180 °C until soft.", "Serve warm with yogurt or sweet cheese. Slightly wrinkly apples work perfectly!"]
+      }
+    },
+    {
+      "slug": "compot-de-fructe",
+      "emoji": "🫙",
+      "minutes": 25,
+      "servings": 8,
+      "title": { "ro": "Compot de fructe", "ru": "Фруктовый компот", "en": "Fruit compot" },
+      "ingredients": [
+        { "label": { "ro": "fructe (orice)", "ru": "фрукты (любые)", "en": "fruit (any)" }, "category": "fruit" }
+      ],
+      "steps": {
+        "ro": ["Spală fructele care încep să se înmoaie și taie-le bucăți, fără sâmburi.", "Pune-le într-o oală cu 2–3 litri de apă și zahăr după gust.", "Fierbe 10–15 minute de la clocot.", "Lasă compotul să se răcească și păstrează-l la frigider până la 3 zile."],
+        "ru": ["Вымой фрукты, которые начинают размягчаться, и нарежь их кусочками без косточек.", "Положи их в кастрюлю с 2–3 литрами воды и сахаром по вкусу.", "Вари 10–15 минут после закипания.", "Дай компоту остыть и храни в холодильнике до 3 дней."],
+        "en": ["Wash fruit that is getting soft and cut it into pieces without stones.", "Put it in a pot with 2–3 litres of water and sugar to taste.", "Boil for 10–15 minutes.", "Let it cool and keep it in the fridge for up to 3 days."]
+      }
+    },
+    {
+      "slug": "cartofi-cu-ceapa",
+      "emoji": "🥔",
+      "minutes": 30,
+      "servings": 3,
+      "title": { "ro": "Cartofi prăjiți cu ceapă și mărar", "ru": "Жареная картошка с луком и укропом", "en": "Fried potatoes with onion and dill" },
+      "ingredients": [
+        { "label": { "ro": "cartofi", "ru": "картофель", "en": "potatoes" }, "category": "vegetables", "keywords": ["cartof", "картоф", "potato"] },
+        { "label": { "ro": "ceapă", "ru": "лук", "en": "onion" }, "category": "vegetables", "keywords": ["ceap", "лук", "onion"] },
+        { "label": { "ro": "mărar", "ru": "укроп", "en": "dill" }, "category": "vegetables", "keywords": ["marar", "укроп", "dill"], "optional": true },
+        { "label": { "ro": "carne sau cârnați", "ru": "мясо или колбаса", "en": "leftover meat or sausage" }, "category": "meat", "optional": true }
+      ],
+      "steps": {
+        "ro": ["Taie cartofii felii sau bețișoare și usucă-i cu un prosop.", "Prăjește-i în ulei încins 15 minute, întorcându-i rar.", "Adaugă ceapa tăiată și, dacă ai, resturi de carne sau cârnați, și mai lasă 5 minute.", "Sărează la final și presară mărar."],
+        "ru": ["Нарежь картофель ломтиками или брусочками и обсуши полотенцем.", "Жарь в разогретом масле 15 минут, редко переворачивая.", "Добавь нарезанный лук и, если есть, остатки мяса или колбасы и жарь ещё 5 минут.", "Посоли в конце и посыпь укропом."],
+        "en": ["Cut the potatoes into slices or sticks and pat them dry.", "Fry in hot oil for 15 minutes, turning them rarely.", "Add the sliced onion and any leftover meat or sausage and cook 5 more minutes.", "Salt at the end and sprinkle with dill."]
+      }
+    }
+  ]
+}

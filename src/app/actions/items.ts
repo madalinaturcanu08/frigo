@@ -110,6 +110,26 @@ export async function closeItem(id: string, outcome: 'eaten' | 'wasted') {
   revalidatePath('/stats');
 }
 
+/** "I cooked this": mark every fridge item a recipe used as eaten at once. */
+export async function closeItems(ids: string[], outcome: 'eaten' | 'wasted') {
+  if (!Array.isArray(ids) || ids.length === 0 || ids.length > 50) return;
+  if (outcome !== 'eaten' && outcome !== 'wasted') return;
+  const { supabase } = await requireUser();
+  await supabase
+    .from('fridge_items')
+    .update({ status: outcome, closed_at: new Date().toISOString() })
+    .in('id', ids)
+    .eq('status', 'active');
+  revalidatePath('/', 'layout');
+}
+
+export async function reopenItems(ids: string[]) {
+  if (!Array.isArray(ids) || ids.length === 0 || ids.length > 50) return;
+  const { supabase } = await requireUser();
+  await supabase.from('fridge_items').update({ status: 'active', closed_at: null }).in('id', ids);
+  revalidatePath('/', 'layout');
+}
+
 /** Undo for the toast after closing an item. */
 export async function reopenItem(id: string) {
   const { supabase } = await requireUser();

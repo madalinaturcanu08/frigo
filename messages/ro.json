@@ -11,7 +11,8 @@
     "add": "Adaugă",
     "stats": "Statistici",
     "settings": "Setări",
-    "signedIn": "Conectat"
+    "signedIn": "Conectat",
+    "recipes": "Rețete"
   },
   "item": {
     "daysAgo": "{count, plural, one {zi în urmă} few {zile în urmă} other {de zile în urmă}}",
@@ -76,7 +77,10 @@
     },
     "savedToast": "{name} salvat de la coș",
     "tossedToast": "{name} notat ca aruncat",
-    "undo": "Anulează"
+    "undo": "Anulează",
+    "cookCta": "Gătește cu ele →",
+    "addShort": "Adaugă",
+    "recipesCta": "Vezi rețetele"
   },
   "form": {
     "name": "Nume",
@@ -114,7 +118,9 @@
       "invalidPrice": "Prețul trebuie să fie un număr, de ex. 18.50.",
       "invalidDate": "Data nu pare corectă.",
       "saveFailed": "Nu s-a salvat. Verifică conexiunea și încearcă din nou."
-    }
+    },
+    "tipLabel": "Sfat",
+    "tip": "Pune mâncarea nouă în spate și pe cea mai veche în față, ca să fie mâncată prima."
   },
   "add": {
     "kicker": "Adaugă un produs",
@@ -164,7 +170,9 @@
     "step3": "Apasă „L-am folosit” sau „Aruncat” și vezi cum cresc economiile.",
     "start": "Începe gratuit",
     "haveAccount": "Am deja cont",
-    "free": "Gratuit pentru totdeauna. Susține Obiectivul ONU 12.3 — reducerea la jumătate a risipei alimentare până în 2030."
+    "free": "Gratuit pentru totdeauna. Susține Obiectivul ONU 12.3 — reducerea la jumătate a risipei alimentare până în 2030.",
+    "photoAlt": "Legume proaspete văzute de sus",
+    "credits": "Autorii fotografiilor"
   },
   "auth": {
     "loginTitle": "Bine ai revenit",
@@ -201,7 +209,8 @@
     "notifications": "Notificări",
     "account": "Cont",
     "signedInAs": "Conectat ca {email}",
-    "logout": "Ieși din cont"
+    "logout": "Ieși din cont",
+    "credits": "Autorii fotografiilor"
   },
   "reminders": {
     "title": "{count, plural, one {# produs de folosit curând} few {# produse de folosit curând} other {# de produse de folosit curând}}",
@@ -250,5 +259,37 @@
     },
     "retry": "Încearcă din nou",
     "flip": "Schimbă camera"
+  },
+  "recipes": {
+    "kicker": "Gătește înainte să se strice",
+    "title": "Rețete",
+    "onlySoon": "Doar rețete cu produse care expiră curând",
+    "nothingSoon": "Nimic nu expiră curând. Oprește filtrul ca să vezi toate rețetele.",
+    "none": "Încă nu sunt rețete.",
+    "usesSoon": "{count, plural, one {Folosește # care expiră} few {Folosește # care expiră} other {Folosește # care expiră}}",
+    "meta": "{minutes} min · {servings, plural, one {# porție} few {# porții} other {# de porții}}",
+    "have": "ai {have} din {total}",
+    "optional": "opțional",
+    "youHave": "Ai: {name}",
+    "missing": "Nu e în frigider",
+    "cookedThis": "Am gătit asta",
+    "open": "Rețeta",
+    "cooked": "{count, plural, one {Bravo! # produs folosit} few {Bravo! # produse folosite} other {Bravo! # de produse folosite}}",
+    "nothingToUse": "Nu ai încă niciunul dintre aceste ingrediente.",
+    "undo": "Anulează",
+    "ingredients": "Ingrediente",
+    "steps": "Cum se face",
+    "cookHint": "Marchează produsele potrivite din frigider ca mâncate.",
+    "draftNote": "Rețetă de start Frigo — o variantă simplă, de casă. Gustă și potrivește după familia ta.",
+    "back": "Toate rețetele",
+    "photoBy": "Foto:",
+    "photoSimilar": "un fel asemănător, nu exact această rețetă",
+    "banner": "Folosește mai întâi ce expiră — Frigo pune acele rețete primele."
+  },
+  "credits": {
+    "title": "Autorii fotografiilor",
+    "lead": "Fotografiile din Frigo sunt de pe Unsplash. Mulțumim acestor fotografi!",
+    "onUnsplash": "Fotografia pe Unsplash",
+    "license": "Folosite conform licenței Unsplash:"
   }
 }

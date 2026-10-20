@@ -2,7 +2,7 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 import { SUPABASE_PUBLIC_KEY, SUPABASE_URL } from './env';
 
-const PUBLIC_PATHS = ['/login', '/signup', '/welcome', '/auth'];
+const PUBLIC_PATHS = ['/login', '/signup', '/welcome', '/auth', '/credits'];
 
 /** Refreshes the Supabase session cookie on every request and guards private pages. */
 export async function updateSession(request: NextRequest) {

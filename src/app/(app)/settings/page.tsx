@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { logout } from '@/app/actions/auth';
 import { LanguagePicker } from '@/components/LanguagePicker';
@@ -24,6 +25,9 @@ export default async function SettingsPage() {
         <section className="card flex flex-col gap-3 rounded-[26px] p-[22px]">
           <h2 className="m-0 font-display text-[19px] font-normal">{t('account')}</h2>
           <p className="m-0 text-[15px] text-muted">{t('signedInAs', { email: user.email ?? '' })}</p>
+          <Link href="/credits" className="text-sm font-semibold underline">
+            {t('credits')}
+          </Link>
           <form action={logout}>
             <button className="btn-ghost">{t('logout')}</button>
           </form>

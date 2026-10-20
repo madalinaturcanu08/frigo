@@ -11,7 +11,8 @@
     "add": "Add item",
     "stats": "Stats",
     "settings": "Settings",
-    "signedIn": "Signed in"
+    "signedIn": "Signed in",
+    "recipes": "Recipes"
   },
   "item": {
     "daysAgo": "{count, plural, one {day ago} other {days ago}}",
@@ -76,7 +77,10 @@
     },
     "savedToast": "{name} saved from the bin",
     "tossedToast": "{name} logged as tossed",
-    "undo": "Undo"
+    "undo": "Undo",
+    "cookCta": "Cook with them →",
+    "addShort": "Add item",
+    "recipesCta": "See recipes"
   },
   "form": {
     "name": "Name",
@@ -114,7 +118,9 @@
       "invalidPrice": "Price must be a number, like 18.50.",
       "invalidDate": "That date doesn't look right.",
       "saveFailed": "Couldn't save. Check your connection and try again."
-    }
+    },
+    "tipLabel": "Tip",
+    "tip": "Put new food at the back and older food in front, so it gets eaten first."
   },
   "add": {
     "kicker": "Add one thing",
@@ -164,7 +170,9 @@
     "step3": "Tap “Used it” or “Tossed” and watch your savings grow.",
     "start": "Start for free",
     "haveAccount": "I have an account",
-    "free": "Free forever. Supports UN Goal 12.3 — halve food waste by 2030."
+    "free": "Free forever. Supports UN Goal 12.3 — halve food waste by 2030.",
+    "photoAlt": "Fresh vegetables seen from above",
+    "credits": "Photo credits"
   },
   "auth": {
     "loginTitle": "Welcome back",
@@ -201,7 +209,8 @@
     "notifications": "Notifications",
     "account": "Account",
     "signedInAs": "Signed in as {email}",
-    "logout": "Log out"
+    "logout": "Log out",
+    "credits": "Photo credits"
   },
   "reminders": {
     "title": "{count, plural, one {# item to use soon} other {# items to use soon}}",
@@ -250,5 +259,37 @@
     },
     "retry": "Try again",
     "flip": "Switch camera"
+  },
+  "recipes": {
+    "kicker": "Cook before it goes off",
+    "title": "Recipes",
+    "onlySoon": "Only recipes that use food expiring soon",
+    "nothingSoon": "Nothing is expiring soon. Turn the filter off to see every recipe.",
+    "none": "No recipes yet.",
+    "usesSoon": "{count, plural, one {Uses # expiring} other {Uses # expiring}}",
+    "meta": "{minutes} min · {servings, plural, one {# serving} other {# servings}}",
+    "have": "you have {have} of {total}",
+    "optional": "optional",
+    "youHave": "You have: {name}",
+    "missing": "Not in your fridge",
+    "cookedThis": "I cooked this",
+    "open": "Recipe",
+    "cooked": "{count, plural, one {Nice! # item used up} other {Nice! # items used up}}",
+    "nothingToUse": "You don't have any of these ingredients yet.",
+    "undo": "Undo",
+    "ingredients": "Ingredients",
+    "steps": "How to make it",
+    "cookHint": "Marks the matching food from your fridge as eaten.",
+    "draftNote": "Frigo starter recipe — written as a simple home version. Taste and adjust to your family.",
+    "back": "All recipes",
+    "photoBy": "Photo:",
+    "photoSimilar": "a similar dish, not this exact recipe",
+    "banner": "Use what expires first — Frigo puts those recipes at the top."
+  },
+  "credits": {
+    "title": "Photo credits",
+    "lead": "The photos in Frigo come from Unsplash. Thank you to these photographers!",
+    "onUnsplash": "Photo on Unsplash",
+    "license": "Used under the Unsplash License:"
   }
 }

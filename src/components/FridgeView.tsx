@@ -81,12 +81,25 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
             </div>
           </div>
           <div className="flex flex-wrap gap-2.5">
-            <Link href="/add" className="btn-lime">
-              {t('addCta')}
-            </Link>
-            <Link href="/stats" className="btn-ghost">
-              {t('statsCta')}
-            </Link>
+            {needYou > 0 ? (
+              <>
+                <Link href="/recipes" className="btn-lime">
+                  {t('cookCta')}
+                </Link>
+                <Link href="/add" className="btn-ghost">
+                  {t('addShort')}
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/add" className="btn-lime">
+                  {t('addCta')}
+                </Link>
+                <Link href="/recipes" className="btn-ghost">
+                  {t('recipesCta')}
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </SkyHero>
