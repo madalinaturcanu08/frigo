@@ -17,7 +17,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 5 | Barcode scanning — camera (ZXing) + Open Food Facts + shared product list | ✅ done |
 | 6 | Recipes — 14 Moldovan starter recipes (ro/ru/en), ranked by what expires first | ✅ done |
 | 9 | Insights & streaks — no-waste streak + personal patterns from your own history (plain rules, no AI) | ✅ done |
-| 7–8, 10–11 | Receipt scanning + AI (waiting for real receipts), polish, offline, tests | ⏳ next |
+| 11 | Offline mode (changes kept on the device, synced later) + automated tests (Vitest + Playwright) | ✅ done |
+| 7–8, 10 | Receipt scanning + AI (waiting for real receipts), final polish | ⏳ next |
 
 ## What works now
 
@@ -42,6 +43,9 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 - **Insights & streak** — the Stats page shows days since you last threw food away (and your record), plus up to
   3 personal tips from your own history: the product that keeps going in the bin, the category you waste most
   (with a tip for it), the category you always finish, and this month vs last month.
+- **Offline** — without internet Frigo still opens (last saved copy of each page), and "Used it", "Tossed"
+  and Add item keep working: changes wait on the device (banner shows how many) and sync with their real time when
+  the connection is back. Saved pages are wiped on logout.
 - **Settings** — language, notifications (on/off + send a test), account, log out. Light / dark theme toggle on every page.
 
 ## Tech
@@ -81,10 +85,15 @@ tests/unit/          Vitest
    Open http://localhost:3000.
 
 ```bash
-npm test        # unit tests (expiry states, estimates, weekly/monthly stats)
+npm test           # 39 unit tests: expiry, estimates, stats, reminders, barcodes, recipes, insights, offline queue
+npm run test:e2e   # 8 end-to-end tests in a real (phone-sized) browser against a production build
 npm run lint
 npm run build
 ```
+
+The end-to-end tests need `SUPABASE_SECRET_KEY` in `.env.local`: they create a throwaway, already-confirmed
+account, run the main flows (add food, used it → stats, offline toss + sync, offline add + sync, opening offline,
+language switch) and delete the account afterwards. First time: `npx playwright install chromium`.
 
 ## Security
 

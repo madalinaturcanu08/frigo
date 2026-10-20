@@ -81,7 +81,8 @@
     "undo": "Undo",
     "cookCta": "Cook with them →",
     "addShort": "Add item",
-    "recipesCta": "See recipes"
+    "recipesCta": "See recipes",
+    "addedOffline": "Added offline · will sync"
   },
   "form": {
     "name": "Name",
@@ -121,7 +122,8 @@
       "saveFailed": "Couldn't save. Check your connection and try again."
     },
     "tipLabel": "Tip",
-    "tip": "Put new food at the back and older food in front, so it gets eaten first."
+    "tip": "Put new food at the back and older food in front, so it gets eaten first.",
+    "offlineEdit": "You're offline. Editing needs a connection — try again when you're back online."
   },
   "add": {
     "kicker": "Add one thing",
@@ -347,5 +349,10 @@
       "title": "No clear pattern yet",
       "body": "{wasted, plural, one {# item} other {# items}} thrown away and {eaten} eaten, from different categories. Keep marking Used / Tossed — patterns show up after a few weeks."
     }
+  },
+  "offline": {
+    "offline": "You're offline. {count, plural, =0 {Frigo shows your fridge as it was last time.} one {# change will sync when you're back online.} other {# changes will sync when you're back online.}}",
+    "waiting": "{count, plural, one {# change waiting to sync…} other {# changes waiting to sync…}}",
+    "syncing": "{count, plural, one {Syncing # change…} other {Syncing # changes…}}"
   }
 }

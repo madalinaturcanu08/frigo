@@ -1,9 +1,11 @@
 'use client';
 
 import { useActionState, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useFormatter, useTranslations } from 'next-intl';
 import type { ItemFormState } from '@/app/actions/items';
 import { lookupBarcode } from '@/app/actions/products';
+import { newOpId, pushOp } from '@/lib/offlineQueue';
 import {
   CATEGORIES,
   CATEGORY_EMOJI,
@@ -72,6 +74,34 @@ export function ItemForm({
   const nameRef = useRef<HTMLInputElement>(null);
   const scannedBarcode = scan.kind === 'found' || scan.kind === 'unknown' ? scan.barcode : '';
 
+  const router = useRouter();
+  const [offlineEditError, setOfflineEditError] = useState(false);
+
+  /** No connection: a new item is kept on the device and synced later; edits need the server, so explain that. */
+  function submitOffline(e: React.FormEvent<HTMLFormElement>) {
+    if (navigator.onLine) return;
+    e.preventDefault();
+    if (initial) return setOfflineEditError(true);
+    if (!name.trim()) return;
+    const priceLei = Number(price.replace(',', '.'));
+    pushOp({
+      kind: 'add',
+      opId: newOpId(),
+      at: new Date().toISOString(),
+      item: {
+        name: name.trim(),
+        category,
+        quantity,
+        unit,
+        storage,
+        price_lei: price.trim() && Number.isFinite(priceLei) ? priceLei : null,
+        expires_at: submittedDate || null,
+        barcode: scannedBarcode || undefined,
+      },
+    });
+    router.push('/');
+  }
+
   async function handleBarcode(code: string) {
     setScannerOpen(false);
     setScan({ kind: 'looking', barcode: code });
@@ -138,7 +168,7 @@ export function ItemForm({
 
   return (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-start gap-6">
-      <form action={formAction} className="card flex flex-col gap-6 rounded-[28px] p-[clamp(18px,3vw,30px)]">
+      <form action={formAction} onSubmit={submitOffline} className="card flex flex-col gap-6 rounded-[28px] p-[clamp(18px,3vw,30px)]">
         {!initial && (
           <div className="flex flex-col gap-2.5">
             <input type="hidden" name="barcode" value={scannedBarcode} />
@@ -361,6 +391,11 @@ export function ItemForm({
           <span className="text-[13px] text-muted">{t('priceHint')}</span>
         </label>
 
+        {offlineEditError && (
+          <p role="alert" className="m-0 rounded-2xl border-2 border-edge bg-soon px-4 py-3 font-semibold text-[#121212]">
+            {t('offlineEdit')}
+          </p>
+        )}
         {state?.error && (
           <p role="alert" className="m-0 rounded-2xl border-2 border-edge bg-expired px-4 py-3 font-semibold text-[#121212]">
             {t(`errors.${state.error}`)}

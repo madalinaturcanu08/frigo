@@ -6,20 +6,24 @@ import { requireUser } from '@/lib/supabase/server';
 import { isCategory, isStorage, isUnit, lookupShelfDays, type ShelfLifeRow, type Storage } from '@/lib/categories';
 import { estimateExpiry } from '@/lib/expiry';
 import { isValidGtin } from '@/lib/barcode';
+import { validOps } from '@/lib/offlineQueue';
 
 export type ItemFormState = { error?: string } | undefined;
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
-function parseItem(formData: FormData) {
-  const name = String(formData.get('name') ?? '').trim();
-  const category = formData.get('category');
-  const unit = formData.get('unit') || 'pcs';
-  const storage = formData.get('storage') || 'fridge';
-  const quantity = Number(formData.get('quantity') || 1);
-  const priceRaw = String(formData.get('price_lei') ?? '').replace(',', '.').trim();
-  const price = priceRaw === '' ? null : Number(priceRaw);
-  const expires = String(formData.get('expires_at') ?? '').trim();
+type Field = 'name' | 'category' | 'unit' | 'storage' | 'quantity' | 'price_lei' | 'expires_at';
+
+/** Validates an item from a form (or from an offline change, which has the same fields). */
+function parseItem(get: (field: Field) => unknown) {
+  const name = String(get('name') ?? '').trim();
+  const category = get('category');
+  const unit = get('unit') || 'pcs';
+  const storage = get('storage') || 'fridge';
+  const quantity = Number(get('quantity') || 1);
+  const priceRaw = String(get('price_lei') ?? '').replace(',', '.').trim();
+  const price = priceRaw === '' || priceRaw === 'null' ? null : Number(priceRaw);
+  const expires = String(get('expires_at') ?? '').trim();
 
   if (!name || name.length > 80) return { error: 'nameRequired' } as const;
   if (!isCategory(category)) return { error: 'categoryRequired' } as const;
@@ -27,10 +31,10 @@ function parseItem(formData: FormData) {
   if (!isStorage(storage)) return { error: 'invalidStorage' } as const;
   if (!Number.isFinite(quantity) || quantity <= 0) return { error: 'invalidQuantity' } as const;
   if (price !== null && (!Number.isFinite(price) || price < 0)) return { error: 'invalidPrice' } as const;
-  if (expires && !ISO_DATE.test(expires)) return { error: 'invalidDate' } as const;
+  if (expires && expires !== 'null' && !ISO_DATE.test(expires)) return { error: 'invalidDate' } as const;
 
   return {
-    data: { name, category, unit, storage, quantity, price_lei: price, expires_at: expires || null },
+    data: { name, category, unit, storage, quantity, price_lei: price, expires_at: ISO_DATE.test(expires) ? expires : null },
   } as const;
 }
 
@@ -44,22 +48,22 @@ async function shelfDays(
   return lookupShelfDays((data ?? []) as ShelfLifeRow[], category, storage);
 }
 
-export async function addItem(_prev: ItemFormState, formData: FormData): Promise<ItemFormState> {
-  const parsed = parseItem(formData);
-  if ('error' in parsed) return { error: parsed.error };
-  const { supabase } = await requireUser();
+type Supabase = Awaited<ReturnType<typeof requireUser>>['supabase'];
+type ParsedItem = Extract<ReturnType<typeof parseItem>, { data: unknown }>['data'];
 
-  const { expires_at, ...rest } = parsed.data;
-  const estimated = !expires_at;
-  const barcode = String(formData.get('barcode') ?? '');
+/** Saves a new fridge item (and teaches the shared product list a new barcode). Shared by Add item and offline sync. */
+async function insertItem(supabase: Supabase, item: ParsedItem, barcode: string, addedAt: Date = new Date()) {
+  const { expires_at, ...rest } = item;
   const scanned = isValidGtin(barcode);
   const { error } = await supabase.from('fridge_items').insert({
     ...rest,
-    expires_at: expires_at ?? estimateExpiry(await shelfDays(supabase, rest.category, rest.storage)),
-    expiry_estimated: estimated,
+    added_at: addedAt.toISOString(),
+    // an estimate counts from the day the food was added, even if it reaches the server later
+    expires_at: expires_at ?? estimateExpiry(await shelfDays(supabase, rest.category, rest.storage), addedAt),
+    expiry_estimated: !expires_at,
     source: scanned ? 'barcode' : 'manual',
   });
-  if (error) return { error: 'saveFailed' };
+  if (error) return false;
 
   if (scanned) {
     // A product nobody had scanned before: remember what the user typed, for everyone's next scan.
@@ -69,9 +73,48 @@ export async function addItem(_prev: ItemFormState, formData: FormData): Promise
       { onConflict: 'barcode', ignoreDuplicates: true },
     );
   }
+  return true;
+}
+
+export async function addItem(_prev: ItemFormState, formData: FormData): Promise<ItemFormState> {
+  const parsed = parseItem((f) => formData.get(f));
+  if ('error' in parsed) return { error: parsed.error };
+  const { supabase } = await requireUser();
+  if (!(await insertItem(supabase, parsed.data, String(formData.get('barcode') ?? '')))) return { error: 'saveFailed' };
 
   revalidatePath('/');
   redirect('/');
+}
+
+/**
+ * Applies changes made while offline, in order. Each change keeps the time it really happened.
+ * Returns the ids of the changes that were applied (or can never apply, e.g. an item already closed),
+ * so the device can drop them; anything else stays queued for the next try.
+ */
+export async function syncOffline(raw: unknown): Promise<{ done: string[] }> {
+  const ops = validOps(raw).slice(0, 100);
+  if (ops.length === 0) return { done: [] };
+  const { supabase } = await requireUser();
+  const done: string[] = [];
+
+  for (const op of ops) {
+    if (op.kind === 'close') {
+      const { error } = await supabase
+        .from('fridge_items')
+        .update({ status: op.outcome, closed_at: op.at })
+        .eq('id', op.itemId)
+        .eq('status', 'active');
+      if (!error) done.push(op.opId);
+    } else {
+      const parsed = parseItem((f) => op.item[f]);
+      // An invalid item will never become valid — drop it rather than retry forever.
+      if ('error' in parsed || (await insertItem(supabase, parsed.data, op.item.barcode ?? '', new Date(op.at)))) {
+        done.push(op.opId);
+      }
+    }
+  }
+  revalidatePath('/', 'layout');
+  return { done };
 }
 
 export async function updateItem(
@@ -79,7 +122,7 @@ export async function updateItem(
   _prev: ItemFormState,
   formData: FormData,
 ): Promise<ItemFormState> {
-  const parsed = parseItem(formData);
+  const parsed = parseItem((f) => formData.get(f));
   if ('error' in parsed) return { error: parsed.error };
   const { supabase } = await requireUser();
 

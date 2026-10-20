@@ -6,6 +6,8 @@ import { useTranslations } from 'next-intl';
 import { closeItem, reopenItem } from '@/app/actions/items';
 import { SOON_DAYS, expiryState, sortByExpiry, type ExpiryState } from '@/lib/expiry';
 import { itemsToUse, nameList } from '@/lib/reminders';
+import { closedIds, newOpId, pushOp, readQueue, writeQueue } from '@/lib/offlineQueue';
+import { useOfflineQueue } from '@/lib/useOfflineQueue';
 import { ItemCard, type ItemCardData } from './ItemCard';
 import { SkyHero } from './SkyHero';
 import { Toast } from './Toast';
@@ -33,19 +35,33 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
   }
 
   function close(item: ItemCardData, outcome: 'eaten' | 'wasted') {
+    const message = t(outcome === 'eaten' ? 'savedToast' : 'tossedToast', { name: item.name });
+    if (!navigator.onLine) {
+      // Offline: remember it on the device; it is sent (with this time) once the connection is back.
+      pushOp({ kind: 'close', opId: newOpId(), itemId: item.id, outcome, at: new Date().toISOString() });
+      return flash(message, item.id);
+    }
     startTransition(async () => {
       hide(item.id);
       await closeItem(item.id, outcome);
     });
-    flash(t(outcome === 'eaten' ? 'savedToast' : 'tossedToast', { name: item.name }), item.id);
+    flash(message, item.id);
   }
 
   function undo(id: string) {
     setToast(null);
+    const queued = readQueue();
+    if (queued.some((op) => op.kind === 'close' && op.itemId === id)) {
+      writeQueue(queued.filter((op) => !(op.kind === 'close' && op.itemId === id)));
+      return;
+    }
     startTransition(() => reopenItem(id));
   }
 
-  const sorted = sortByExpiry(visible);
+  const queue = useOfflineQueue();
+  const closedOffline = closedIds(queue);
+  const addedOffline = queue.flatMap((op) => (op.kind === 'add' ? [op] : []));
+  const sorted = sortByExpiry(visible.filter((i) => !closedOffline.has(i.id)));
   const byState = (s: ExpiryState) => sorted.filter((i) => expiryState(i.expires_at) === s);
   const counts = { all: sorted.length, soon: byState('soon').length, expired: byState('expired').length, fresh: byState('fresh').length };
   const needYou = counts.soon + counts.expired;
@@ -103,6 +119,21 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
           </div>
         </div>
       </SkyHero>
+
+      {addedOffline.length > 0 && (
+        <section className="flex flex-col gap-2.5">
+          <h2 className="m-0 self-start rounded-full border-2 border-line bg-track px-3.5 py-1.5 font-display text-xs font-normal tracking-[1px] uppercase">
+            {t('addedOffline')}
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {addedOffline.map((op) => (
+              <span key={op.opId} className="pill cursor-default border-dashed">
+                {op.item.name}
+              </span>
+            ))}
+          </div>
+        </section>
+      )}
 
       {sorted.length === 0 ? (
         <div className="rounded-[26px] border-2 border-dashed border-line p-10 text-center text-[15px] text-muted">

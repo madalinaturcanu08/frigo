@@ -81,7 +81,8 @@
     "undo": "Anulează",
     "cookCta": "Gătește cu ele →",
     "addShort": "Adaugă",
-    "recipesCta": "Vezi rețetele"
+    "recipesCta": "Vezi rețetele",
+    "addedOffline": "Adăugate offline · se vor sincroniza"
   },
   "form": {
     "name": "Nume",
@@ -121,7 +122,8 @@
       "saveFailed": "Nu s-a salvat. Verifică conexiunea și încearcă din nou."
     },
     "tipLabel": "Sfat",
-    "tip": "Pune mâncarea nouă în spate și pe cea mai veche în față, ca să fie mâncată prima."
+    "tip": "Pune mâncarea nouă în spate și pe cea mai veche în față, ca să fie mâncată prima.",
+    "offlineEdit": "Ești offline. Editarea are nevoie de internet — încearcă din nou când revii online."
   },
   "add": {
     "kicker": "Adaugă un produs",
@@ -347,5 +349,10 @@
       "title": "Încă nu se vede un tipar",
       "body": "{wasted, plural, one {# produs aruncat} few {# produse aruncate} other {# de produse aruncate}} și {eaten} mâncate, din categorii diferite. Continuă să marchezi Folosit / Aruncat — tiparele apar după câteva săptămâni."
     }
+  },
+  "offline": {
+    "offline": "Ești offline. {count, plural, =0 {Frigo îți arată frigiderul așa cum era ultima dată.} one {# modificare se va sincroniza când revii online.} few {# modificări se vor sincroniza când revii online.} other {# de modificări se vor sincroniza când revii online.}}",
+    "waiting": "{count, plural, one {# modificare așteaptă sincronizarea…} few {# modificări așteaptă sincronizarea…} other {# de modificări așteaptă sincronizarea…}}",
+    "syncing": "{count, plural, one {Se sincronizează # modificare…} few {Se sincronizează # modificări…} other {Se sincronizează # de modificări…}}"
   }
 }

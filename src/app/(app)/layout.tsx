@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Logo } from '@/components/Logo';
 import { Nav } from '@/components/Nav';
+import { OfflineSync } from '@/components/OfflineSync';
 import { getProfile, requireUser } from '@/lib/supabase/server';
 import { getStreak } from '@/lib/streakData';
 
@@ -41,7 +42,10 @@ export default async function AppLayout({ children }: LayoutProps<'/'>) {
       </div>
 
       <main className="min-w-0 flex-1 p-[clamp(18px,3.5vw,40px)]">
-        <div className="mx-auto flex max-w-[1180px] flex-col gap-[26px]">{children}</div>
+        <div className="mx-auto flex max-w-[1180px] flex-col gap-[26px]">
+          <OfflineSync />
+          {children}
+        </div>
       </main>
     </div>
   );

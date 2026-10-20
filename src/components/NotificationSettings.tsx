@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { removeSubscription, saveSubscription, sendTestReminder } from '@/app/actions/push';
+import { registerServiceWorker } from '@/lib/serviceWorker';
 
 type Status = 'checking' | 'unsupported' | 'denied' | 'off' | 'on';
 
@@ -22,8 +23,7 @@ function supported() {
 }
 
 async function registration() {
-  await navigator.serviceWorker.register('/sw.js');
-  return navigator.serviceWorker.ready;
+  return (await registerServiceWorker())!;
 }
 
 export function NotificationSettings() {

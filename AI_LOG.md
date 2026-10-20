@@ -192,3 +192,29 @@ look like they are in a dirty environment, could you choose something more clean
 **To check by hand**
 - [ ] Read the tips in `messages/*.json` → `insights.tips` and change any that don't fit Moldovan families.
 - [ ] After a few weeks of real use, check that the insights make sense.
+
+---
+
+## 2026-10-20 — Session 11: offline mode & automated tests
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompt:** "11".
+
+**What the AI did**
+- **Offline mode** without an installable app: the service worker keeps a copy of each page (network-first) and of
+  built files/photos (cache-first) — only in the production build, never while developing. "Used it", "Tossed" and
+  Add item work offline: changes go into a queue on the device (`src/lib/offlineQueue.ts`), a banner shows
+  how many are waiting, and they sync automatically with the time they really happened (`syncOffline` server action).
+  Changes older than 14 days or in the future are rejected. Saved pages and the queue are wiped on the logged-out
+  screens so the next person can't see the previous user's fridge.
+- **Playwright end-to-end tests** (`tests/e2e/`): 8 user flows in a phone-sized browser against a production build
+  and the real database, with a throwaway account created and deleted automatically.
+- 4 new unit tests for the offline queue (39 in total).
+
+**Honest notes**
+- The first e2e run passed 8/8, but two checks were too lenient. Making them strict exposed two *test* problems
+  (the test left the page before the save reached the server; test names changed after a restart). Fixed; the app
+  itself was right. Ran the suite three times, all green.
+- Editing an existing item offline is not supported — the form says so.
+
+**To check by hand**
+- [ ] On the live site: open Frigo, turn on airplane mode, tap Used it / add food, turn airplane mode off → changes sync.
