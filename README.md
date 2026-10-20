@@ -20,12 +20,15 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 11 | Offline mode (changes kept on the device, synced later) + automated tests (Vitest + Playwright) | ✅ done |
 | 7 | Receipt scanning — photo → text in the browser → review screen → fridge; tested, decision GO ([docs/RECEIPT_TEST.md](docs/RECEIPT_TEST.md)) | ✅ done |
 | 8 | On-device AI for receipts — a small multilingual model in the browser suggests product + category with a confidence level; 87 % right vs 7 % for the dictionary alone ([docs/AI.md](docs/AI.md)) | ✅ done |
-| 10 | Final polish after a usability test with classmates | ⏳ next |
+| 10 | Polish after a usability test with classmates ("design a bit too simple"): Frigo mascot whose mood follows your fridge, colour per food category, confetti for food eaten in time | ✅ done |
 
 ## What works now
 
 - **Welcome / onboarding** — language picker (Română · Русский · English) and a 3-step intro.
 - **Sign up / log in** with email + password (Supabase Auth). A profile row is created automatically.
+- **Frigo the mascot** — a pixel fridge on the Fridge page whose face shows how your fridge is doing: happy (all
+  fresh), worried (something to use soon), sad (something expired), sleepy (empty). Eating food in time gives a
+  small confetti burst. Animations are off when the phone asks for reduced motion.
 - **Fridge** — every active item sorted by expiry, grouped into 🔴 expired · 🟡 use soon (today + 2 days) · 🟢 fresh,
   with filters, a "items need you" counter and one-tap **Used it** / **Tossed** (with Undo).
 - **Add item** in 3 taps: name → category → *Add*. No date on the package? Frigo estimates it from the

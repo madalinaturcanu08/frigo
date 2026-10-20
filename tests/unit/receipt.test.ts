@@ -75,3 +75,10 @@ describe('what the browser read (session 8 check)', () => {
     expect(items[1]).toMatchObject({ name: 'Unt', price: 39.9 });
   });
 });
+
+describe('shop details are never products', () => {
+  it('skips the shop name and address even when no date was read', () => {
+    const items = parseReceipt('FRIGO DEMO MARKET SRL\nmun. Chișinău, str. Exemplu 1\nLAPTE JLC 2.5% 1L 22.90 A');
+    expect(items.map((i) => i.name)).toEqual(['Lapte']);
+  });
+});

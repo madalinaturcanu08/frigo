@@ -9,6 +9,7 @@ import { itemsToUse, nameList } from '@/lib/reminders';
 import { closedIds, newOpId, pushOp, readQueue, writeQueue } from '@/lib/offlineQueue';
 import { useOfflineQueue } from '@/lib/useOfflineQueue';
 import { ItemCard, type ItemCardData } from './ItemCard';
+import { FrigoMascot, moodFor } from './FrigoMascot';
 import { SkyHero } from './SkyHero';
 import { Toast } from './Toast';
 
@@ -87,6 +88,10 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
       )}
 
       <SkyHero className="min-h-[230px]">
+        <FrigoMascot
+          mood={moodFor(counts)}
+          className="pointer-events-none absolute right-[30px] bottom-5 w-[110px] max-sm:right-4 max-sm:bottom-4 max-sm:w-[78px]"
+        />
         <div className="flex flex-col gap-[18px] px-[30px] py-7 max-sm:px-5">
           <div className="flex flex-wrap items-end gap-4">
             <div className="font-pixel text-[110px] leading-[0.82] font-black text-hero-ink max-sm:text-[86px]">
@@ -173,8 +178,8 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
                   <div className="text-sm text-muted">{t(`note.${g}`, { days: SOON_DAYS })}</div>
                 </div>
                 <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3.5">
-                  {list.map((item) => (
-                    <ItemCard key={item.id} item={item} onClose={(o) => close(item, o)} />
+                  {list.map((item, i) => (
+                    <ItemCard key={item.id} item={item} index={i} onClose={(o) => close(item, o)} />
                   ))}
                 </div>
               </section>

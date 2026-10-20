@@ -279,3 +279,21 @@ The browser tests don't download the 118 MB model; the AI was checked by hand in
 **To check by hand**
 - [ ] On my phone: Scan receipt → sample → "Use the AI" (on Wi-Fi) → check the 🤖 labels; scan again (should be fast).
 - [ ] Read `docs/AI.md` and make sure I can explain how it works and its limits to the jury.
+
+---
+
+## 2026-10-20 — Session 10: polish after the usability test
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompt:** "classmates said the app is a little too simple at the
+design part, no big changes needed just something that stands out a bit".
+
+**What the AI did**
+- Kept the layout from the design and added three small things: **Frigo the mascot**, a pixel fridge in the
+  top card whose mood follows the fridge (happy / worried / sad / sleepy, it blinks); a **colour for each food
+  category** on the item icons (works in light and dark mode); a **pixel-confetti burst** on "Used it" and cards
+  that slide in. All motion is switched off when the phone asks for reduced motion.
+- Found and fixed a bug from a real scan: the shop's name ("Frigo demo market") was added as a product. Shop
+  name / address / company lines are now skipped, and the skip list now works for Russian words too.
+- 64 unit tests and 20 browser tests pass.
+
+**Usability test feedback (from me):** classmates found the design a bit too simple; nothing else reported.

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { LanguagePicker } from '@/components/LanguagePicker';
 import { PhotoFrame } from '@/components/PhotoFrame';
+import { FrigoMascot } from '@/components/FrigoMascot';
 import { SkyHero } from '@/components/SkyHero';
 
 export default async function WelcomePage() {
@@ -11,6 +12,7 @@ export default async function WelcomePage() {
   return (
     <>
       <SkyHero className="min-h-[260px]">
+        <FrigoMascot mood="happy" className="pointer-events-none absolute right-6 bottom-5 w-[86px]" />
         <div className="flex flex-col gap-4 p-7 pb-28">
           <div className="font-pixel text-[96px] leading-[0.82] font-black text-hero-ink">−50%</div>
           <h1 className="m-0 font-display text-[30px] leading-[1.05] font-normal text-hero-ink">{t('title')}</h1>

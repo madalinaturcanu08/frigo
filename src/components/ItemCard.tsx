@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { CATEGORY_EMOJI } from '@/lib/categories';
+import { CATEGORY_EMOJI, type Category } from '@/lib/categories';
+import { celebrate } from '@/lib/celebrate';
 import { daysLeft, expiryState } from '@/lib/expiry';
 import type { FridgeItem } from '@/lib/types';
 
@@ -10,6 +11,24 @@ export type ItemCardData = Pick<
   FridgeItem,
   'id' | 'name' | 'category' | 'quantity' | 'unit' | 'storage' | 'expires_at' | 'expiry_estimated'
 >;
+
+/** A colour per category for the round icon (hue in OKLCH), mixed with the card colour so it works in both themes. */
+const CATEGORY_HUE: Record<Category, number> = {
+  dairy: 240,
+  cheese: 90,
+  eggs: 70,
+  meat: 15,
+  fish: 210,
+  vegetables: 140,
+  fruit: 40,
+  bread: 60,
+  leftovers: 300,
+  sauces: 25,
+  drinks: 330,
+  other: 260,
+};
+export const categoryTint = (c: Category) =>
+  `color-mix(in oklch, oklch(0.8 ${c === 'other' ? 0.03 : 0.14} ${CATEGORY_HUE[c]}) 45%, var(--card))`;
 
 const STATE_BG = { expired: 'bg-expired', soon: 'bg-soon', fresh: 'bg-fresh' } as const;
 
@@ -22,10 +41,13 @@ export function ItemCard({
   item,
   onClose,
   preview = false,
+  index = 0,
 }: {
   item: ItemCardData;
   onClose?: (outcome: 'eaten' | 'wasted') => void;
   preview?: boolean;
+  /** position in the list, so the cards slide in one after another */
+  index?: number;
 }) {
   const t = useTranslations('item');
   const left = daysLeft(item.expires_at);
@@ -38,7 +60,8 @@ export function ItemCard({
     <div className="flex items-center gap-3">
       <div
         aria-hidden
-        className="stripes flex h-[54px] w-[54px] flex-none items-center justify-center rounded-full border-2 border-line text-2xl"
+        className="flex h-[54px] w-[54px] flex-none items-center justify-center rounded-full border-2 border-line text-2xl"
+        style={{ background: categoryTint(item.category) }}
       >
         {CATEGORY_EMOJI[item.category]}
       </div>
@@ -59,7 +82,7 @@ export function ItemCard({
   );
 
   return (
-    <div className="card flex flex-col gap-3.5 rounded-[22px] p-3.5">
+    <div className="card rise flex flex-col gap-3.5 rounded-[22px] p-3.5" style={{ animationDelay: `${Math.min(index, 8) * 45}ms` }}>
       {preview ? (
         body
       ) : (
@@ -74,8 +97,11 @@ export function ItemCard({
         <div className="flex gap-2">
           <button
             type="button"
-            onClick={() => onClose('eaten')}
-            className="h-9 flex-1 rounded-full border-2 border-line text-[13px] font-semibold hover:bg-lime hover:text-[#121212]"
+            onClick={(e) => {
+              celebrate(e.currentTarget);
+              onClose('eaten');
+            }}
+            className="h-9 flex-1 rounded-full border-2 border-line text-[13px] font-semibold hover:bg-lime hover:text-[#121212] active:scale-95"
           >
             {t('usedIt')}
           </button>

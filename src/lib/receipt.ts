@@ -72,8 +72,9 @@ const DICTIONARY: Entry[] = [
   { stems: ['DETERGENT', 'SAPUN', 'SAMPON', 'HIRTIE', 'HARTIE', 'SERVETELE', 'PUNGA', 'BATERI', 'ПАКЕТ', 'МЫЛО', 'ШАМПУН', 'БУМАГ', 'САЛФЕТ', 'ПОРОШ'], ro: '', ru: '', category: 'other', food: false },
 ];
 
-/** Lines that are never products: totals, payment, tax, change, discounts, shop info. */
-const NOT_ITEM = /\b(TOTAL|SUBTOTAL|NUMERAR|REST|TVA|CARD|REDUCERE|DISCOUNT|SCHIMB|ИТОГ|ВСЕГО|СДАЧА|НДС|НАЛИЧН|СКИДК|IDNO|MOSTR|SAMPLE|MULTUMIM|МУЛЦУМ|СПАСИБО)\b/;
+/** Lines that are never products: totals, payment, tax, change, discounts, shop info (name, address, company type). */
+// Whole words, then word starts (stems). Lookarounds instead of \b, which doesn't see Cyrillic letters as letters.
+const NOT_ITEM = /(?<![\p{L}\d])(?:(?:TOTAL|SUBTOTAL|NUMERAR|REST|TVA|CARD|REDUCERE|DISCOUNT|SCHIMB|ИТОГ|ВСЕГО|СДАЧА|НДС|IDNO|SAMPLE|MULTUMIM|СПАСИБО|SRL|S\.R\.L|FISCAL|MARKET|MAGAZIN|МАГАЗИН|CHISINAU|STR|MUN|ООО)(?![\p{L}\d])|НАЛИЧН|СКИДК|MOSTR|МУЛЦУМ|КИШИН|ФИСКАЛ)/u;
 // OCR sometimes reads the decimal point as "-" or ":" ("71-20", "17:90"), so accept those between digits.
 // The VAT letter after the sum (A/B) is sometimes misread as another letter ("20.75 E").
 const AMOUNT_AT_END = /(-?\d{1,5}[.,:\-]\d{2})\s*[A-ZА-Я]?\s*$/;

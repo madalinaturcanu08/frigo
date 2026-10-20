@@ -255,3 +255,63 @@ textarea::placeholder {
     background: repeating-linear-gradient(45deg, var(--track) 0 4px, var(--card) 4px 8px);
   }
 }
+
+/* ── Session 10: a bit of life ─────────────────────────────────────────── */
+.mascot {
+  overflow: visible;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.25));
+}
+.mascot-body {
+  animation: mascot-bob 2.6s ease-in-out infinite;
+}
+.mascot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mascot-blink 4.5s infinite;
+}
+.mascot-z {
+  animation: mascot-z 2.4s ease-in-out infinite;
+}
+.rise {
+  animation: rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes mascot-bob {
+  50% {
+    transform: translateY(-0.6px);
+  }
+}
+@keyframes mascot-blink {
+  0%,
+  94%,
+  100% {
+    transform: scaleY(1);
+  }
+  97% {
+    transform: scaleY(0.15);
+  }
+}
+@keyframes mascot-z {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(1px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mascot-body,
+  .mascot-eyes,
+  .mascot-z,
+  .rise {
+    animation: none;
+  }
+}
