@@ -9,9 +9,12 @@
     "lint": "eslint",
     "test": "vitest run",
     "recipes": "node scripts/build-recipes-sql.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "ai:catalog": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/evaluate-ai.mjs --catalog-only",
+    "test:ai": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/evaluate-ai.mjs"
   },
   "dependencies": {
+    "@huggingface/transformers": "^4.3.1",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
     "@zxing/browser": "^0.2.1",

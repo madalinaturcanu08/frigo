@@ -65,3 +65,13 @@ describe('parseReceipt details', () => {
     expect(items[0].food).toBe(false);
   });
 });
+
+describe('what the browser read (session 8 check)', () => {
+  // The same photo is read a little differently in the browser than in Node (the photo is downscaled first).
+  it('keeps the price when the VAT letter is misread, and a garbled quantity line stays with its product', () => {
+    const items = parseReceipt('18.10.2026 17:48\nARDEI GRAS\n0.520 x 39.90 20:15 E\nUNT 72.5% 200G\n1 SETI 39.90 A\nTOTAL 60.05');
+    expect(items).toHaveLength(2);
+    expect(items[0]).toMatchObject({ name: 'Ardei', quantity: 0.52, unit: 'kg', price: 20.15 });
+    expect(items[1]).toMatchObject({ name: 'Unt', price: 39.9 });
+  });
+});

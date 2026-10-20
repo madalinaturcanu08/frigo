@@ -221,7 +221,16 @@
     "signedInAs": "Conectat ca {email}",
     "logout": "Ieși din cont",
     "credits": "Autorii fotografiilor",
-    "offline": "Offline"
+    "offline": "Offline",
+    "ai": "AI pentru bonuri",
+    "aiLead": "Când scanezi un bon, un model AI mic de pe telefonul tău recunoaște produsele pe care dicționarul nu le știe. Doar sugerează — tu verifici tot.",
+    "aiOn": "Pornit",
+    "aiOff": "Oprit",
+    "aiDownloaded": "modelul e pe telefon ({mb} MB)",
+    "aiNotDownloaded": "modelul nu e descărcat",
+    "aiRemove": "Oprește și șterge modelul",
+    "aiTurnOn": "Pornește (se descarcă la următorul bon)",
+    "aiModel": "Model: {model} · versiunea {version} · licență {license} · rulează în browser cu Transformers.js"
   },
   "reminders": {
     "title": "{count, plural, one {# produs de folosit curând} few {# produse de folosit curând} other {# de produse de folosit curând}}",
@@ -302,7 +311,10 @@
     "title": "Autorii fotografiilor",
     "lead": "Fotografiile din Frigo sunt de pe Unsplash. Mulțumim acestor fotografi!",
     "onUnsplash": "Fotografia pe Unsplash",
-    "license": "Folosite conform licenței Unsplash:"
+    "license": "Folosite conform licenței Unsplash:",
+    "aiTitle": "AI și unelte de citire",
+    "aiModel": "AI pentru bonuri: multilingual-e5-small de la Microsoft (Wang et al., 2024), licență MIT, adaptat pentru browser de Xenova",
+    "aiRuntime": "Rulează cu Transformers.js (Hugging Face, Apache-2.0); bonurile sunt citite cu Tesseract.js (Apache-2.0). Totul rulează pe dispozitivul tău."
   },
   "insights": {
     "notEnoughData": {
@@ -405,6 +417,18 @@
     "selected": "{count} din {total} selectate",
     "add": "{count, plural, =0 {Nimic selectat} one {Adaugă # în frigider} few {Adaugă # în frigider} other {Adaugă # în frigider}}",
     "saving": "Se adaugă…",
-    "saveError": "Produsele nu au putut fi adăugate. Verifică conexiunea și încearcă din nou."
+    "saveError": "Produsele nu au putut fi adăugate. Verifică conexiunea și încearcă din nou.",
+    "aiOfferTitle": "Lasă AI-ul să verifice rândurile",
+    "aiOfferLead": "Un model AI mic rulează pe telefonul tău și recunoaște produsele pe care dicționarul nu le știe, în română și rusă. Se descarcă o singură dată, cam {mb} MB — folosește Wi-Fi. Bonul tot nu pleacă de pe telefon.",
+    "aiUse": "Folosește AI-ul",
+    "aiThinking": "AI-ul verifică rândurile…",
+    "aiDownloading": "Se descarcă modelul AI (cam {mb} MB, o singură dată)…",
+    "aiPrivacy": "Totul rulează pe telefonul tău. AI-ul doar sugerează — tu decizi ce se salvează.",
+    "aiDone": "AI-ul a verificat fiecare rând. Sugestiile lui sunt marcate; ce nu știa sigur e marcat „verifică”.",
+    "aiFailed": "AI-ul nu a putut rula pe acest dispozitiv, așa că vezi doar sugestiile dicționarului.",
+    "aiSure": "🤖 AI · sigur",
+    "aiUnsure": "🤖 AI · nesigur",
+    "aiNoIdea": "🤖 AI nu l-a recunoscut",
+    "aiSimilarity": "Cât de aproape e potrivirea AI-ului: {value}%"
   }
 }

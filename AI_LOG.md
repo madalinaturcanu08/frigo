@@ -250,3 +250,32 @@ look like they are in a dirty environment, could you choose something more clean
 
 **Limits:** no real receipts were tested. **To do:** if I can get even one real receipt, test it and add the
 result to `docs/RECEIPT_TEST.md`.
+
+---
+
+## 2026-10-20 — Session 8: on-device AI for receipts
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompt:** "lets go to section 8" (PLAN.md §4 and session 8).
+
+**What the AI did**
+- Chose an approach that fits on a phone: a small multilingual *embedding* model (turns text into meaning-vectors)
+  that compares each receipt line with a list of 159 products named in RO/RU/EN. It does not write text, so it
+  can't invent products; it can only pick from the list, and it says how close the match is.
+- Wrote a test set of 109 receipt lines the dictionary doesn't know (89 everyday + 20 deliberately hard, 8 of them
+  products missing from the list) with an answer key, and a script that scores the model (`npm run test:ai`).
+- Compared two models of the same size: multilingual-e5-small 87 % right vs paraphrase-multilingual-MiniLM 71 %.
+  Picked e5-small (MIT license) and pinned its exact version.
+- Set the confidence levels from the test (sure ≥ 0.90 → 96 % right; below 0.86 the guess is hidden).
+- Built it into the receipt review: one-time download offer (~118 MB), progress bar, 🤖 labels per line, a
+  Settings card to turn it off and delete the model, and model credits. Past corrections now also apply to
+  similar lines, not just identical ones.
+- Testing in the browser found 2 parser bugs (misread VAT letter, garbled quantity line); fixed with a unit test.
+- 14 new unit tests (63 total); all 20 browser tests still pass. Full write-up: `docs/AI.md`.
+
+**Limits (honest):** the test lines were written by the AI, not taken from real receipts; it still makes some
+mistakes (mushrooms → shampoo, apricot jam → apricots), which is why every line is reviewed by the user.
+The browser tests don't download the 118 MB model; the AI was checked by hand in the browser instead.
+
+**To check by hand**
+- [ ] On my phone: Scan receipt → sample → "Use the AI" (on Wi-Fi) → check the 🤖 labels; scan again (should be fast).
+- [ ] Read `docs/AI.md` and make sure I can explain how it works and its limits to the jury.

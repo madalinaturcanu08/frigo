@@ -32,6 +32,13 @@ export default async function CreditsPage() {
           unsplash.com/license
         </a>
       </p>
+      <h2 className="m-0 mt-2 font-display text-xl font-normal">{t('aiTitle')}</h2>
+      <p className="m-0 text-[13px] text-muted">
+        <a href="https://huggingface.co/intfloat/multilingual-e5-small" target="_blank" rel="noopener noreferrer" className="underline">
+          {t('aiModel')}
+        </a>
+        . {t('aiRuntime')}
+      </p>
       <Link href="/" className="self-start text-sm font-semibold underline">
         ← Frigo
       </Link>

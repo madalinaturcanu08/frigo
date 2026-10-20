@@ -7,6 +7,8 @@ import { addReceiptItems } from '@/app/actions/receipt';
 import { CATEGORIES, CATEGORY_EMOJI, lookupShelfDays, type Category, type ShelfLifeRow } from '@/lib/categories';
 import { MIN_OCR_CONFIDENCE, foldReceiptText, parseReceipt, type ReceiptItem } from '@/lib/receipt';
 import { SOON_DAYS } from '@/lib/expiry';
+import { AI_MODEL, type AISuggestion } from '@/lib/aiMatch';
+import { aiWanted, checkWithAI, setAIWanted, type AIItem } from '@/lib/receiptAI';
 
 export interface Correction {
   raw_text: string;
@@ -20,11 +22,17 @@ interface Row extends ReceiptItem {
   days: number;
   learned: boolean;
   suggested: { name: string; category: Category };
+  ai: AISuggestion | null;
+  usedAI: boolean;
 }
+
+/** The on-device AI: not asked yet, downloading/thinking, done, or it failed (then the dictionary alone is used). */
+type AIState = { kind: 'idle' } | { kind: 'thinking'; download: number } | { kind: 'done' } | { kind: 'failed' };
 
 type Step =
   | { kind: 'pick' }
   | { kind: 'reading'; progress: number }
+  | { kind: 'thinking' }
   | { kind: 'unclear'; confidence: number }
   | { kind: 'review' }
   | { kind: 'error' };
@@ -53,12 +61,15 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
   const [text, setText] = useState('');
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState(false);
+  const [items, setItems] = useState<ReceiptItem[]>([]);
+  const [ai, setAI] = useState<AIState>({ kind: 'idle' });
+  // read once in the browser; the review screen that uses it only appears after a photo is chosen
+  const [wanted, setWanted] = useState(() => typeof window !== 'undefined' && aiWanted());
 
   const learned = new Map(corrections.map((c) => [c.raw_text, c]));
   const shelfDays = (category: Category) => lookupShelfDays(shelfLife, category, 'fridge');
 
-  function buildRows(ocrText: string) {
-    const items = parseReceipt(ocrText);
+  function buildRows(items: (ReceiptItem | AIItem)[]) {
     setRows(
       items.map((item, key) => {
         // A correction the user made on an earlier receipt wins over the dictionary.
@@ -72,9 +83,11 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
           category,
           on: item.food,
           days: shelfDays(category),
-          learned: !!fix,
+          learned: !!fix || ('ai' in item && !!item.ai?.learned),
           confidence: fix ? 'high' : item.confidence,
           suggested: { name, category },
+          ai: 'ai' in item ? item.ai : null,
+          usedAI: !fix && 'usedAI' in item && item.usedAI,
         };
       }),
     );
@@ -94,11 +107,37 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
       const { data } = await worker.recognize(await prepare(src));
       await worker.terminate();
       setText(data.text);
-      buildRows(data.text);
-      setStep(data.confidence < MIN_OCR_CONFIDENCE ? { kind: 'unclear', confidence: Math.round(data.confidence) } : { kind: 'review' });
+      const parsed = parseReceipt(data.text);
+      setItems(parsed);
+      buildRows(parsed);
+      setAI({ kind: 'idle' });
+      if (data.confidence < MIN_OCR_CONFIDENCE) return setStep({ kind: 'unclear', confidence: Math.round(data.confidence) });
+      if (aiWanted() && parsed.length) await runAI(parsed);
+      setStep({ kind: 'review' });
     } catch {
       setStep({ kind: 'error' });
     }
+  }
+
+  /** Lets the on-device AI check every line; the review shows the dictionary's suggestions if it fails. */
+  async function runAI(list: ReceiptItem[] = items) {
+    setStep({ kind: 'thinking' });
+    setAI({ kind: 'thinking', download: 0 });
+    try {
+      const checked = await checkWithAI(list, corrections, (download) => setAI({ kind: 'thinking', download }));
+      buildRows(checked);
+      setAI({ kind: 'done' });
+    } catch {
+      buildRows(list);
+      setAI({ kind: 'failed' });
+    }
+    setStep({ kind: 'review' });
+  }
+
+  async function turnOnAI() {
+    setAIWanted(true);
+    setWanted(true);
+    await runAI();
   }
 
   async function onFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -188,6 +227,22 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
     );
   }
 
+  if (step.kind === 'thinking') {
+    const download = ai.kind === 'thinking' ? ai.download : 0;
+    return (
+      <div className="card flex flex-col items-center gap-4 rounded-[28px] p-8 text-center">
+        <div className="text-4xl" aria-hidden>
+          🤖
+        </div>
+        <div className="font-display text-lg">{download > 0 && download < 1 ? t('aiDownloading', { mb: AI_MODEL.downloadMB }) : t('aiThinking')}</div>
+        <div className="h-3 w-full max-w-[320px] overflow-hidden rounded-full border-[1.5px] border-line bg-track">
+          <div className={`h-full bg-lime transition-all ${download === 0 ? 'w-1/3 animate-pulse' : ''}`} style={download > 0 ? { width: `${Math.round(download * 100)}%` } : undefined} />
+        </div>
+        <p className="m-0 max-w-[420px] text-sm text-muted">{t('aiPrivacy')}</p>
+      </div>
+    );
+  }
+
   if (step.kind === 'unclear') {
     return (
       <div className="card flex flex-col gap-4 rounded-[28px] p-[clamp(18px,3vw,30px)]">
@@ -202,7 +257,7 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
           <button type="button" onClick={() => setStep({ kind: 'pick' })} className="btn-lime">
             {t('retake')}
           </button>
-          <button type="button" onClick={() => setStep({ kind: 'review' })} className="btn-ghost" disabled={rows.length === 0}>
+          <button type="button" onClick={() => (wanted ? runAI() : setStep({ kind: 'review' }))} className="btn-ghost" disabled={rows.length === 0}>
             {t('reviewAnyway', { count: rows.length })}
           </button>
         </div>
@@ -226,6 +281,7 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
           <summary className="cursor-pointer font-semibold text-muted">{t('showText')}</summary>
           <pre className="mt-2 max-h-[300px] overflow-auto rounded-2xl bg-track p-3 text-xs whitespace-pre-wrap">{text}</pre>
         </details>
+        <AIPanel state={ai} wanted={wanted} hasLines={rows.length > 0} onUse={turnOnAI} />
       </div>
 
       <div className="card min-w-0 flex-[3_1_440px] overflow-hidden rounded-[28px]">
@@ -261,6 +317,19 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
                   <span>{r.raw}</span>
                   {r.price !== null && <span>· {r.price.toFixed(2)} lei</span>}
                   {r.learned && <span className="rounded-full bg-fresh px-1.5 font-sans font-semibold text-[#121212]">{t('learned')}</span>}
+                  {!r.learned && r.usedAI && r.ai && (
+                    <span
+                      className="rounded-full border border-line px-1.5 font-sans font-semibold text-ink"
+                      title={t('aiSimilarity', { value: Math.round(r.ai.similarity * 100) })}
+                    >
+                      {r.ai.confidence === 'high' ? t('aiSure') : t('aiUnsure')}
+                    </span>
+                  )}
+                  {!r.learned && !r.usedAI && r.ai?.confidence === 'low' && (
+                    <span className="rounded-full border border-line px-1.5 font-sans font-semibold text-ink" title={t('aiSimilarity', { value: Math.round(r.ai.similarity * 100) })}>
+                      {t('aiNoIdea')}
+                    </span>
+                  )}
                   {!r.learned && r.confidence !== 'high' && r.food && (
                     <span className="rounded-full bg-soon px-1.5 font-sans font-semibold text-[#121212]">{t('check')}</span>
                   )}
@@ -310,6 +379,28 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
           </p>
         )}
       </div>
+    </div>
+  );
+}
+
+/** What the on-device AI did with this receipt, and the offer to turn it on (one-time download). */
+function AIPanel({ state, wanted, hasLines, onUse }: { state: AIState; wanted: boolean; hasLines: boolean; onUse: () => void }) {
+  const t = useTranslations('receipt');
+  if (state.kind === 'done') return <p className="m-0 rounded-2xl bg-track px-4 py-3 text-sm">🤖 {t('aiDone')}</p>;
+  if (state.kind === 'failed')
+    return (
+      <p role="status" className="m-0 rounded-2xl bg-track px-4 py-3 text-sm">
+        🤖 {t('aiFailed')}
+      </p>
+    );
+  if (wanted || !hasLines) return null;
+  return (
+    <div className="card flex flex-col gap-2.5 rounded-[22px] p-4">
+      <div className="font-display text-base">🤖 {t('aiOfferTitle')}</div>
+      <p className="m-0 text-sm text-muted">{t('aiOfferLead', { mb: AI_MODEL.downloadMB })}</p>
+      <button type="button" onClick={onUse} className="btn-ink h-[42px] min-h-0 text-sm">
+        {t('aiUse')}
+      </button>
     </div>
   );
 }

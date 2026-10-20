@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { logout } from '@/app/actions/auth';
+import { AISettings } from '@/components/AISettings';
 import { LanguagePicker } from '@/components/LanguagePicker';
 import { NotificationSettings } from '@/components/NotificationSettings';
 import { OfflineStatus } from '@/components/OfflineStatus';
@@ -26,6 +27,10 @@ export default async function SettingsPage() {
         <section className="card flex flex-col gap-3 rounded-[26px] p-[22px]">
           <h2 className="m-0 font-display text-[19px] font-normal">{t('offline')}</h2>
           <OfflineStatus />
+        </section>
+        <section className="card flex flex-col gap-3 rounded-[26px] p-[22px]">
+          <h2 className="m-0 font-display text-[19px] font-normal">{t('ai')}</h2>
+          <AISettings />
         </section>
         <section className="card flex flex-col gap-3 rounded-[26px] p-[22px]">
           <h2 className="m-0 font-display text-[19px] font-normal">{t('account')}</h2>

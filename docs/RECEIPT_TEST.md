@@ -62,3 +62,11 @@ Fixes that came from the test: accept `-`/`:` as a decimal point, recompute a mi
 **Limits (honest):** tested on realistic fake receipts, not real ones. Real receipts may be harder (crumpled paper,
 other till layouts). If possible, test one real receipt before the competition. Session 8 adds the on-device AI
 for lines the dictionary doesn't know.
+
+
+## Update — session 8
+
+An on-device AI now checks every line too (lines the dictionary doesn't know, and disagreements). Results on 109
+unknown lines: 87 % right vs 7 % for the dictionary alone. See [AI.md](AI.md). Two parser fixes came from testing
+in the browser (which reads the downscaled photo slightly differently): a misread VAT letter (`20.15 E`) and a
+garbled quantity line (`1 SETI 39.90 A`).

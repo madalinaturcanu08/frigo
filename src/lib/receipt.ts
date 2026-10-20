@@ -75,7 +75,8 @@ const DICTIONARY: Entry[] = [
 /** Lines that are never products: totals, payment, tax, change, discounts, shop info. */
 const NOT_ITEM = /\b(TOTAL|SUBTOTAL|NUMERAR|REST|TVA|CARD|REDUCERE|DISCOUNT|SCHIMB|ИТОГ|ВСЕГО|СДАЧА|НДС|НАЛИЧН|СКИДК|IDNO|MOSTR|SAMPLE|MULTUMIM|МУЛЦУМ|СПАСИБО)\b/;
 // OCR sometimes reads the decimal point as "-" or ":" ("71-20", "17:90"), so accept those between digits.
-const AMOUNT_AT_END = /(-?\d{1,5}[.,:\-]\d{2})\s*[ABАВ]?\s*$/;
+// The VAT letter after the sum (A/B) is sometimes misread as another letter ("20.75 E").
+const AMOUNT_AT_END = /(-?\d{1,5}[.,:\-]\d{2})\s*[A-ZА-Я]?\s*$/;
 const QTY_TIMES_PRICE = /(\d{1,4}(?:[.,]\d{1,3})?)\s*[xX×хХ*]\s*(\d{1,5}[.,:]\d{2})/;
 
 /** Uppercase, no Romanian diacritics, Cyrillic kept (ё → Е). */
@@ -180,7 +181,10 @@ export function parseReceipt(text: string): ReceiptItem[] {
     // A product name starts with a real word ("UNT 72.5% 2006"); a quantity line doesn't ("1.245 x 16.90").
     const isNameLike = /^[^\d\s]*\p{L}{3,}/u.test(before.trim()) || letters(before) > before.replace(/\s/g, '').length * 0.6;
 
-    if (amount && pending && !isNameLike) {
+    // Under a product name that had no price, a line starting with a count is its quantity line,
+    // even when OCR garbled the "x 39.90" into letters ("1 SETI 39.90 A").
+    const quantityLine = !isNameLike || /^\d+\s/.test(before.trim());
+    if (amount && pending && quantityLine) {
       // the "QTY x PRICE … SUM" line under a product name
       items.push(toItem(pending, num(amount[1]), line));
       pending = null;

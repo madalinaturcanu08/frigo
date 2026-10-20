@@ -221,7 +221,16 @@
     "signedInAs": "Signed in as {email}",
     "logout": "Log out",
     "credits": "Photo credits",
-    "offline": "Offline"
+    "offline": "Offline",
+    "ai": "Receipt AI",
+    "aiLead": "When you scan a receipt, a small AI model on your phone recognises products the dictionary doesn't know. It only suggests; you check everything.",
+    "aiOn": "On",
+    "aiOff": "Off",
+    "aiDownloaded": "model on this phone ({mb} MB)",
+    "aiNotDownloaded": "model not downloaded",
+    "aiRemove": "Turn off and delete the model",
+    "aiTurnOn": "Turn on (downloads on the next scan)",
+    "aiModel": "Model: {model} · version {version} · license {license} · runs in the browser with Transformers.js"
   },
   "reminders": {
     "title": "{count, plural, one {# item to use soon} other {# items to use soon}}",
@@ -302,7 +311,10 @@
     "title": "Photo credits",
     "lead": "The photos in Frigo come from Unsplash. Thank you to these photographers!",
     "onUnsplash": "Photo on Unsplash",
-    "license": "Used under the Unsplash License:"
+    "license": "Used under the Unsplash License:",
+    "aiTitle": "AI and reading tools",
+    "aiModel": "Receipt AI: multilingual-e5-small by Microsoft (Wang et al., 2024), MIT license, converted for the browser by Xenova",
+    "aiRuntime": "Runs with Transformers.js (Hugging Face, Apache-2.0); receipts are read with Tesseract.js (Apache-2.0). Everything runs on your device."
   },
   "insights": {
     "notEnoughData": {
@@ -405,6 +417,18 @@
     "selected": "{count} of {total} selected",
     "add": "{count, plural, =0 {Nothing selected} one {Add # to fridge} other {Add # to fridge}}",
     "saving": "Adding…",
-    "saveError": "Couldn't add the items. Check your connection and try again."
+    "saveError": "Couldn't add the items. Check your connection and try again.",
+    "aiOfferTitle": "Let the AI check these lines",
+    "aiOfferLead": "A small AI model runs on your phone and recognises products the dictionary doesn't know, in Romanian and Russian. One-time download of about {mb} MB, so use Wi-Fi. The receipt still never leaves your phone.",
+    "aiUse": "Use the AI",
+    "aiThinking": "The AI is checking the lines…",
+    "aiDownloading": "Downloading the AI model (about {mb} MB, only once)…",
+    "aiPrivacy": "Everything runs on your phone. The AI only suggests; you decide what is saved.",
+    "aiDone": "The AI checked every line. Its suggestions are marked; anything it wasn't sure about is marked “check this”.",
+    "aiFailed": "The AI couldn't run on this device, so these are the dictionary's suggestions only.",
+    "aiSure": "🤖 AI · sure",
+    "aiUnsure": "🤖 AI · not sure",
+    "aiNoIdea": "🤖 AI didn't recognise it",
+    "aiSimilarity": "How close the AI's match is: {value}%"
   }
 }

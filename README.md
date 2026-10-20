@@ -19,7 +19,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 9 | Insights & streaks — no-waste streak + personal patterns from your own history (plain rules, no AI) | ✅ done |
 | 11 | Offline mode (changes kept on the device, synced later) + automated tests (Vitest + Playwright) | ✅ done |
 | 7 | Receipt scanning — photo → text in the browser → review screen → fridge; tested, decision GO ([docs/RECEIPT_TEST.md](docs/RECEIPT_TEST.md)) | ✅ done |
-| 8, 10 | On-device AI clean-up for unknown receipt lines, final polish | ⏳ next |
+| 8 | On-device AI for receipts — a small multilingual model in the browser suggests product + category with a confidence level; 87 % right vs 7 % for the dictionary alone ([docs/AI.md](docs/AI.md)) | ✅ done |
+| 10 | Final polish after a usability test with classmates | ⏳ next |
 
 ## What works now
 
@@ -36,6 +37,10 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 - **Scan a receipt** — take a photo (or try one of 6 sample receipts); Frigo reads it on the phone (Tesseract.js,
   Romanian + Russian + English), suggests fridge items with a guessed date, leaves non-food unticked, and you
   confirm or fix each one. Blurry photos are detected. Your corrections are remembered for next time.
+- **On-device AI for receipts** (optional, one-time ~118 MB download) — recognises products the dictionary
+  doesn't know, in Romanian and Russian, and says how sure it is (🤖 sure / not sure); unsure lines are marked
+  "check this". Runs on the phone (Transformers.js + multilingual-e5-small, MIT). Details and test results:
+  [docs/AI.md](docs/AI.md).
 - **Recipes** — Moldovan recipes ranked by which of your food expires first (expired food is never suggested).
   "I cooked this" marks the ingredients it used as eaten, with Undo. Each recipe has its own page with steps.
   Recipes live in `content/recipes.json`; `npm run recipes` turns them into `supabase/recipes.sql`.
@@ -50,11 +55,12 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 - **Offline** — without internet Frigo still opens (last saved copy of each page), and "Used it", "Tossed"
   and Add item keep working: changes wait on the device (banner shows how many) and sync with their real time when
   the connection is back. Saved pages are wiped on logout.
-- **Settings** — language, notifications (on/off + send a test), account, log out. Light / dark theme toggle on every page.
+- **Settings** — language, notifications (on/off + send a test), offline status, receipt AI (on/off, delete the model), account, log out. Light / dark theme toggle on every page.
 
 ## Tech
 
-Next.js 16 (App Router, Server Actions) · TypeScript · ZXing (barcodes) · Open Food Facts API · Tailwind CSS 4 · Supabase (Postgres + Auth + RLS) ·
+Next.js 16 (App Router, Server Actions) · TypeScript · ZXing (barcodes) · Open Food Facts API · Tesseract.js (receipt OCR) ·
+Transformers.js + multilingual-e5-small (on-device receipt AI) · Tailwind CSS 4 · Supabase (Postgres + Auth + RLS) ·
 next-intl (ro/ru/en, cookie-based, no locale in the URL) · Recharts · Vitest.
 Fonts: Archivo Black, Outfit, Doto (+ Rubik / Onest for Cyrillic).
 
