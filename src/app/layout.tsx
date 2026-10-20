@@ -16,6 +16,8 @@ const doto = Doto({ variable: '--font-doto', subsets: ['latin'], weight: ['700',
 export const metadata: Metadata = {
   title: 'Frigo',
   description: 'A free food-waste coach for your family fridge.',
+  // the name under the icon when added to an iPhone home screen
+  appleWebApp: { title: 'Frigo' },
 };
 
 export const viewport: Viewport = {

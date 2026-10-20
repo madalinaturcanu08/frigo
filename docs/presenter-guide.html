@@ -1,0 +1,193 @@
+<title>Frigo Presenter Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Doto:wght@900&family=Outfit:wght@400;600;700&family=Rubik:wght@800&family=Onest:wght@400;600&display=swap">
+<style>
+  /* Layout: one reading column, Frigo's own look (lime, ink outlines, pixel numbers), sections as outlined cards */
+  :root {
+    --bg: #f5f7f2;
+    --card: #ffffff;
+    --ink: #121212;
+    --muted: #5b6168;
+    --line: #121212;
+    --lime: #e3f46e;
+    --track: #e8ebe3;
+    --fresh: oklch(0.76 0.16 145);
+    --soon: oklch(0.83 0.15 80);
+    --expired: oklch(0.66 0.19 27);
+    --display: 'Archivo Black', 'Rubik', Impact, sans-serif;
+    --body: 'Outfit', 'Onest', system-ui, sans-serif;
+    --pixel: 'Doto', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1217; --card: #1a1e25; --ink: #f1f3ec; --muted: #9ca3ac; --line: #3a414c; --lime: #d8ec5e; --track: #2a3039;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1217; --card: #1a1e25; --ink: #f1f3ec; --muted: #9ca3ac; --line: #3a414c; --lime: #d8ec5e; --track: #2a3039;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--ink); font: 17px/1.55 var(--body); }
+  .wrap {
+    max-width: 760px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px 56px;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  h1, h2 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -0.3px; }
+  h1 { font-size: clamp(34px, 7vw, 52px); line-height: 1; }
+  h2 { font-size: 23px; line-height: 1.15; }
+  h3 { margin: 0; font-size: 17px; }
+  p { margin: 0; }
+  .kicker { font-family: var(--display); font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); }
+  .hero { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .hero svg { width: 92px; flex: none; }
+  .hero > div { flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .lead { font-size: 19px; }
+  section { background: var(--card); border: 2px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .note { background: var(--lime); color: #121212; border: 2px solid #121212; border-radius: 18px; padding: 14px 16px; font-weight: 600; }
+  ol.steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; counter-reset: s; }
+  ol.steps li { display: grid; grid-template-columns: 40px 1fr; gap: 10px; counter-increment: s; }
+  ol.steps li::before { content: counter(s); font-family: var(--pixel); font-weight: 900; font-size: 30px; line-height: 1; }
+  ol.steps li > div { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .say { color: var(--muted); font-style: italic; }
+  .dots { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; border: 2px solid var(--line); border-radius: 999px; padding: 4px 12px; font-weight: 600; font-size: 15px; }
+  .chip i { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #121212; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 10px 10px 0; border-bottom: 1.5px solid var(--track); }
+  th { font-family: var(--display); font-weight: 400; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+  .big { display: flex; flex-wrap: wrap; gap: 12px; }
+  .big div { flex: 1 1 150px; border: 2px solid var(--line); border-radius: 18px; padding: 12px 14px; display: flex; flex-direction: column; }
+  .big b { font-family: var(--pixel); font-size: 40px; line-height: 1; font-weight: 900; }
+  .big span { font-size: 14px; color: var(--muted); }
+  dl { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  dt { font-weight: 700; }
+  dd { margin: 2px 0 0; }
+  ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+  .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 600; font-size: 15px; }
+  .flow span { border: 2px solid var(--line); border-radius: 12px; padding: 6px 10px; background: var(--track); }
+  .flow em { font-style: normal; color: var(--muted); }
+  footer { color: var(--muted); font-size: 14px; text-align: center; }
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <svg viewBox="0 0 14 18" shape-rendering="crispEdges" aria-hidden="true">
+      <rect x="1" y="1" width="12" height="15" fill="#e3f46e"/>
+      <rect x="1" y="0" width="12" height="1" fill="#121212"/><rect x="0" y="1" width="1" height="15" fill="#121212"/>
+      <rect x="13" y="1" width="1" height="15" fill="#121212"/><rect x="1" y="16" width="12" height="1" fill="#121212"/>
+      <rect x="1" y="6" width="12" height="1" fill="#121212"/><rect x="11" y="2" width="1" height="3" fill="#121212"/>
+      <rect x="11" y="8" width="1" height="4" fill="#121212"/><rect x="2" y="17" width="2" height="1" fill="#121212"/>
+      <rect x="10" y="17" width="2" height="1" fill="#121212"/><rect x="2" y="2" width="1" height="2" fill="#fff"/>
+      <rect x="4" y="9" width="2" height="2" fill="#121212"/><rect x="8" y="9" width="2" height="2" fill="#121212"/>
+      <rect x="4" y="12" width="1" height="1" fill="#121212"/><rect x="5" y="13" width="4" height="1" fill="#121212"/>
+      <rect x="9" y="12" width="1" height="1" fill="#121212"/><rect x="3" y="11" width="1" height="1" fill="#ff8fa3"/>
+      <rect x="10" y="11" width="1" height="1" fill="#ff8fa3"/>
+    </svg>
+    <div>
+      <div class="kicker">Guide for the presenter · no programming needed</div>
+      <h1>Presenting Frigo</h1>
+      <p class="lead">Everything you need to show Frigo and answer questions about it, in plain words.</p>
+    </div>
+  </header>
+
+  <section>
+    <h2>What Frigo is</h2>
+    <p>Frigo is a free website that helps families <b>stop throwing food away</b>. You write down what's in your fridge, Frigo tells you what to eat first before it goes bad, suggests Moldovan recipes for it, and shows how much food and money you saved.</p>
+    <p>Why it matters: a large share of the food people buy ends up in the bin, mostly because it's forgotten at the back of the fridge. The UN wants food waste <b>cut in half by 2030</b> (Sustainable Development Goal 12.3). Frigo is made for teens in Moldova and works in <b>Romanian, Russian and English</b>.</p>
+    <p>It's a website, so there's nothing to install. It opens on any phone or computer. On an iPhone you can also put it on the home screen (Share → Add to Home Screen) so it looks like an app.</p>
+  </section>
+
+  <section>
+    <h2>How to use it (your demo)</h2>
+    <p>Follow these steps in order during the presentation. Each one takes under a minute. The italic line is something you can say.</p>
+    <ol class="steps">
+      <li><div><h3>Open the site and log in</h3><p>Use the Frigo link and account you were given. New people tap <b>Create account</b> (name, email, password).</p></div></li>
+      <li><div><h3>Show the Fridge page</h3><p>Every food item is sorted by how soon it goes bad, in three colour groups:</p>
+        <div class="dots"><span class="chip"><i style="background:var(--expired)"></i>Expired</span><span class="chip"><i style="background:var(--soon)"></i>Use soon (2 days or less)</span><span class="chip"><i style="background:var(--fresh)"></i>Fresh</span></div>
+        <p>The little fridge on top is the mascot. Its face changes: happy when all is fresh, worried when something must be used soon, sad when something has expired.</p>
+        <p class="say">"Frigo shows you at a glance what to eat first."</p></div></li>
+      <li><div><h3>Add food by hand</h3><p>Tap <b>Add</b>, type a name (e.g. "Milk"), pick a category, tap Add. If you don't know the date, Frigo guesses it from a table of how long each kind of food lasts, and marks it with "~".</p></div></li>
+      <li><div><h3>Scan a barcode</h3><p>On the Add page, tap the barcode button and point the camera at a product's barcode. Frigo fills in the name by itself. If it doesn't know the product, you type it once and it's remembered for everyone.</p></div></li>
+      <li><div><h3>Scan a receipt (the AI part)</h3><p>On the Add page tap <b>Scan receipt</b>. Take a photo of a receipt, or tap one of the <b>sample receipts</b> (safer for a demo). Frigo reads every line and lists the food. Lines checked by the AI have a 🤖 label; lines it isn't sure about say "check this". You can fix anything, then tap <b>Add to fridge</b>.</p>
+        <p class="say">"The receipt is read on the phone itself. It's never uploaded anywhere."</p></div></li>
+      <li><div><h3>Mark food as eaten</h3><p>On the Fridge page tap <b>Used it</b> on an item (little confetti appears). If food went bad, tap <b>Tossed</b>. These two buttons are what all the statistics are based on.</p></div></li>
+      <li><div><h3>Recipes</h3><p>The <b>Recipes</b> tab suggests Moldovan recipes using the food that expires first. "I cooked this" marks the ingredients as eaten.</p></div></li>
+      <li><div><h3>Stats</h3><p>The <b>Stats</b> tab shows money saved in lei, how much food was eaten in time vs thrown away, a chart by week or month, a streak of days without waste, and personal tips (for example which food you throw away most).</p></div></li>
+      <li><div><h3>Settings</h3><p>Change the language, turn on the <b>daily reminder</b> (one notification each morning about food that's about to expire), turn the receipt AI on or off, and switch between light and dark theme.</p></div></li>
+    </ol>
+    <p class="note">Tip: practise the demo once the day before, on the same phone, with internet. The first receipt scan downloads the reading tools and the AI (about 120 MB), so do one scan in advance on Wi-Fi.</p>
+  </section>
+
+  <section>
+    <h2>What it's built with</h2>
+    <p>You don't need to know how to program. These are the tools Frigo is made of, and what each one does, in one line.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Tool</th><th>What it does for Frigo</th></tr></thead>
+        <tbody>
+          <tr><td>Next.js</td><td>The framework the website is built with (like the frame and walls of a house). Written in TypeScript, a programming language.</td></tr>
+          <tr><td>Supabase</td><td>The online <b>database</b>: where accounts and fridge items are stored. Security rules make sure each person can only ever see their own fridge.</td></tr>
+          <tr><td>Vercel</td><td>The <b>hosting</b>: the company that keeps the website online so anyone can open the link. Free.</td></tr>
+          <tr><td>GitHub</td><td>Where the <b>code</b> is saved, with the full history of every change (using a tool called Git).</td></tr>
+          <tr><td>Tesseract.js</td><td><b>Reads text from photos</b> (OCR) of receipts, in Romanian, Russian and English, directly on the phone.</td></tr>
+          <tr><td>Transformers.js + AI model</td><td>Runs a small <b>AI</b> on the phone that recognises products on receipts (see below).</td></tr>
+          <tr><td>ZXing + Open Food Facts</td><td>ZXing reads <b>barcodes</b> with the camera; Open Food Facts is a free worldwide product database that gives the product's name.</td></tr>
+          <tr><td>Web Push</td><td>Sends the <b>daily reminder</b> notifications.</td></tr>
+          <tr><td>Offline mode</td><td>Frigo keeps working <b>without internet</b>; changes are saved on the phone and sent when the connection is back.</td></tr>
+          <tr><td>Automated tests</td><td>Programs that check Frigo works: 64 small tests of the logic and 20 tests that click through the site in two browsers (Chrome and iPhone's Safari engine).</td></tr>
+          <tr><td>Claude (AI assistant)</td><td>The code was written with the help of Claude Code, an AI programming assistant. Every step is recorded honestly in the file <b>AI_LOG.md</b>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flow" aria-label="How a fridge item travels">
+      <span>Your phone</span><em>→</em><span>Website (Vercel)</span><em>→</em><span>Database (Supabase)</span><em>→ only your own data comes back</em>
+    </div>
+  </section>
+
+  <section>
+    <h2>The receipt AI, simply explained</h2>
+    <p>Receipts print short, messy names like <b>LAPTE JLC 2.5% 1L</b>. Frigo turns that into <b>Milk · dairy · about 7 days</b>.</p>
+    <ul>
+      <li>First, a <b>dictionary</b> of common Moldovan shop abbreviations is checked.</li>
+      <li>Then a small AI model (<b>multilingual-e5-small</b>, by Microsoft, free MIT license) compares the <b>meaning</b> of each line with a list of 159 foods written in Romanian, Russian and English, and picks the closest one. It understands that "ЧЕСНОК", "USTUROI" and "garlic" are the same thing.</li>
+      <li>It also says <b>how sure</b> it is. When it isn't sure, the line is marked "check this". When it's only guessing, it doesn't show the guess at all.</li>
+    </ul>
+    <div class="big">
+      <div><b>87%</b><span>of unknown receipt lines put in the right category by the AI</span></div>
+      <div><b>7%</b><span>by the dictionary alone, on the same 109 test lines</span></div>
+      <div><b>96%</b><span>right when the AI says it's sure</span></div>
+    </div>
+    <p><b>Responsible AI:</b> the receipt never leaves the phone; the AI only suggests and the person always decides; every suggestion is labelled; it can be turned off and deleted in Settings; when you correct a line, Frigo remembers it next time.</p>
+    <p><b>Honest limits:</b> the test receipts were made up for testing, not real ones. The AI still makes some mistakes (it once thought mushrooms were shampoo), which is exactly why a person checks every line.</p>
+  </section>
+
+  <section>
+    <h2>Questions you might get</h2>
+    <dl>
+      <div><dt>Is it free? Does it show ads?</dt><dd>Free, no ads. All the tools used have free plans.</dd></div>
+      <div><dt>Is my data safe?</dt><dd>Each account can only see its own fridge; the database blocks everything else. Receipt photos are read on the phone and never uploaded.</dd></div>
+      <div><dt>Why a website and not an app from the App Store?</dt><dd>It works on every phone without installing anything, and can still be added to the home screen. One version for everyone.</dd></div>
+      <div><dt>Where do the expiry guesses come from?</dt><dd>A table of how long each kind of food lasts in the fridge, freezer or pantry, based on food-safety guides (USDA FoodKeeper). Guessed dates are always marked with "~".</dd></div>
+      <div><dt>Does it work without internet?</dt><dd>Yes. You can still open it, mark food as used or tossed, and add food; it syncs later.</dd></div>
+      <div><dt>Did AI write the project?</dt><dd>An AI assistant (Claude) helped write the code. Every request and what was checked afterwards is logged in AI_LOG.md, as the competition rules require.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>If something goes wrong</h2>
+    <ul>
+      <li><b>Page won't load:</b> check the internet, then refresh.</li>
+      <li><b>Camera doesn't open:</b> the browser needs permission. Tap the lock icon next to the address and allow the camera. You can also type the barcode number.</li>
+      <li><b>Receipt photo isn't read well:</b> use a <b>sample receipt</b> instead, or photograph a flat receipt in good light.</li>
+      <li><b>No notification arrives:</b> on iPhone, notifications only work after adding Frigo to the home screen.</li>
+    </ul>
+  </section>
+
+  <footer>Frigo · a food-waste coach for teens in Moldova · UN SDG 12.3</footer>
+</div>
