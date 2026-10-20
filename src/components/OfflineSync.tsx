@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { syncOffline } from '@/app/actions/items';
 import { readQueue, writeQueue } from '@/lib/offlineQueue';
 import { useOfflineQueue, useOnline } from '@/lib/useOfflineQueue';
-import { registerServiceWorker } from '@/lib/serviceWorker';
+import { registerServiceWorker, warmOfflinePages } from '@/lib/serviceWorker';
 
 /**
  * Shows when Frigo is offline or has changes waiting, and sends them as soon as the connection is back.
@@ -21,7 +21,10 @@ export function OfflineSync() {
   const busy = useRef(false);
 
   useEffect(() => {
-    registerServiceWorker().catch(() => {});
+    if (process.env.NODE_ENV !== 'production') return;
+    registerServiceWorker()
+      .then(warmOfflinePages)
+      .catch(() => {});
   }, []);
 
   useEffect(() => {

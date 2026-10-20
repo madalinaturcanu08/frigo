@@ -83,13 +83,23 @@ test('offline: tossing food is kept on the phone and synced when the internet is
   expect(data?.closed_at).not.toBeNull();
 });
 
-test('offline: the fridge still opens from the saved copy', async ({ page, context }) => {
+test('offline: pages open from the saved copy after a single visit, like on a phone', async ({ page, context }) => {
+  // One normal visit — no reload — then the connection drops (this is what failed on a real iPhone at first).
   await page.goto('/');
-  await page.evaluate(() => navigator.serviceWorker.ready);
-  await page.reload();
+  await expect
+    .poll(() => page.evaluate(async () => (await caches.open('frigo-pages-v1')).keys().then((k) => k.length)), {
+      timeout: 15_000,
+    })
+    .toBeGreaterThanOrEqual(5);
+
   await context.setOffline(true);
+  await page.getByRole('link', { name: 'Stats' }).first().click();
+  await expect(page.getByRole('heading', { name: 'Stats', level: 1 })).toBeVisible();
+  await page.getByRole('link', { name: 'Recipes' }).first().click();
+  await expect(page.getByRole('heading', { name: 'Recipes', level: 1 })).toBeVisible();
   await page.reload();
-  await expect(page.getByRole('heading', { name: 'My fridge' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Recipes', level: 1 })).toBeVisible();
+  await page.goto('/');
   await expect(page.getByText(`Mere ${run}`)).toBeVisible();
   await context.setOffline(false);
 });

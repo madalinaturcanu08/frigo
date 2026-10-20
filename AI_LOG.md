@@ -215,6 +215,11 @@ look like they are in a dirty environment, could you choose something more clean
   (the test left the page before the save reached the server; test names changed after a restart). Fixed; the app
   itself was right. Ran the suite three times, all green.
 - Editing an existing item offline is not supported — the form says so.
+- **Found on my iPhone:** in airplane mode Frigo showed "You are offline… open Frigo once while online". Cause: only
+  fully loaded pages were saved, but moving between tabs inside Frigo doesn't load whole pages, and the very first
+  visit happens before the offline helper starts — so nothing was saved. The tests had missed it because they always
+  refreshed the page first. Fix: when Frigo opens online it saves the main pages (Fridge, Add, Recipes, Stats,
+  Settings) in the background. New test copies the phone case: one visit, no refresh, offline, switch tabs.
 
 **To check by hand**
 - [ ] On the live site: open Frigo, turn on airplane mode, tap Used it / add food, turn airplane mode off → changes sync.

@@ -20,9 +20,30 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// Saves a fresh copy of the given pages. Needed because moving between tabs inside Frigo doesn't load
+// whole pages, so without this only the very first page (if any) would be available offline.
+async function warmPages(urls) {
+  const cache = await caches.open(PAGES);
+  await Promise.all(
+    urls.map(async (path) => {
+      const url = new URL(path, self.location.origin);
+      if (url.origin !== self.location.origin) return;
+      try {
+        const response = await fetch(url, { credentials: 'same-origin', redirect: 'follow' });
+        if (response.ok && !response.redirected) await cache.put(url.pathname, response);
+      } catch {
+        // offline or slow: keep the copy we already have
+      }
+    }),
+  );
+}
+
 self.addEventListener('message', (event) => {
   // Sent from the logged-out screens: the next person must not see the last user's fridge offline.
   if (event.data?.type === 'clear-pages') event.waitUntil(caches.delete(PAGES));
+  if (event.data?.type === 'warm' && CACHING && Array.isArray(event.data.urls)) {
+    event.waitUntil(warmPages(event.data.urls.slice(0, 10)));
+  }
 });
 
 function isStaticFile(url) {
@@ -46,17 +67,18 @@ async function networkFirstPage(request) {
   try {
     const response = await fetch(request);
     // Only keep real pages, never redirects (e.g. to the login screen).
-    if (response.ok && !response.redirected) (await caches.open(PAGES)).put(request, response.clone());
+    if (response.ok && !response.redirected) (await caches.open(PAGES)).put(new URL(request.url).pathname, response.clone());
     return response;
   } catch {
     const cache = await caches.open(PAGES);
     return (
-      (await cache.match(request, { ignoreSearch: true })) ||
-      (await cache.match('/')) ||
+      (await cache.match(new URL(request.url).pathname, { ignoreVary: true })) ||
+      (await cache.match('/', { ignoreVary: true })) ||
       new Response(
         '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width">' +
           '<title>Frigo</title><body style="font-family:system-ui;padding:2rem;text-align:center">' +
-          '<h1>Frigo</h1><p>You are offline. Open Frigo once while online so it can work offline next time.</p>',
+          '<h1>Frigo</h1><p>You are offline, and this page was not saved yet.</p>' +
+          '<p><a href="/">Open the fridge</a> · Open Frigo once while online so it can work offline next time.</p>',
         { headers: { 'Content-Type': 'text/html; charset=utf-8' }, status: 503 },
       )
     );
