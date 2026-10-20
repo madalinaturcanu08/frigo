@@ -8,6 +8,7 @@ import { CATEGORIES, CATEGORY_EMOJI, lookupShelfDays, type Category, type ShelfL
 import { MIN_OCR_CONFIDENCE, foldReceiptText, parseReceipt, type ReceiptItem } from '@/lib/receipt';
 import { SOON_DAYS } from '@/lib/expiry';
 import { AI_MODEL, type AISuggestion } from '@/lib/aiMatch';
+import { FrigoIcon } from './FrigoMascot';
 import { aiWanted, checkWithAI, setAIWanted, type AIItem } from '@/lib/receiptAI';
 
 export interface Correction {
@@ -189,7 +190,7 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
             <li>{t('tip2')}</li>
             <li>{t('tip3')}</li>
           </ul>
-          <p className="m-0 rounded-2xl bg-track px-4 py-3 text-sm">🔒 {t('privacy')}</p>
+          <p className="m-0 rounded-2xl bg-track px-4 py-3 text-sm">{t('privacy')}</p>
           {step.kind === 'error' && (
             <p role="alert" className="m-0 rounded-2xl border-2 border-edge bg-expired px-4 py-3 font-semibold text-[#121212]">
               {t('readError')}
@@ -231,9 +232,7 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
     const download = ai.kind === 'thinking' ? ai.download : 0;
     return (
       <div className="card flex flex-col items-center gap-4 rounded-[28px] p-8 text-center">
-        <div className="text-4xl" aria-hidden>
-          🤖
-        </div>
+        <FrigoIcon className="h-14 w-auto" />
         <div className="font-display text-lg">{download > 0 && download < 1 ? t('aiDownloading', { mb: AI_MODEL.downloadMB }) : t('aiThinking')}</div>
         <div className="h-3 w-full max-w-[320px] overflow-hidden rounded-full border-[1.5px] border-line bg-track">
           <div className={`h-full bg-lime transition-all ${download === 0 ? 'w-1/3 animate-pulse' : ''}`} style={download > 0 ? { width: `${Math.round(download * 100)}%` } : undefined} />
@@ -386,17 +385,17 @@ export function ReceiptScanner({ shelfLife, corrections }: { shelfLife: ShelfLif
 /** What the on-device AI did with this receipt, and the offer to turn it on (one-time download). */
 function AIPanel({ state, wanted, hasLines, onUse }: { state: AIState; wanted: boolean; hasLines: boolean; onUse: () => void }) {
   const t = useTranslations('receipt');
-  if (state.kind === 'done') return <p className="m-0 rounded-2xl bg-track px-4 py-3 text-sm">🤖 {t('aiDone')}</p>;
+  if (state.kind === 'done') return <p className="m-0 rounded-2xl bg-track px-4 py-3 text-sm">{t('aiDone')}</p>;
   if (state.kind === 'failed')
     return (
       <p role="status" className="m-0 rounded-2xl bg-track px-4 py-3 text-sm">
-        🤖 {t('aiFailed')}
+        {t('aiFailed')}
       </p>
     );
   if (wanted || !hasLines) return null;
   return (
     <div className="card flex flex-col gap-2.5 rounded-[22px] p-4">
-      <div className="font-display text-base">🤖 {t('aiOfferTitle')}</div>
+      <div className="font-display text-base">{t('aiOfferTitle')}</div>
       <p className="m-0 text-sm text-muted">{t('aiOfferLead', { mb: AI_MODEL.downloadMB })}</p>
       <button type="button" onClick={onUse} className="btn-ink h-[42px] min-h-0 text-sm">
         {t('aiUse')}

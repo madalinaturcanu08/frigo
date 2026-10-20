@@ -186,7 +186,7 @@ export function ItemForm({
                 {tb('scan')}
               </button>
               <Link href="/add/receipt" className="btn-ghost">
-                🧾 {tb('receipt')}
+                {tb('receipt')}
               </Link>
               {scan.kind !== 'idle' && scan.kind !== 'looking' && (
                 <button type="button" onClick={() => setScan({ kind: 'idle' })} className="text-sm font-semibold text-muted underline">

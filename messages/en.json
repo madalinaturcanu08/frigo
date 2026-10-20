@@ -382,7 +382,7 @@
     "title": "Scan a receipt",
     "pickTitle": "Take a photo of the receipt",
     "pickLead": "Frigo reads every line and suggests what goes in the fridge. You check everything before it is saved.",
-    "takePhoto": "📷 Take or choose a photo",
+    "takePhoto": "Take or choose a photo",
     "tip1": "Lay the receipt flat on a table.",
     "tip2": "Use good light, no shadow over the text.",
     "tip3": "Fill the screen with the receipt.",
@@ -429,9 +429,9 @@
     "aiPrivacy": "Everything runs on your phone. The AI only suggests; you decide what is saved.",
     "aiDone": "The AI checked every line. Its suggestions are marked; anything it wasn't sure about is marked “check this”.",
     "aiFailed": "The AI couldn't run on this device, so these are the dictionary's suggestions only.",
-    "aiSure": "🤖 AI · sure",
-    "aiUnsure": "🤖 AI · not sure",
-    "aiNoIdea": "🤖 AI didn't recognise it",
+    "aiSure": "AI · sure",
+    "aiUnsure": "AI · not sure",
+    "aiNoIdea": "AI didn't recognise it",
     "aiSimilarity": "How close the AI's match is: {value}%"
   }
 }

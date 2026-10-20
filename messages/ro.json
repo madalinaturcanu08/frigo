@@ -382,7 +382,7 @@
     "title": "Scanează bonul",
     "pickTitle": "Fă o poză bonului",
     "pickLead": "Frigo citește fiecare rând și propune ce intră în frigider. Tu verifici totul înainte de salvare.",
-    "takePhoto": "📷 Fă sau alege o poză",
+    "takePhoto": "Fă sau alege o poză",
     "tip1": "Pune bonul drept pe masă.",
     "tip2": "Lumină bună, fără umbră peste text.",
     "tip3": "Bonul să umple ecranul.",
@@ -429,9 +429,9 @@
     "aiPrivacy": "Totul rulează pe telefonul tău. AI-ul doar sugerează — tu decizi ce se salvează.",
     "aiDone": "AI-ul a verificat fiecare rând. Sugestiile lui sunt marcate; ce nu știa sigur e marcat „verifică”.",
     "aiFailed": "AI-ul nu a putut rula pe acest dispozitiv, așa că vezi doar sugestiile dicționarului.",
-    "aiSure": "🤖 AI · sigur",
-    "aiUnsure": "🤖 AI · nesigur",
-    "aiNoIdea": "🤖 AI nu l-a recunoscut",
+    "aiSure": "AI · sigur",
+    "aiUnsure": "AI · nesigur",
+    "aiNoIdea": "AI nu l-a recunoscut",
     "aiSimilarity": "Cât de aproape e potrivirea AI-ului: {value}%"
   }
 }

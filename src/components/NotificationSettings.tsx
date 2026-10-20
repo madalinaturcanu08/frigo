@@ -99,7 +99,8 @@ export function NotificationSettings() {
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    // fills the Settings card so the buttons sit at its bottom
+    <div className="flex flex-1 flex-col gap-3">
       <p className="m-0 text-[15px] text-muted">{t('lead')}</p>
 
       {status === 'unsupported' && <p className="m-0 text-[15px]">{t('unsupported')}</p>}
@@ -111,7 +112,7 @@ export function NotificationSettings() {
             <span className={`h-2.5 w-2.5 rounded-full border border-edge ${status === 'on' ? 'bg-fresh' : 'bg-track'}`} />
             {t(status)}
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-auto flex flex-wrap gap-2">
             {status === 'off' ? (
               <button type="button" onClick={turnOn} disabled={busy} className="btn-lime">
                 {busy ? t('working') : t('turnOn')}

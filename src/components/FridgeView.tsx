@@ -75,9 +75,6 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
           role="status"
           className="flex items-center gap-3 rounded-[20px] border-2 border-edge bg-soon px-4 py-3 text-[#121212] shadow-card"
         >
-          <span aria-hidden className="text-xl">
-            🔔
-          </span>
           <span className="flex min-w-0 flex-col">
             <span className="font-display text-[11px] tracking-[1px] uppercase">{tb('label')}</span>
             <span className="truncate text-[15px] font-semibold">
