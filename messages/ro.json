@@ -230,7 +230,10 @@
     "aiNotDownloaded": "modelul nu e descărcat",
     "aiRemove": "Oprește și șterge modelul",
     "aiTurnOn": "Pornește (se descarcă la următorul bon)",
-    "aiModel": "Model: {model} · versiunea {version} · licență {license} · rulează în browser cu Transformers.js"
+    "aiModel": "Model: {model} · versiunea {version} · licență {license} · rulează în browser cu Transformers.js",
+    "languageLead": "Alege limba pentru toată aplicația.",
+    "about": "Despre Frigo",
+    "aboutLead": "Un ajutor gratuit împotriva risipei de mâncare pentru familiile din Moldova, făcut pentru InfoMatrix 2027 (obiectivul ONU 12.3: risipa de mâncare redusă la jumătate)."
   },
   "reminders": {
     "title": "{count, plural, one {# produs de folosit curând} few {# produse de folosit curând} other {# de produse de folosit curând}}",

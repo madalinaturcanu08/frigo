@@ -230,7 +230,10 @@
     "aiNotDownloaded": "model not downloaded",
     "aiRemove": "Turn off and delete the model",
     "aiTurnOn": "Turn on (downloads on the next scan)",
-    "aiModel": "Model: {model} · version {version} · license {license} · runs in the browser with Transformers.js"
+    "aiModel": "Model: {model} · version {version} · license {license} · runs in the browser with Transformers.js",
+    "languageLead": "Pick the language for the whole app.",
+    "about": "About Frigo",
+    "aboutLead": "A free food-waste coach for families in Moldova, made for InfoMatrix 2027 (UN goal 12.3: halve food waste)."
   },
   "reminders": {
     "title": "{count, plural, one {# item to use soon} other {# items to use soon}}",
