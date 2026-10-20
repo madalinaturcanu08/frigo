@@ -12,7 +12,8 @@
     "stats": "Stats",
     "settings": "Settings",
     "signedIn": "Signed in",
-    "recipes": "Recipes"
+    "recipes": "Recipes",
+    "streak": "{count, plural, one {#-day no-waste streak} other {#-day no-waste streak}}"
   },
   "item": {
     "daysAgo": "{count, plural, one {day ago} other {days ago}}",
@@ -159,7 +160,14 @@
     "tossedMost": "What gets tossed most",
     "nothingTossed": "Nothing tossed yet. Keep it up!",
     "itemsCount": "{count, plural, one {# item} other {# items}}",
-    "tossedMostNote": "Last 6 months."
+    "tossedMostNote": "Last 6 months.",
+    "streak": "No-waste streak",
+    "days": "{count, plural, one {day} other {days}}",
+    "streakBest": "Best: {count, plural, one {# day} other {# days}} without throwing food away",
+    "streakNone": "Starts when you add your first food",
+    "moneySavedLost": "This month · {lost} lei thrown away",
+    "insightsTitle": "Your patterns",
+    "insightsNote": "Based on your own Used / Tossed history in the last 6 months."
   },
   "welcome": {
     "title": "Halve the food your family throws away.",
@@ -291,5 +299,53 @@
     "lead": "The photos in Frigo come from Unsplash. Thank you to these photographers!",
     "onUnsplash": "Photo on Unsplash",
     "license": "Used under the Unsplash License:"
+  },
+  "insights": {
+    "notEnoughData": {
+      "title": "Your patterns will show up here",
+      "body": "{needed, plural, one {Mark # more item} other {Mark # more items}} as Used or Tossed and Frigo will show what you waste most — and how to fix it."
+    },
+    "topWaste": {
+      "title": "You throw away {category} most",
+      "body": "{count} of the {total} items you threw away. {tip}"
+    },
+    "repeatWaste": {
+      "title": "„{name}” keeps ending up in the bin",
+      "body": "{count, plural, one {Thrown away once} other {Thrown away # times}}. Buy a smaller pack, or plan a meal with it the day you buy it."
+    },
+    "strongPoint": {
+      "title": "Your strong point: {category}",
+      "body": "You finished all {count} you added — nothing thrown away."
+    },
+    "lessThanLastMonth": {
+      "title": "Less waste than last month",
+      "body": "You threw away {percent}% fewer items than last month. Keep going!"
+    },
+    "moreThanLastMonth": {
+      "title": "More waste than last month",
+      "body": "{percent}% more items thrown away than last month. Check the yellow items on the Fridge page every evening."
+    },
+    "perfectMonth": {
+      "title": "Nothing thrown away this month",
+      "body": "{count} items eaten, zero tossed. Great job!"
+    },
+    "tips": {
+      "dairy": "Try a smaller bottle or pack — 0.5 L instead of 1 L.",
+      "cheese": "Wrap opened cheese well, or freeze brânză for cooking.",
+      "eggs": "Buy 6 instead of 10, or use spare eggs in an omelette or clătite.",
+      "meat": "Freeze meat on the day you buy it if you won’t cook it in 2 days.",
+      "fish": "Cook fish the day you buy it, or freeze it right away.",
+      "vegetables": "Buy vegetables for 3–4 days at a time; soft ones are perfect for ciorbă.",
+      "fruit": "Soft fruit makes great compot or baked apples.",
+      "bread": "Try buying half a loaf, or freeze slices and toast them.",
+      "leftovers": "Cook smaller portions, or freeze leftovers for another day.",
+      "sauces": "Opened jars last longer if you write the opening date on the lid.",
+      "drinks": "Buy smaller bottles; once opened, juice lasts only a few days.",
+      "other": "Buy smaller amounts and check the Fridge page before shopping."
+    },
+    "noPattern": {
+      "title": "No clear pattern yet",
+      "body": "{wasted, plural, one {# item} other {# items}} thrown away and {eaten} eaten, from different categories. Keep marking Used / Tossed — patterns show up after a few weeks."
+    }
   }
 }

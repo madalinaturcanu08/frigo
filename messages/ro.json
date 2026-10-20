@@ -12,7 +12,8 @@
     "stats": "Statistici",
     "settings": "Setări",
     "signedIn": "Conectat",
-    "recipes": "Rețete"
+    "recipes": "Rețete",
+    "streak": "{count, plural, one {# zi fără risipă} few {# zile fără risipă} other {# de zile fără risipă}}"
   },
   "item": {
     "daysAgo": "{count, plural, one {zi în urmă} few {zile în urmă} other {de zile în urmă}}",
@@ -159,7 +160,14 @@
     "tossedMost": "Ce se aruncă cel mai des",
     "nothingTossed": "Nimic aruncat încă. Ține-o tot așa!",
     "itemsCount": "{count, plural, one {# produs} few {# produse} other {# de produse}}",
-    "tossedMostNote": "Ultimele 6 luni."
+    "tossedMostNote": "Ultimele 6 luni.",
+    "streak": "Serie fără risipă",
+    "days": "{count, plural, one {zi} few {zile} other {de zile}}",
+    "streakBest": "Record: {count, plural, one {# zi} few {# zile} other {# de zile}} fără mâncare aruncată",
+    "streakNone": "Începe când adaugi primul produs",
+    "moneySavedLost": "Luna aceasta · {lost} lei aruncați",
+    "insightsTitle": "Obiceiurile tale",
+    "insightsNote": "Pe baza istoricului tău „Folosit / Aruncat” din ultimele 6 luni."
   },
   "welcome": {
     "title": "Aruncă de două ori mai puțină mâncare.",
@@ -291,5 +299,53 @@
     "lead": "Fotografiile din Frigo sunt de pe Unsplash. Mulțumim acestor fotografi!",
     "onUnsplash": "Fotografia pe Unsplash",
     "license": "Folosite conform licenței Unsplash:"
+  },
+  "insights": {
+    "notEnoughData": {
+      "title": "Aici vor apărea obiceiurile tale",
+      "body": "{needed, plural, one {Marchează încă # produs} few {Marchează încă # produse} other {Marchează încă # de produse}} ca folosite sau aruncate și Frigo îți va arăta ce risipești cel mai mult — și cum să schimbi asta."
+    },
+    "topWaste": {
+      "title": "Cel mai des arunci: {category}",
+      "body": "{count} din {total, plural, one {# produs aruncat} few {cele # produse aruncate} other {cele # de produse aruncate}}. {tip}"
+    },
+    "repeatWaste": {
+      "title": "„{name}” ajunge mereu la gunoi",
+      "body": "{count, plural, one {Aruncat o dată} few {Aruncat de # ori} other {Aruncat de # de ori}}. Cumpără un ambalaj mai mic sau plănuiește o masă cu el chiar în ziua cumpărării."
+    },
+    "strongPoint": {
+      "title": "Punctul tău forte: {category}",
+      "body": "{count, plural, one {Ai terminat singurul produs adăugat} few {Ai terminat toate cele # produse adăugate} other {Ai terminat toate cele # de produse adăugate}} — nimic aruncat."
+    },
+    "lessThanLastMonth": {
+      "title": "Mai puțină risipă decât luna trecută",
+      "body": "Ai aruncat cu {percent}% mai puține produse decât luna trecută. Ține-o tot așa!"
+    },
+    "moreThanLastMonth": {
+      "title": "Mai multă risipă decât luna trecută",
+      "body": "Cu {percent}% mai multe produse aruncate decât luna trecută. Verifică în fiecare seară produsele galbene din Frigider."
+    },
+    "perfectMonth": {
+      "title": "Nimic aruncat luna aceasta",
+      "body": "{count, plural, one {# produs mâncat} few {# produse mâncate} other {# de produse mâncate}}, zero aruncate. Bravo!"
+    },
+    "tips": {
+      "dairy": "Încearcă o sticlă sau un ambalaj mai mic — 0,5 l în loc de 1 l.",
+      "cheese": "Învelește bine brânza deschisă sau congelează brânza pentru gătit.",
+      "eggs": "Cumpără 6 în loc de 10 sau folosește ouăle rămase la omletă sau clătite.",
+      "meat": "Congelează carnea chiar în ziua cumpărării dacă n-o gătești în 2 zile.",
+      "fish": "Gătește peștele în ziua cumpărării sau congelează-l imediat.",
+      "vegetables": "Cumpără legume pentru 3–4 zile; cele moi sunt perfecte pentru ciorbă.",
+      "fruit": "Fructele moi sunt perfecte pentru compot sau mere coapte.",
+      "bread": "Încearcă jumătate de pâine sau congelează feliile și prăjește-le.",
+      "leftovers": "Gătește porții mai mici sau congelează resturile pentru altă zi.",
+      "sauces": "Borcanele deschise țin mai mult dacă scrii data deschiderii pe capac.",
+      "drinks": "Cumpără sticle mai mici; sucul deschis ține doar câteva zile.",
+      "other": "Cumpără cantități mai mici și verifică Frigiderul înainte de cumpărături."
+    },
+    "noPattern": {
+      "title": "Încă nu se vede un tipar",
+      "body": "{wasted, plural, one {# produs aruncat} few {# produse aruncate} other {# de produse aruncate}} și {eaten} mâncate, din categorii diferite. Continuă să marchezi Folosit / Aruncat — tiparele apar după câteva săptămâni."
+    }
   }
 }

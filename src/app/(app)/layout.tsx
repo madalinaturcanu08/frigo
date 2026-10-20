@@ -2,13 +2,15 @@ import { getTranslations } from 'next-intl/server';
 import { Logo } from '@/components/Logo';
 import { Nav } from '@/components/Nav';
 import { getProfile, requireUser } from '@/lib/supabase/server';
+import { getStreak } from '@/lib/streakData';
 
 export default async function AppLayout({ children }: LayoutProps<'/'>) {
   const { supabase, user } = await requireUser();
   const t = await getTranslations('nav');
 
-  const [profile, { count }] = await Promise.all([
+  const [profile, streak, { count }] = await Promise.all([
     getProfile(user.id),
+    getStreak(),
     supabase.from('fridge_items').select('id', { count: 'exact', head: true }).eq('status', 'active'),
   ]);
   const name = profile?.display_name || user.email?.split('@')[0] || '';
@@ -26,7 +28,9 @@ export default async function AppLayout({ children }: LayoutProps<'/'>) {
           </div>
           <div className="flex min-w-0 flex-col">
             <div className="truncate text-sm font-bold">{name}</div>
-            <div className="truncate text-xs text-muted">{t('signedIn')}</div>
+            <div className="truncate text-xs text-muted">
+              {streak && streak.current > 0 ? t('streak', { count: streak.current }) : t('signedIn')}
+            </div>
           </div>
         </div>
       </aside>

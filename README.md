@@ -16,7 +16,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 4 | Daily expiry reminders — browser notifications + in-app banner (no installable app, by choice) | ✅ done |
 | 5 | Barcode scanning — camera (ZXing) + Open Food Facts + shared product list | ✅ done |
 | 6 | Recipes — 14 Moldovan starter recipes (ro/ru/en), ranked by what expires first | ✅ done |
-| 7–11 | Receipt scanning + AI, insights & streaks, offline, tests | ⏳ next |
+| 9 | Insights & streaks — no-waste streak + personal patterns from your own history (plain rules, no AI) | ✅ done |
+| 7–8, 10–11 | Receipt scanning + AI (waiting for real receipts), polish, offline, tests | ⏳ next |
 
 ## What works now
 
@@ -38,6 +39,9 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
   chart by week or month (with a table view); which categories get tossed most.
 - **Daily reminder** — one browser notification each morning listing what to use first (only when something is
   about to expire), plus a yellow "Use soon" banner on the Fridge page for every device, including iPhone.
+- **Insights & streak** — the Stats page shows days since you last threw food away (and your record), plus up to
+  3 personal tips from your own history: the product that keeps going in the bin, the category you waste most
+  (with a tip for it), the category you always finish, and this month vs last month.
 - **Settings** — language, notifications (on/off + send a test), account, log out. Light / dark theme toggle on every page.
 
 ## Tech

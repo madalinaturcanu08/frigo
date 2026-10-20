@@ -170,3 +170,25 @@ look like they are in a dirty environment, could you choose something more clean
 **To do by hand**
 - [ ] Better for the competition: take my own photos of the dishes I cook, and swap them in (same file names in
       `public/photos/`, update the author in `content/photos.json`).
+
+---
+
+## 2026-10-20 — Session 9: insights & streaks
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompt:** "lets do 9" (I don't have receipts yet for session 7).
+
+**What the AI did**
+- **No-waste streak** (`src/lib/streak.ts`): days since the last thrown-away item, and the best streak ever. Shown in
+  the sky card on Stats (as in the design) and next to my name in the menu.
+- **Personal insights** (`src/lib/insights.ts`) — plain rules over my own Used/Tossed history, no AI:
+  the same product thrown away 2+ times; one category ≥ 40 % of the waste (with a practical tip per category,
+  e.g. bread → half a loaf or freeze slices); a category I always finish; this month vs last month; a month with
+  nothing thrown away. Needs at least 5 closed items; says "no clear pattern yet" when nothing stands out.
+- Stats cards rearranged to match the design (streak, money saved, food saved, used in time).
+- 8 new unit tests (35 in total). All 800+ translation strings checked for valid syntax; Romanian/Russian plurals fixed.
+
+**Checked:** Stats page with my real data (streak 0 today, best 6 days; "no clear pattern yet" card).
+
+**To check by hand**
+- [ ] Read the tips in `messages/*.json` → `insights.tips` and change any that don't fit Moldovan families.
+- [ ] After a few weeks of real use, check that the insights make sense.
