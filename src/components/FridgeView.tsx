@@ -88,10 +88,6 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
       )}
 
       <SkyHero className="min-h-[230px]">
-        <FrigoMascot
-          mood={moodFor(counts)}
-          className="pointer-events-none absolute right-[30px] bottom-5 w-[110px] max-sm:right-4 max-sm:bottom-4 max-sm:w-[78px]"
-        />
         <div className="flex flex-col gap-[18px] px-[30px] py-7 max-sm:px-5">
           <div className="flex flex-wrap items-end gap-4">
             <div className="font-pixel text-[110px] leading-[0.82] font-black text-hero-ink max-sm:text-[86px]">
@@ -101,26 +97,30 @@ export function FridgeView({ items }: { items: ItemCardData[] }) {
               {t('heroLine', { count: needYou })}
             </div>
           </div>
-          <div className="flex flex-wrap gap-2.5">
-            {needYou > 0 ? (
-              <>
-                <Link href="/recipes" className="btn-lime">
-                  {t('cookCta')}
-                </Link>
-                <Link href="/add" className="btn-ghost">
-                  {t('addShort')}
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link href="/add" className="btn-lime">
-                  {t('addCta')}
-                </Link>
-                <Link href="/recipes" className="btn-ghost">
-                  {t('recipesCta')}
-                </Link>
-              </>
-            )}
+          {/* buttons and mascot share a row, so the mascot never covers a button on narrow phones */}
+          <div className="flex items-end justify-between gap-3">
+            <div className="flex min-w-0 flex-wrap gap-2.5">
+              {needYou > 0 ? (
+                <>
+                  <Link href="/recipes" className="btn-lime">
+                    {t('cookCta')}
+                  </Link>
+                  <Link href="/add" className="btn-ghost">
+                    {t('addShort')}
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link href="/add" className="btn-lime">
+                    {t('addCta')}
+                  </Link>
+                  <Link href="/recipes" className="btn-ghost">
+                    {t('recipesCta')}
+                  </Link>
+                </>
+              )}
+            </div>
+            <FrigoMascot mood={moodFor(counts)} className="pointer-events-none w-[110px] flex-none max-sm:w-[74px]" />
           </div>
         </div>
       </SkyHero>
