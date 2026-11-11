@@ -12,7 +12,7 @@ on 11.11.2026. **Ask the teacher whether a newer edition exists** (the contest s
 | Abstract: ≤ 2 A4 pages, Times New Roman 12, ≤ 1 MB, category, title, names, class; sections *Scopul*, *Actualitatea și utilizarea*, *Metodele*, *Analiza datelor*, *Literatura* (Anexa 2) | ✅ done (fill in names, class, school, coordinator) | `Rezumat-Frigo.docx` |
 | Images and graphics sent separately from the abstract, ≤ 1 MB in total (Anexa 2) | ✅ | `Anexa-vizuala-Frigo.pdf` |
 | Poster: A0, or 2 × A1 placed one under the other (Anexa 3) | ✅ draft | `Poster-A0-Frigo.pdf` (source: `poster.html`) |
-| At the stand: abstract, **full text of the paper**, **research plan**, lab logbook if needed, other materials (Anexa 3) | abstract ✅ · full paper ❌ · research plan ❌ · logbook ✅ (`../LOGBOOK.md`) | |
+| At the stand: abstract, **full text of the paper**, **research plan**, lab logbook if needed, other materials (Anexa 3) | abstract ✅ · full paper ✅ · research plan ✅ · logbook ✅ (`../LOGBOOK.md`) | `Lucrare-integrala-Frigo.docx`, `Plan-de-cercetare-Frigo.docx` |
 | No company or institution logos except your own school, no previous prizes (Anexa 3) | ✅ the poster has none | |
 | Team of at most 2; each member is judged on their own contribution (Art. 5) | Fill in the role split everywhere | `../CODE_GUIDE.md`, `PITCH.md` |
 | Judging: 10-minute conversation per team (Art. 14) | Practise | `PITCH.md` (questions table) |
