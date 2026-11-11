@@ -176,12 +176,15 @@ accounts. It never reaches the browser.
 
 ---
 
-## Who explains what (fill in)
+## Who explains what
 
-| Part | Student A | Student B |
+Each team member is judged on their own contribution (MoldSEF rules, Art. 5), so both must know every part,
+but each leads on some:
+
+| Part | Leads | Backs up |
 |---|---|---|
-| AI maths (`aiMatch.ts`) | | |
-| Offline sync (`offlineQueue.ts`) | | |
-| Database security (RLS) | | |
-| Research: hypothesis, benchmarks, economics | | |
-| Live demo | | |
+| AI maths (`aiMatch.ts`) | Mădălina | Luciana |
+| Offline sync (`offlineQueue.ts`) | Mădălina | Luciana |
+| Database security (RLS) | Mădălina | Luciana |
+| Research: hypothesis, benchmarks, economics | Luciana | Mădălina |
+| Live demo | Luciana | Mădălina |

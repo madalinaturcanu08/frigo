@@ -1,6 +1,6 @@
 # 3-minute pitch (EN + RO)
 
-About 380 words each, which is about 2 min 45 s at a calm pace. **[A]** = Student A (tech & AI), **[B]** = Student B
+About 380 words each, which is about 2 min 45 s at a calm pace. **[A]** = Mădălina (tech & AI), **[B]** = Luciana
 (research, UI & economics). Practise with a timer; the live demo replaces the part in *italics* if there is time.
 
 ---

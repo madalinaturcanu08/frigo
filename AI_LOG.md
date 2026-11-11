@@ -325,7 +325,7 @@ project to be up to standards and get a 10/10". We told the AI we could not coll
 run; phone speed was measured only in laptop browsers emulating phones.
 
 **To do by the team**
-- [ ] Fill in names and the role split ([Elev A] / [Elev B]) in the abstract, logbook, poster, pitch and code guide.
+- [x] Fill in names and the role split in the abstract, logbook, poster, pitch and code guide (2026-11-12).
 - [ ] Run the speed test on your own phones (Settings → Receipt AI → Measure the AI speed) and add the numbers to
       `docs/benchmarks/RESULTS.md`.
 - [ ] Paste `supabase/shelf-life-verified.sql` into the Supabase SQL editor so the live site uses the verified values.
