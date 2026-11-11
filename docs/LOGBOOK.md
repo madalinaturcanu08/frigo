@@ -1,7 +1,7 @@
 # Jurnal de evidență (Lab Logbook) — Frigo
 
 Datele sunt cele reale din istoricul Git al proiectului (`git log`) și din `AI_LOG.md`. Echipa: **Mădălina** = tehnic, arhitectură și AI; **Luciana** = cercetare, UI/UX și economie
-(clasa a XII-a F, Liceul „Orizont” Durlești; coordonator: Azamat Jauysh). Unde codul a fost scris cu
+(clasa a XII-a F, Liceul „Orizont” Durlești; coordonator: Azamat Jauysh, profesor de informatică). Unde codul a fost scris cu
 asistentul AI Claude Code, scrie „+ Claude Code” (toate cererile sunt în `AI_LOG.md`).
 
 | Data | Activitate / ipoteză verificată | Metodă | Rezultat cantitativ | Cine | Dovadă |
