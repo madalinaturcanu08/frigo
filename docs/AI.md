@@ -6,6 +6,11 @@ dictionary knows ~40 common products; every other line came out as category "Oth
 **What the AI does:** for every line read from the receipt, it suggests **which product it is** (clean name +
 category + food / not food) and **how sure it is**. You still check and confirm every item before anything is saved.
 
+
+> **Update — session 12 (real data).** The results below are on lines we wrote ourselves. On **real** Moldovan
+> products (Kaufland Moldova, Open Food Facts) the AI scored much lower, and a simple fuzzy dictionary did as well. The
+> product list was extended to 196 types after that test. Full, honest results: [`docs/benchmarks/RESULTS.md`](benchmarks/RESULTS.md).
+
 ## Model card
 
 | | |
@@ -23,7 +28,7 @@ category + food / not food) and **how sure it is**. You still check and confirm 
 
 1. The model turns text into 384 numbers (a *vector*) describing its meaning. Similar meanings → similar
    vectors, **in any language**: `ЧЕСНОК`, `USTUROI` and `garlic` land close together.
-2. Frigo has a list of 159 products (`src/lib/foodCatalog.ts`), each named in Romanian, Russian and English.
+2. Frigo has a list of 196 product types (159 in session 8) (`src/lib/foodCatalog.ts`), each named in Romanian, Russian and English.
    Their vectors are computed in advance (`npm run ai:catalog` → `public/ai/catalog.json`, 272 KB).
 3. Each receipt line is cleaned (sizes, %, codes removed: `LAPTE JLC 2.5% 1L` → `lapte jlc`), turned into a
    vector and compared with every product. The closest one wins.

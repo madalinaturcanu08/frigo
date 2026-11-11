@@ -233,7 +233,8 @@
     "aiModel": "Model: {model} · versiunea {version} · licență {license} · rulează în browser cu Transformers.js",
     "languageLead": "Alege limba pentru toată aplicația.",
     "about": "Despre Frigo",
-    "aboutLead": "Un ajutor gratuit împotriva risipei de mâncare pentru familiile din Moldova, făcut pentru InfoMatrix 2027 (obiectivul ONU 12.3: risipa de mâncare redusă la jumătate)."
+    "aboutLead": "Un ajutor gratuit împotriva risipei de mâncare pentru familiile din Moldova, făcut pentru InfoMatrix 2027 (obiectivul ONU 12.3: risipa de mâncare redusă la jumătate).",
+    "aiBenchmark": "Măsoară viteza AI pe acest dispozitiv"
   },
   "reminders": {
     "title": "{count, plural, one {# produs de folosit curând} few {# produse de folosit curând} other {# de produse de folosit curând}}",
@@ -433,5 +434,24 @@
     "aiUnsure": "AI · nesigur",
     "aiNoIdea": "AI nu l-a recunoscut",
     "aiSimilarity": "Cât de aproape e potrivirea AI-ului: {value}%"
+  },
+  "benchmark": {
+    "kicker": "Cercetare",
+    "title": "Test de viteză AI",
+    "lead": "Măsoară cât de repede rulează AI-ul pentru bonuri pe acest dispozitiv, pentru raportul de cercetare. Prima dată se descarcă modelul (cam {mb} MB, folosește Wi-Fi). Nu se trimite nimic.",
+    "start": "Pornește testul",
+    "running": "Se măsoară…",
+    "downloading": "Se descarcă modelul… {pct}%",
+    "error": "Testul nu a putut rula pe acest dispozitiv.",
+    "modelReady": "Model gata în",
+    "firstDownload": "include prima descărcare",
+    "perLine": "Pe rând, câte unul",
+    "perLineBatch": "Pe rând, tot bonul odată",
+    "heap": "Memoria paginii (JS heap)",
+    "notAvailable": "browserul nu o arată",
+    "device": "Dispozitiv",
+    "cores": "nuclee",
+    "copy": "Copiază rezultatele",
+    "copied": "Copiat"
   }
 }

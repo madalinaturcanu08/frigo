@@ -90,7 +90,7 @@
       <rect x="10" y="11" width="1" height="1" fill="#ff8fa3"/>
     </svg>
     <div>
-      <div class="kicker">Guide for the presenter · no programming needed</div>
+      <div class="kicker">Guide for the presenters · InfoMatrix &amp; MoldSEF</div>
       <h1>Presenting Frigo</h1>
       <p class="lead">Everything you need to show Frigo and answer questions about it, in plain words.</p>
     </div>
@@ -126,7 +126,7 @@
 
   <section>
     <h2>What it's built with</h2>
-    <p>You don't need to know how to program. These are the tools Frigo is made of, and what each one does, in one line.</p>
+    <p>These are the tools Frigo is made of, and what each one does, in one line. The jury will also ask how the code works, so both presenters must study <b>docs/CODE_GUIDE.md</b> (the AI maths, offline sync and database security) and be able to explain it without notes.</p>
     <div class="scroll">
       <table>
         <thead><tr><th>Tool</th><th>What it does for Frigo</th></tr></thead>
@@ -155,16 +155,16 @@
     <p>Receipts print short, messy names like <b>LAPTE JLC 2.5% 1L</b>. Frigo turns that into <b>Milk · dairy · about 7 days</b>.</p>
     <ul>
       <li>First, a <b>dictionary</b> of common Moldovan shop abbreviations is checked.</li>
-      <li>Then a small AI model (<b>multilingual-e5-small</b>, by Microsoft, free MIT license) compares the <b>meaning</b> of each line with a list of 159 foods written in Romanian, Russian and English, and picks the closest one. It understands that "ЧЕСНОК", "USTUROI" and "garlic" are the same thing.</li>
+      <li>Then a small AI model (<b>multilingual-e5-small</b>, by Microsoft, free MIT license) compares the <b>meaning</b> of each line with a list of 196 kinds of product written in Romanian, Russian and English, and picks the closest one. It understands that "ЧЕСНОК", "USTUROI" and "garlic" are the same thing.</li>
       <li>It also says <b>how sure</b> it is. When it isn't sure, the line is marked "check this". When it's only guessing, it doesn't show the guess at all.</li>
     </ul>
     <div class="big">
-      <div><b>87%</b><span>of unknown receipt lines put in the right category by the AI</span></div>
-      <div><b>7%</b><span>by the dictionary alone, on the same 109 test lines</span></div>
-      <div><b>96%</b><span>right when the AI says it's sure</span></div>
+      <div><b>214</b><span>real Moldovan products tested (Kaufland Moldova + Open Food Facts)</span></div>
+      <div><b>75</b><span>score out of 100 on Kaufland products, the same as a simple fuzzy dictionary</span></div>
+      <div><b>86</b><span>score on lines we wrote ourselves: synthetic tests made the AI look better than it is</span></div>
     </div>
     <p><b>Responsible AI:</b> the receipt never leaves the phone; the AI only suggests and the person always decides; every suggestion is labelled; it can be turned off and deleted in Settings; when you correct a line, Frigo remembers it next time.</p>
-    <p><b>Honest limits:</b> the test receipts were made up for testing, not real ones. The AI still makes some mistakes (it once thought mushrooms were shampoo), which is exactly why a person checks every line.</p>
+    <p><b>The research result:</b> our hypothesis said the AI would beat simple text matching by at least 20 points. On real data it didn't, so the hypothesis was rejected. That's a real scientific finding, and the jury will respect it if you explain why (see docs/benchmarks/RESULTS.md, "What we learned"). It's also why a person checks every line.</p>
   </section>
 
   <section>

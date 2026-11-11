@@ -1,0 +1,242 @@
+{
+ "date": "2026-11-11",
+ "machine": "darwin arm64, Node v24.18.0",
+ "sets": {
+  "real · as printed": {
+   "n": 84,
+   "methods": {
+    "1 exact dictionary": {
+     "accuracy": 50,
+     "macroF1": 53
+    },
+    "2 fuzzy dictionary (Levenshtein)": {
+     "accuracy": 46.4,
+     "macroF1": 47.6
+    },
+    "3 MiniLM-L12 embeddings": {
+     "accuracy": 50,
+     "macroF1": 39.6
+    },
+    "4 e5-small embeddings": {
+     "accuracy": 58.3,
+     "macroF1": 55.6
+    },
+    "5 hybrid: dictionary + e5 + gating (Frigo)": {
+     "accuracy": 50,
+     "macroF1": 56.1,
+     "byConfidence": {
+      "high": {
+       "n": 17,
+       "accuracy": 76.5
+      },
+      "medium": {
+       "n": 41,
+       "accuracy": 61
+      },
+      "low": {
+       "n": 26,
+       "accuracy": 15.4
+      }
+     }
+    }
+   }
+  },
+  "real · receipt style": {
+   "n": 84,
+   "methods": {
+    "1 exact dictionary": {
+     "accuracy": 51.2,
+     "macroF1": 54.2
+    },
+    "2 fuzzy dictionary (Levenshtein)": {
+     "accuracy": 47.6,
+     "macroF1": 48.3
+    },
+    "3 MiniLM-L12 embeddings": {
+     "accuracy": 51.2,
+     "macroF1": 40.9
+    },
+    "4 e5-small embeddings": {
+     "accuracy": 56,
+     "macroF1": 53.1
+    },
+    "5 hybrid: dictionary + e5 + gating (Frigo)": {
+     "accuracy": 54.8,
+     "macroF1": 58.6,
+     "byConfidence": {
+      "high": {
+       "n": 16,
+       "accuracy": 81.3
+      },
+      "medium": {
+       "n": 47,
+       "accuracy": 61.7
+      },
+      "low": {
+       "n": 21,
+       "accuracy": 19
+      }
+     }
+    }
+   }
+  },
+  "synthetic (AI-written)": {
+   "n": 109,
+   "methods": {
+    "1 exact dictionary": {
+     "accuracy": 20.2,
+     "macroF1": 21.4
+    },
+    "2 fuzzy dictionary (Levenshtein)": {
+     "accuracy": 83.5,
+     "macroF1": 84.4
+    },
+    "3 MiniLM-L12 embeddings": {
+     "accuracy": 70.6,
+     "macroF1": 68.4
+    },
+    "4 e5-small embeddings": {
+     "accuracy": 87.2,
+     "macroF1": 88.2
+    },
+    "5 hybrid: dictionary + e5 + gating (Frigo)": {
+     "accuracy": 88.1,
+     "macroF1": 88.2,
+     "byConfidence": {
+      "high": {
+       "n": 83,
+       "accuracy": 96.4
+      },
+      "medium": {
+       "n": 20,
+       "accuracy": 65
+      },
+      "low": {
+       "n": 6,
+       "accuracy": 50
+      }
+     }
+    }
+   }
+  }
+ },
+ "speed": {
+  "MiniLM-L12 embeddings": {
+   "loadMs": 372,
+   "msPerLineSingle": 1.3,
+   "msPerLineBatch": 0.7,
+   "memoryMB": 714
+  },
+  "e5-small embeddings": {
+   "loadMs": 941,
+   "msPerLineSingle": 1.7,
+   "msPerLineBatch": 0.9,
+   "memoryMB": 703
+  },
+  "fuzzy dictionary (Levenshtein)": {
+   "msPerLineSingle": 0.4
+  }
+ },
+ "thresholds": [
+  {
+   "threshold": 0.8,
+   "coverage": 100,
+   "precision": 69
+  },
+  {
+   "threshold": 0.81,
+   "coverage": 99.6,
+   "precision": 68.8
+  },
+  {
+   "threshold": 0.82,
+   "coverage": 98.2,
+   "precision": 69.9
+  },
+  {
+   "threshold": 0.83,
+   "coverage": 97.1,
+   "precision": 70.6
+  },
+  {
+   "threshold": 0.84,
+   "coverage": 92.8,
+   "precision": 72.8
+  },
+  {
+   "threshold": 0.85,
+   "coverage": 87,
+   "precision": 74.3
+  },
+  {
+   "threshold": 0.86,
+   "coverage": 80.9,
+   "precision": 77.2
+  },
+  {
+   "threshold": 0.87,
+   "coverage": 72.2,
+   "precision": 81.5
+  },
+  {
+   "threshold": 0.88,
+   "coverage": 58.5,
+   "precision": 84
+  },
+  {
+   "threshold": 0.89,
+   "coverage": 51.6,
+   "precision": 87.4
+  },
+  {
+   "threshold": 0.9,
+   "coverage": 44,
+   "precision": 89.3
+  },
+  {
+   "threshold": 0.91,
+   "coverage": 37.5,
+   "precision": 91.3
+  },
+  {
+   "threshold": 0.92,
+   "coverage": 30.7,
+   "precision": 92.9
+  },
+  {
+   "threshold": 0.93,
+   "coverage": 23.1,
+   "precision": 98.4
+  },
+  {
+   "threshold": 0.94,
+   "coverage": 15.5,
+   "precision": 100
+  },
+  {
+   "threshold": 0.95,
+   "coverage": 13.4,
+   "precision": 100
+  },
+  {
+   "threshold": 0.96,
+   "coverage": 12.3,
+   "precision": 100
+  },
+  {
+   "threshold": 0.97,
+   "coverage": 11.6,
+   "precision": 100
+  },
+  {
+   "threshold": 0.98,
+   "coverage": 10.5,
+   "precision": 100
+  },
+  {
+   "threshold": 0.99,
+   "coverage": 9.4,
+   "precision": 100
+  }
+ ]
+}

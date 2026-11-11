@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Frigo — Poster A0 (schiță)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@400;600;700&family=Doto:wght@900&display=swap">
+<style>
+  @page { size: 841mm 1189mm; margin: 0; }
+  :root { --lime: #e3f46e; --ink: #121212; --bg: #f5f7f2; --sky: #7db8ee; --fresh: #4caf50; --soon: #f2b33d; --exp: #e5533d; }
+  * { box-sizing: border-box; }
+  body { margin: 0; width: 841mm; height: 1189mm; background: var(--bg); color: var(--ink); font: 400 27pt/1.35 'Outfit', sans-serif; display: flex; flex-direction: column; }
+  header { flex: none; height: 200mm; background: linear-gradient(180deg, #7db8ee, #d6eafb); position: relative; overflow: hidden; padding: 30mm 40mm; display: flex; align-items: center; gap: 30mm; }
+  header::after { content: ''; position: absolute; left: -10%; right: -10%; bottom: -70mm; height: 120mm; background: #93c454; border-radius: 50%; }
+  header svg { width: 130mm; position: relative; z-index: 1; flex: none; }
+  header .t { position: relative; z-index: 1; }
+  h1 { font: 400 190pt/0.9 'Archivo Black', sans-serif; margin: 0; letter-spacing: -4pt; }
+  .tag { font: 600 46pt/1.15 'Outfit'; margin-top: 8mm; max-width: 520mm; }
+  .who { font: 400 30pt 'Outfit'; margin-top: 8mm; }
+  main { flex: 1; min-height: 0; padding: 16mm 30mm 16mm; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: auto; align-content: space-between; gap: 12mm; }
+  section { background: #fff; border: 2mm solid var(--ink); border-radius: 14mm; padding: 10mm 12mm; box-shadow: 0 3mm 0 var(--ink); }
+  h2 { font: 400 52pt/1.1 'Archivo Black', sans-serif; margin: 0 0 6mm; }
+  .big { font: 900 96pt/0.95 'Doto', monospace; white-space: nowrap; }
+  .stat { display: flex; flex-direction: column; gap: 1mm; margin: 5mm 0; }
+  .stat span { font-size: 27pt; }
+  .hyp { background: var(--lime); border: 1.5mm solid var(--ink); border-radius: 8mm; padding: 8mm; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 28pt; }
+  th, td { padding: 2.5mm 2mm; border-bottom: 0.6mm solid #ccc; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: 20pt; text-transform: uppercase; color: #555; }
+  tr.me td { font-weight: 700; background: #f1f8dc; }
+  img { width: 100%; display: block; margin: 4mm 0; }
+  ul { margin: 0; padding-left: 9mm; }
+  li { margin: 2mm 0; }
+  .verdict { display: inline-block; margin: 1.5mm 0; padding: 2mm 6mm; border-radius: 99mm; border: 1mm solid var(--ink); font-weight: 700; font-size: 24pt; }
+  .no { background: #f6c9c1; } .yes { background: #c9ecc4; }
+  .span2 { grid-column: span 2; }
+  footer { padding: 0 30mm 14mm; font-size: 17pt; color: #444; }
+  .flow { display: flex; gap: 4mm; align-items: center; flex-wrap: wrap; font-weight: 600; }
+  .flow b { background: var(--bg); border: 1mm solid var(--ink); border-radius: 6mm; padding: 3mm 5mm; }
+</style>
+</head>
+<body>
+<header>
+  <svg viewBox="0 0 14 18" shape-rendering="crispEdges"><rect x="1" y="1" width="12" height="15" fill="#e3f46e"/><rect x="1" y="0" width="12" height="1" fill="#121212"/><rect x="0" y="1" width="1" height="15" fill="#121212"/><rect x="13" y="1" width="1" height="15" fill="#121212"/><rect x="1" y="16" width="12" height="1" fill="#121212"/><rect x="1" y="6" width="12" height="1" fill="#121212"/><rect x="11" y="2" width="1" height="3" fill="#121212"/><rect x="11" y="8" width="1" height="4" fill="#121212"/><rect x="2" y="17" width="2" height="1" fill="#121212"/><rect x="10" y="17" width="2" height="1" fill="#121212"/><rect x="2" y="2" width="1" height="2" fill="#fff"/><rect x="4" y="9" width="2" height="2" fill="#121212"/><rect x="8" y="9" width="2" height="2" fill="#121212"/><rect x="4" y="12" width="1" height="1" fill="#121212"/><rect x="5" y="13" width="4" height="1" fill="#121212"/><rect x="9" y="12" width="1" height="1" fill="#121212"/><rect x="3" y="11" width="1" height="1" fill="#ff8fa3"/><rect x="10" y="11" width="1" height="1" fill="#ff8fa3"/></svg>
+  <div class="t">
+    <h1>Frigo</h1>
+    <div class="tag">AI pe telefon care ajută familiile din Moldova să nu mai arunce mâncare</div>
+    <div class="who">[Elev A] · [Elev B] · clasa a XII-a · [Liceul] · coordonator: [profesor] · ODD 12.3</div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>Problema</h2>
+    <div class="stat"><div class="big">70,6</div><span>kg de mâncare aruncată de o persoană pe an în Moldova (UNEP 2024)</span></div>
+    <div class="stat"><div class="big">4 651</div><span>lei pe an pierduți de o gospodărie medie (calcul pe date BNS 2024–2025)</span></div>
+    <div class="stat"><div class="big">9,6%</div><span>din alimentele cumpărate ajung la gunoi</span></div>
+    <p>Cauza principală: mâncarea e uitată în frigider până expiră.</p>
+  </section>
+
+  <section>
+    <h2>Soluția</h2>
+    <ul>
+      <li>Frigiderul sortat după expirare: <b style="color:var(--exp)">expirat</b> · <b style="color:#b07a10">de folosit</b> · <b style="color:#2e7d32">proaspăt</b></li>
+      <li>Adăugare în 3 atingeri, prin <b>cod de bare</b> sau <b>poza bonului</b></li>
+      <li>Memento zilnic, rețete moldovenești, statistici în lei</li>
+      <li>Funcționează <b>offline</b>, în <b>RO / RU / EN</b>, gratuit</li>
+    </ul>
+    <p class="flow"><b>Poza bonului</b>→<b>OCR pe telefon</b>→<b>AI pe telefon</b>→<b>tu confirmi</b></p>
+    <p><b>Bonul nu părăsește telefonul.</b> AI-ul doar sugerează; omul decide.</p>
+  </section>
+
+  <section>
+    <h2>Ipoteza</h2>
+    <div class="hyp">H1: dicționar RO/RU + încorporări semantice (e5-small, INT8) + prag de încredere cresc macro-F1 cu ≥ 20 puncte față de cel mai bun reper text, sub 50 ms/rând.</div>
+    <p>H2: rândurile „sigure” sunt corecte ≥ 90 %. H3: modelul ≤ 150 MB.</p>
+    <p>Scrisă <b>înainte</b> de testul pe date reale.</p>
+  </section>
+
+  <section class="span2">
+    <h2>Rezultate pe date reale</h2>
+    <table>
+      <tr><th>Metodă (macro-F1)</th><th>Kaufland v1</th><th>Kaufland v2</th><th>Set ținut deoparte</th><th>Sintetic</th></tr>
+      <tr><td>Dicționar exact</td><td>54,2</td><td>54,2</td><td>47,7</td><td>21,4</td></tr>
+      <tr><td>Dicționar fuzzy (Levenshtein)</td><td>48,3</td><td>75,2</td><td>41,1</td><td>84,4</td></tr>
+      <tr><td>MiniLM-L12</td><td>40,9</td><td>53,2</td><td>35,9</td><td>68,0</td></tr>
+      <tr><td>e5-small</td><td>53,1</td><td>73,8</td><td>32,8</td><td>87,2</td></tr>
+      <tr class="me"><td>Frigo hibrid</td><td>58,6</td><td>74,6</td><td>48,3</td><td>86,4</td></tr>
+    </table>
+    <p>214 produse reale: 84 Kaufland Moldova (categoria magazinului) + 130 Open Food Facts (ținute deoparte) · 109 rânduri sintetice.</p>
+    <p><span class="verdict no">H1 respinsă</span> <span class="verdict no">H2 respinsă pe date reale</span> <span class="verdict yes">H3 confirmată: 118 MB</span> <span class="verdict yes">12–14 ms/rând în browser</span></p>
+    <img src="../benchmarks/thresholds.svg" alt="" style="max-height:135mm;object-fit:contain">
+  </section>
+
+  <section>
+    <h2>Ce am învățat</h2>
+    <ul>
+      <li>Testele sintetice au supraestimat AI-ul cu până la <b>38 de puncte</b>.</li>
+      <li><b>Lista de produse</b> contează mai mult decât modelul: +16–27 puncte după completare.</li>
+      <li>Încrederea calibrată pe date sintetice nu se transferă → <b>omul verifică fiecare rând</b>.</li>
+      <li>AI-ul ajută la sinonime RU ↔ RO ↔ EN (<i>ЧЕСНОК = USTUROI</i>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Valoare economică</h2>
+    <div class="stat"><div class="big">1 163–</div><div class="big">1 628</div></div>
+    <p>lei economisiți de o familie pe an, la o reducere a risipei de 25–35 % (scenarii)</p>
+    <p><b>1 000 de familii:</b> 1,2–1,6 mil. lei și 41–57 tone de mâncare salvată pe an</p>
+    <p><b>Cost pentru familie: 0 lei.</b> AI-ul rulează pe telefon, fără taxe pe cerere.</p>
+  </section>
+
+  <section>
+    <h2>AI responsabil</h2>
+    <ul>
+      <li>Datele bonului rămân pe telefon</li>
+      <li>Fiecare sugestie AI e etichetată („sigur” / „nesigur”)</li>
+      <li>Ghicitul nesigur e ascuns; utilizatorul confirmă tot</li>
+      <li>Model și versiune fixate (e5-small, MIT); AI-ul se poate opri și șterge</li>
+      <li>Toate cererile către asistentul de programare AI sunt în <b>AI_LOG.md</b></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tehnologie</h2>
+    <p>Next.js 16 · TypeScript · Supabase (Postgres, RLS pe 8 tabele) · Vercel · Tesseract.js · Transformers.js · Web Push · Service Worker · 64 teste unitare + 20 teste în browser (Chrome + Safari)</p>
+    <p><b>Pași următori:</b> bonuri termice reale, pilot cu 5–10 familii, viteză pe telefoane reale.</p>
+  </section>
+</main>
+
+<footer>Surse: UNEP Food Waste Index 2024 (prin Our World in Data); BNS: Veniturile și cheltuielile populației 2024, StatBank NIV030/NIV060; BNM curs oficial 11.11.2026; USDA FSIS FoodKeeper v128; Wang et al. 2024 (arXiv:2402.05672); Kaufland Moldova; Open Food Facts (ODbL). Cod și date: github.com/madalinaturcanu08/frigo</footer>
+</body>
+</html>

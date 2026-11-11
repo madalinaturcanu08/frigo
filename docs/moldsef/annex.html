@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>Frigo — Anexă vizuală</title>
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 9.5pt/1.3 'Times New Roman', Times, serif; color: #121212; }
+  h1 { font-size: 14pt; margin: 0 0 2mm; text-align: center; }
+  h2 { font-size: 10.5pt; margin: 0 0 1.5mm; }
+  .sub { text-align: center; font-style: italic; margin-bottom: 3mm; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .box { border: 0.4mm solid #555; border-radius: 2mm; padding: 2mm; break-inside: avoid; }
+  .wide { grid-column: 1 / -1; }
+  svg { width: 100%; height: auto; display: block; }
+  img { width: 100%; max-height: 58mm; object-fit: contain; display: block; }
+  .cap { font-size: 8.5pt; color: #333; margin-top: 1mm; }
+</style>
+</head>
+<body>
+<h1>FRIGO — Anexă vizuală</h1>
+<div class="sub">Arhitectura sistemului · Schema bazei de date (ERD) · Rezultatele testelor pe date reale</div>
+<div class="grid">
+
+  <div class="box wide">
+    <h2>1. Arhitectura sistemului</h2>
+    <svg viewBox="0 0 760 210" font-family="Times New Roman, serif" font-size="11">
+      <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#333"/></marker></defs>
+      <rect x="5" y="5" width="350" height="200" rx="8" fill="#f2f8e6" stroke="#5a8a2a"/>
+      <text x="15" y="22" font-weight="bold">Telefonul utilizatorului (browser) — datele bonului nu pleacă de aici</text>
+      <rect x="15" y="32" width="150" height="34" rx="5" fill="#fff" stroke="#333"/><text x="90" y="53" text-anchor="middle">Interfața Next.js (RO/RU/EN)</text>
+      <rect x="15" y="76" width="150" height="34" rx="5" fill="#fff" stroke="#333"/><text x="90" y="91" text-anchor="middle">Cameră: cod de bare (ZXing)</text><text x="90" y="104" text-anchor="middle">și poză bon</text>
+      <rect x="185" y="76" width="160" height="34" rx="5" fill="#fff" stroke="#333"/><text x="265" y="91" text-anchor="middle">OCR: Tesseract.js</text><text x="265" y="104" text-anchor="middle">(ron + rus + eng)</text>
+      <rect x="185" y="120" width="160" height="44" rx="5" fill="#e3f46e" stroke="#333"/><text x="265" y="135" text-anchor="middle">AI în Web Worker:</text><text x="265" y="148" text-anchor="middle">e5-small INT8 (118 MB)</text><text x="265" y="160" text-anchor="middle">+ dicționar + prag încredere</text>
+      <rect x="15" y="120" width="150" height="44" rx="5" fill="#fff" stroke="#333"/><text x="90" y="138" text-anchor="middle">Service Worker:</text><text x="90" y="152" text-anchor="middle">offline + notificări</text>
+      <rect x="15" y="172" width="330" height="26" rx="5" fill="#fff" stroke="#333"/><text x="180" y="189" text-anchor="middle">Coada offline (localStorage) → sincronizare când revine internetul</text>
+      <path d="M165 93H185" stroke="#333" marker-end="url(#a)"/><path d="M265 110V120" stroke="#333" marker-end="url(#a)"/>
+      <path d="M185 142H165" stroke="#333" stroke-dasharray="3 2"/><text x="175" y="69" font-size="9" fill="#555"> </text>
+
+      <rect x="405" y="5" width="350" height="200" rx="8" fill="#eef4fb" stroke="#2f6fbf"/>
+      <text x="415" y="22" font-weight="bold">Server și servicii (planuri gratuite)</text>
+      <rect x="415" y="32" width="160" height="44" rx="5" fill="#fff" stroke="#333"/><text x="495" y="50" text-anchor="middle">Vercel: Next.js</text><text x="495" y="64" text-anchor="middle">Server Actions, proxy</text>
+      <rect x="590" y="32" width="155" height="44" rx="5" fill="#fff" stroke="#333"/><text x="667" y="50" text-anchor="middle">Supabase: Postgres</text><text x="667" y="64" text-anchor="middle">+ Auth + RLS (8 tabele)</text>
+      <rect x="415" y="90" width="160" height="34" rx="5" fill="#fff" stroke="#333"/><text x="495" y="105" text-anchor="middle">Cron zilnic 06:00 UTC</text><text x="495" y="118" text-anchor="middle">→ Web Push (VAPID)</text>
+      <rect x="590" y="90" width="155" height="34" rx="5" fill="#fff" stroke="#333"/><text x="667" y="111" text-anchor="middle">Open Food Facts API</text>
+      <rect x="415" y="138" width="330" height="26" rx="5" fill="#fff" stroke="#333"/><text x="580" y="155" text-anchor="middle">Hugging Face: descărcare unică a modelului (o singură dată)</text>
+      <rect x="415" y="172" width="330" height="26" rx="5" fill="#fff" stroke="#333"/><text x="580" y="189" text-anchor="middle">GitHub: cod + teste automate (64 unitare, 20 în browser)</text>
+      <path d="M575 54H590" stroke="#333" marker-end="url(#a)"/>
+      <path d="M355 50H415" stroke="#333" marker-end="url(#a)"/><text x="385" y="45" text-anchor="middle" font-size="9">HTTPS</text>
+      <path d="M415 107H355" stroke="#333" marker-end="url(#a)"/><text x="385" y="102" text-anchor="middle" font-size="9">notificare</text>
+      <path d="M415 151H345" stroke="#333" marker-end="url(#a)"/>
+    </svg>
+  </div>
+
+  <div class="box">
+    <h2>2. Schema bazei de date (ERD)</h2>
+    <svg viewBox="0 0 370 300" font-family="Times New Roman, serif" font-size="9.5">
+      <defs><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#333"/></marker></defs>
+      <g>
+        <rect x="130" y="5" width="110" height="38" fill="#fff" stroke="#333"/><rect x="130" y="5" width="110" height="13" fill="#ddd" stroke="#333"/>
+        <text x="185" y="15" text-anchor="middle" font-weight="bold">auth.users</text><text x="135" y="30">id (PK)</text><text x="135" y="40">email</text>
+      </g>
+      <g>
+        <rect x="5" y="70" width="115" height="58" fill="#fff" stroke="#333"/><rect x="5" y="70" width="115" height="13" fill="#ddd" stroke="#333"/>
+        <text x="62" y="80" text-anchor="middle" font-weight="bold">profiles</text><text x="10" y="94">id (PK, FK)</text><text x="10" y="105">display_name</text><text x="10" y="116">language ro|ru|en</text>
+      </g>
+      <g>
+        <rect x="130" y="70" width="115" height="120" fill="#f2f8e6" stroke="#333"/><rect x="130" y="70" width="115" height="13" fill="#cfe5a8" stroke="#333"/>
+        <text x="187" y="80" text-anchor="middle" font-weight="bold">fridge_items</text>
+        <text x="135" y="94">id (PK)</text><text x="135" y="105">user_id (FK→users)</text><text x="135" y="116">name, category</text><text x="135" y="127">quantity, unit, storage</text><text x="135" y="138">price_lei</text><text x="135" y="149">expires_at, estimated</text><text x="135" y="160">status active|eaten|</text><text x="135" y="171">  wasted, closed_at</text><text x="135" y="182">source manual|barcode|receipt</text>
+      </g>
+      <g>
+        <rect x="255" y="70" width="110" height="58" fill="#fff" stroke="#333"/><rect x="255" y="70" width="110" height="13" fill="#ddd" stroke="#333"/>
+        <text x="310" y="80" text-anchor="middle" font-weight="bold">receipt_corrections</text><text x="260" y="94">id (PK)</text><text x="260" y="105">user_id (FK)</text><text x="260" y="116">raw_text → name, cat.</text>
+      </g>
+      <g>
+        <rect x="255" y="140" width="110" height="48" fill="#fff" stroke="#333"/><rect x="255" y="140" width="110" height="13" fill="#ddd" stroke="#333"/>
+        <text x="310" y="150" text-anchor="middle" font-weight="bold">push_subscriptions</text><text x="260" y="164">id (PK), user_id (FK)</text><text x="260" y="175">endpoint, keys</text>
+      </g>
+      <g>
+        <rect x="5" y="140" width="115" height="58" fill="#fff" stroke="#333"/><rect x="5" y="140" width="115" height="13" fill="#ddd" stroke="#333"/>
+        <text x="62" y="150" text-anchor="middle" font-weight="bold">products (partajat)</text><text x="10" y="164">barcode (PK)</text><text x="10" y="175">name, category</text><text x="10" y="186">created_by (FK)</text>
+      </g>
+      <g>
+        <rect x="5" y="215" width="115" height="48" fill="#fff" stroke="#333"/><rect x="5" y="215" width="115" height="13" fill="#ddd" stroke="#333"/>
+        <text x="62" y="225" text-anchor="middle" font-weight="bold">shelf_life</text><text x="10" y="239">(category, storage) PK</text><text x="10" y="250">days, source (USDA)</text>
+      </g>
+      <g>
+        <rect x="140" y="215" width="105" height="48" fill="#fff" stroke="#333"/><rect x="140" y="215" width="105" height="13" fill="#ddd" stroke="#333"/>
+        <text x="192" y="225" text-anchor="middle" font-weight="bold">recipes</text><text x="145" y="239">id (PK), slug</text><text x="145" y="250">title_/steps_ ro|ru|en</text>
+      </g>
+      <g>
+        <rect x="255" y="215" width="110" height="48" fill="#fff" stroke="#333"/><rect x="255" y="215" width="110" height="13" fill="#ddd" stroke="#333"/>
+        <text x="310" y="225" text-anchor="middle" font-weight="bold">recipe_ingredients</text><text x="260" y="239">recipe_id (FK)</text><text x="260" y="250">category | keyword</text>
+      </g>
+      <path d="M150 43L80 70" stroke="#333" marker-end="url(#b)"/><path d="M185 43V70" stroke="#333" marker-end="url(#b)"/><path d="M220 43L300 70" stroke="#333" marker-end="url(#b)"/>
+      <path d="M240 30C380 30 380 100 345 140" fill="none" stroke="#333" marker-end="url(#b)"/>
+      <path d="M135 30C20 30 40 120 50 140" fill="none" stroke="#999" stroke-dasharray="3 2" marker-end="url(#b)"/>
+      <path d="M245 239H255" stroke="#333" marker-start="url(#b)"/>
+      <path d="M62 198V215" stroke="#999" stroke-dasharray="3 2"/>
+      <text x="5" y="282" font-size="9">Verde = tabelul principal. Săgeată = cheie străină (FK). Toate tabelele au securitate</text>
+      <text x="5" y="294" font-size="9">pe rânduri (RLS): fiecare vede doar rândurile proprii; tabelele comune sunt doar citire.</text>
+    </svg>
+  </div>
+
+  <div class="box">
+    <h2>3. Macro-F1 pe metode (date reale și sintetice)</h2>
+    <img src="../benchmarks/methods.svg" alt="">
+    <div class="cap">Pe date reale, hibridul Frigo ≈ dicționarul fuzzy (Kaufland 74,6 vs 75,2; set ținut deoparte 48,3 vs 47,7) → H1 respinsă. Pe datele sintetice AI-ul pare mult mai bun: testele sintetice supraestimează.</div>
+  </div>
+
+  <div class="box">
+    <h2>4. Pragul de încredere: acoperire vs precizie</h2>
+    <img src="../benchmarks/thresholds.svg" alt="">
+    <div class="cap">0,86 → 78 % din rânduri, 79 % corecte; 0,90 („sigur”) → 40 % din rânduri, 88 % corecte.</div>
+  </div>
+
+  <div class="box">
+    <h2>5. Matricea de confuzie (Kaufland, stil bon)</h2>
+    <img src="../benchmarks/confusion-real.svg" alt="">
+    <div class="cap">Viteză: 12–14 ms/rând în browser (laptop), 1,9 ms în Node.js. Model: 118 MB, o singură descărcare (H3 confirmată).</div>
+  </div>
+
+</div>
+</body>
+</html>

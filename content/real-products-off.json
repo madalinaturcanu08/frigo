@@ -1,0 +1,1937 @@
+{
+ "_note": "Held-out real test set: products sold in Moldova from Open Food Facts (openfoodfacts.org, ODbL), categories by its community, mapped to groups by fixed rules in scripts/collect-off.mjs. Not used while improving Frigo.",
+ "collected": "2026-11-11",
+ "products": [
+  {
+   "code": "8722700221906",
+   "name": "Green tea Mandarin Orange",
+   "brand": "Lipton",
+   "gold": "pantry",
+   "accept": [
+    "pantry",
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:hot-beverages"
+   ]
+  },
+  {
+   "code": "4337185423673",
+   "name": "ketcup",
+   "brand": "K-Classic",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:condiments",
+    "en:spices"
+   ]
+  },
+  {
+   "code": "5942289010651",
+   "name": "Vişine",
+   "brand": "Tymbark",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-beverages",
+    "en:fruit-based-beverages"
+   ]
+  },
+  {
+   "code": "5942289000591",
+   "name": "Piersici nectar",
+   "brand": "Tymbark",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-beverages",
+    "en:fruit-based-beverages"
+   ]
+  },
+  {
+   "code": "4660013948124",
+   "name": "Bitterschokolade ohne Zuckerzusatz &quot;72% Kakao&quot; &quot;Charged&quot;",
+   "brand": "Pobeda",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:sweet-snacks"
+   ]
+  },
+  {
+   "code": "8720618507037",
+   "name": "Vroemmm Cadillac Candy IPA",
+   "brand": "Kraftbier",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:alcoholic-beverages",
+    "en:beers",
+    "en:ales"
+   ]
+  },
+  {
+   "code": "8710638001103",
+   "name": "Groninger Mosterd Grof & pittig",
+   "brand": "Marne",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:condiments",
+    "en:sauces",
+    "en:mustards"
+   ]
+  },
+  {
+   "code": "4641031002111",
+   "name": "хлеб Milina",
+   "brand": "",
+   "gold": "bakery",
+   "accept": [
+    "bakery",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes",
+    "en:breads"
+   ]
+  },
+  {
+   "code": "5941132022667",
+   "name": "Musli cu goji",
+   "brand": "Cosmin",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:breakfasts",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "5941000025530",
+   "name": "Lay's Chips Cream&Dill",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4056489620921",
+   "name": "pindakaas",
+   "brand": "Lidl",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:legumes-and-their-products",
+    "en:spreads"
+   ]
+  },
+  {
+   "code": "8710638001080",
+   "name": "Honing mosterd",
+   "brand": "Marne",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:condiments",
+    "en:sauces",
+    "en:mustards",
+    "en:groceries"
+   ]
+  },
+  {
+   "code": "5900617041067",
+   "name": "Lapte de soia cu calciu",
+   "brand": "SANTE sp. z o.o.",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-foods",
+    "en:legumes-and-their-products"
+   ]
+  },
+  {
+   "code": "8718907439497",
+   "name": "Gemende drop zoet en zout",
+   "brand": "Albert Heijn",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:confectioneries",
+    "en:candies"
+   ]
+  },
+  {
+   "code": "4823065720180",
+   "name": "Dolce",
+   "brand": "Lactel",
+   "gold": "dairy",
+   "accept": [
+    "dairy"
+   ],
+   "offCategories": [
+    "en:dairies",
+    "en:fermented-foods",
+    "en:fermented-milk-products",
+    "en:desserts"
+   ]
+  },
+  {
+   "code": "4820209113051",
+   "name": "Чорний чай Біола",
+   "brand": "ТОВ Фастрон",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:tea-based-beverages",
+    "en:iced-teas",
+    "en:iced-teas-with-mango-flavor"
+   ]
+  },
+  {
+   "code": "5900259094681",
+   "name": "Doritos taco",
+   "brand": "Doritos",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:salty-snacks",
+    "en:appetizers",
+    "en:chips-and-fries"
+   ]
+  },
+  {
+   "code": "8717056651316",
+   "name": "Sambal Madame Jeanette",
+   "brand": "moksi patoe",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:condiments",
+    "en:sauces",
+    "en:hot-sauces",
+    "en:sambal"
+   ]
+  },
+  {
+   "code": "5942289000751",
+   "name": "Tedi Zmeura",
+   "brand": "Tedi",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-beverages",
+    "en:juices-and-nectars"
+   ]
+  },
+  {
+   "code": "8718906812161",
+   "name": "Ongezouten roomboter",
+   "brand": "De Zaanse Hoeve",
+   "gold": "dairy",
+   "accept": [
+    "dairy"
+   ],
+   "offCategories": [
+    "en:dairies",
+    "en:fats",
+    "en:spreads",
+    "en:spreadable-fats"
+   ]
+  },
+  {
+   "code": "40084107",
+   "name": "Surprise",
+   "brand": "Kinder",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:chocolates"
+   ]
+  },
+  {
+   "code": "5941445671897",
+   "name": "Snack sare",
+   "brand": "Chio",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "8000500119792",
+   "name": "Pingui Cocco Milk and Coconut",
+   "brand": "Kinder Pingui",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:bars",
+    "en:biscuits-and-cakes"
+   ]
+  },
+  {
+   "code": "8710398510662",
+   "name": "Nibbit sticks",
+   "brand": "Cheetos",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:salty-snacks",
+    "en:appetizers",
+    "en:chips-and-fries"
+   ]
+  },
+  {
+   "code": "5900020042293",
+   "name": "Nesquik Mix",
+   "brand": "Nestle",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:breakfasts",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4056489851486",
+   "name": "bourbon creams",
+   "brand": "Tower Gate",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits-and-crackers"
+   ]
+  },
+  {
+   "code": "4820252122505",
+   "name": "Mojo mint/lime",
+   "brand": "Mojo",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:beverages",
+    "en:carbonated-drinks",
+    "en:sodas"
+   ]
+  },
+  {
+   "code": "4840095001805",
+   "name": "Bucuria Bomboane Chișinăul de seară",
+   "brand": "Bucuria",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "4840019005230",
+   "name": "Grapefruit juice",
+   "brand": "Vis active",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-beverages"
+   ]
+  },
+  {
+   "code": "5941194003529",
+   "name": "Crackers top sesame",
+   "brand": "Croco",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:salty-snacks",
+    "en:appetizers",
+    "en:crackers"
+   ]
+  },
+  {
+   "code": "4337185539428",
+   "name": "Crunchy muesli",
+   "brand": "Kaufland",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:breakfasts",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4260428463627",
+   "name": "Dumplings with sour cherries",
+   "brand": "7ja",
+   "gold": "ready",
+   "accept": [
+    "ready",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:dumplings"
+   ]
+  },
+  {
+   "code": "0012546001939",
+   "name": "Mint bliss - artificially favoured",
+   "brand": "Trident",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:confectioneries",
+    "en:chewing-gum"
+   ]
+  },
+  {
+   "code": "4840095001638",
+   "name": "Bucuria",
+   "brand": "Moldova",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "4300175670746",
+   "name": "Mandarine felii întregi în sirop slab",
+   "brand": "KClassic",
+   "gold": "produce",
+   "accept": [
+    "produce",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:fruits-and-vegetables-based-foods",
+    "en:canned-foods"
+   ]
+  },
+  {
+   "code": "4660013945697",
+   "name": "100% CHARGED Extra dark chocolate",
+   "brand": "Pobeda",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:chocolates"
+   ]
+  },
+  {
+   "code": "4008211003571",
+   "name": "Veganes Stieleis Mandel",
+   "brand": "k-take-it-veggie",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:desserts",
+    "en:frozen-foods",
+    "en:frozen-desserts",
+    "en:ice-creams-and-sorbets"
+   ]
+  },
+  {
+   "code": "4840237000697",
+   "name": "Gura Cainarului",
+   "brand": "Rusnac",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:waters"
+   ]
+  },
+  {
+   "code": "4650094121455",
+   "name": "Dry milk drink",
+   "brand": "",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages"
+   ]
+  },
+  {
+   "code": "4823065716879",
+   "name": "Yoli iaurt",
+   "brand": "Alba",
+   "gold": "dairy",
+   "accept": [
+    "dairy"
+   ],
+   "offCategories": [
+    "en:dairies",
+    "en:fermented-foods",
+    "en:fermented-milk-products",
+    "en:desserts"
+   ]
+  },
+  {
+   "code": "4840019000594",
+   "name": "Зелёный горошек",
+   "brand": "VIS",
+   "gold": "produce",
+   "accept": [
+    "produce",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:fruits-and-vegetables-based-foods",
+    "en:legumes-and-their-products"
+   ]
+  },
+  {
+   "code": "5941000025615",
+   "name": "Lay's cu cascaval",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "8718907253345",
+   "name": "Groene pesto",
+   "brand": "Albert heijn",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:condiments",
+    "en:sauces",
+    "en:pestos",
+    "en:green-pestos"
+   ]
+  },
+  {
+   "code": "8690526065182",
+   "name": "Adicto Go Prăjitură cu cremă de capșuni",
+   "brand": "Eti",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "4088600101149",
+   "name": "Salted Caramel Slices",
+   "brand": "Aldi",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:breakfasts",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "3800229511892",
+   "name": "Double chocolate",
+   "brand": "Coppa Della Maga",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:desserts",
+    "en:frozen-foods",
+    "en:frozen-desserts",
+    "en:ice-creams-and-sorbets"
+   ]
+  },
+  {
+   "code": "0666832640632",
+   "name": "JOOD Specialty coffee",
+   "brand": "JOOD FLAVORS for COFFEE and FLAVORS",
+   "gold": "pantry",
+   "accept": [
+    "pantry",
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:coffees",
+    "en:coffee-beans"
+   ]
+  },
+  {
+   "code": "5900915028029",
+   "name": "Teravita Hazelnuts Milk Chocolate",
+   "brand": "terravita",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:chocolates"
+   ]
+  },
+  {
+   "code": "5941000017573",
+   "name": "Sour Cream & Dill",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "5941445668477",
+   "name": "Chio intense spicy cheese",
+   "brand": "Chio",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4751022360097",
+   "name": "Prieks",
+   "brand": "Milzu",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:breakfasts",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "8714779005921",
+   "name": "Hoemoes chipotle",
+   "brand": "Maza",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:condiments",
+    "en:spreads"
+   ]
+  },
+  {
+   "code": "4008400290126",
+   "name": "Kinder pingui",
+   "brand": "Kinder",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "5941866620474",
+   "name": "PlanTuna Mexican Salad With Plant-Based Tuna",
+   "brand": "plantuna",
+   "gold": "ready",
+   "accept": [
+    "ready",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:meals",
+    "en:prepared-salads",
+    "en:meals-with-fish",
+    "en:salads-with-fish"
+   ]
+  },
+  {
+   "code": "4810128017714",
+   "name": "хрустящие отруби пшеничные с гречкой",
+   "brand": "Витьба",
+   "gold": "bakery",
+   "accept": [
+    "bakery",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:breakfasts",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4840167006165",
+   "name": "Айран",
+   "brand": "jlc",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:beverages",
+    "en:dairies",
+    "en:fermented-foods"
+   ]
+  },
+  {
+   "code": "4840760002748",
+   "name": "Сушки из пропущенной ржи",
+   "brand": "Galfim",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:desserts",
+    "en:sushki"
+   ]
+  },
+  {
+   "code": "4840167008589",
+   "name": "florica",
+   "brand": "smintina",
+   "gold": "dairy",
+   "accept": [
+    "dairy"
+   ],
+   "offCategories": [
+    "en:dairies"
+   ]
+  },
+  {
+   "code": "4840361001003",
+   "name": "ion",
+   "brand": "ion",
+   "gold": "fish",
+   "accept": [
+    "fish"
+   ],
+   "offCategories": [
+    "en:seafood",
+    "en:romanian-sea-products"
+   ]
+  },
+  {
+   "code": "2302564406570",
+   "name": "Sliptong",
+   "brand": "Albert Heijn",
+   "gold": "fish",
+   "accept": [
+    "fish"
+   ],
+   "offCategories": [
+    "en:seafood",
+    "en:fishes-and-their-products",
+    "en:fishes"
+   ]
+  },
+  {
+   "code": "5941588004361",
+   "name": "La Festa 3in1 Classic",
+   "brand": "La Festa",
+   "gold": "pantry",
+   "accept": [
+    "pantry",
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:hot-beverages"
+   ]
+  },
+  {
+   "code": "4841257000773",
+   "name": "Plain Drinking Water",
+   "brand": "ОМ",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:beverages",
+    "en:waters"
+   ]
+  },
+  {
+   "code": "8718907234986",
+   "name": "Queso Iberico",
+   "brand": "Albert Heijn",
+   "gold": "dairy",
+   "accept": [
+    "dairy"
+   ],
+   "offCategories": [
+    "en:dairies",
+    "en:fermented-foods",
+    "en:fermented-milk-products",
+    "en:cheeses"
+   ]
+  },
+  {
+   "code": "8718907775779",
+   "name": "Cassave kroepoek",
+   "brand": "Albert Heijn",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:salty-snacks",
+    "en:appetizers",
+    "en:chips-and-fries"
+   ]
+  },
+  {
+   "code": "8718907032407",
+   "name": "Cannellini bonen",
+   "brand": "Albert Heijn",
+   "gold": "produce",
+   "accept": [
+    "produce",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:legumes-and-their-products",
+    "en:canned-foods"
+   ]
+  },
+  {
+   "code": "8710400204589",
+   "name": "Creme Fraîche Light",
+   "brand": "Albert Heijn",
+   "gold": "dairy",
+   "accept": [
+    "dairy"
+   ],
+   "offCategories": [
+    "en:dairies",
+    "en:fermented-foods",
+    "en:fermented-milk-products",
+    "en:creams"
+   ]
+  },
+  {
+   "code": "4335718171718",
+   "name": "Edle Matjesfilet",
+   "brand": "TiP",
+   "gold": "fish",
+   "accept": [
+    "fish"
+   ],
+   "offCategories": [
+    "en:seafood",
+    "en:fishes-and-their-products",
+    "en:fish-preparations"
+   ]
+  },
+  {
+   "code": "4841257003521",
+   "name": "Letto",
+   "brand": "SRL Rusnac MoldAqua",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-beverages",
+    "en:fruit-based-beverages"
+   ]
+  },
+  {
+   "code": "4820003488997",
+   "name": "Гречане",
+   "brand": "Идеаль Немолоко",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:dairy-substitutes",
+    "en:milk-substitutes"
+   ]
+  },
+  {
+   "code": "4606260001793",
+   "name": "Muștar ,,Русская&quot;",
+   "brand": "",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:condiments",
+    "en:groceries"
+   ]
+  },
+  {
+   "code": "4840237001632",
+   "name": "Water om",
+   "brand": "",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:waters"
+   ]
+  },
+  {
+   "code": "4901903164249",
+   "name": "Togouchi Blended Japanese Whiskey",
+   "brand": "Sakurao Distillery",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:beverages",
+    "en:alcoholic-beverages"
+   ]
+  },
+  {
+   "code": "4841259001839",
+   "name": "рис красный",
+   "brand": "",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes",
+    "en:seeds"
+   ]
+  },
+  {
+   "code": "5941142001539",
+   "name": "Malai extra",
+   "brand": "Băneasa",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes",
+    "en:cereals-and-their-products"
+   ]
+  },
+  {
+   "code": "4410479059397",
+   "name": "zero sugar free chocolate wafer",
+   "brand": "gullon",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "4063367247590",
+   "name": "Veganer Soyagurt",
+   "brand": "kaufland",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-foods",
+    "en:legumes-and-their-products"
+   ]
+  },
+  {
+   "code": "4063367247606",
+   "name": "Iaurt din soia cu afine",
+   "brand": "kaufland",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:fermented-foods",
+    "en:dairy-substitutes",
+    "en:desserts"
+   ]
+  },
+  {
+   "code": "4337185596551",
+   "name": "Oplatky s náplní (79%) s lískovými oříšky",
+   "brand": "K - classic",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "4840032006184",
+   "name": "Radler Grapefruit",
+   "brand": "Radler",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:alcoholic-beverages",
+    "en:beers"
+   ]
+  },
+  {
+   "code": "4841900001034",
+   "name": "Yaw",
+   "brand": "Yaw",
+   "gold": "bakery",
+   "accept": [
+    "bakery",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes",
+    "en:breads"
+   ]
+  },
+  {
+   "code": "5941445674522",
+   "name": "Chio Chips Caramelised Red Onion",
+   "brand": "Chio",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4841658000327",
+   "name": "Flamingo Biscuiți cu aromă de cappuccino",
+   "brand": "Flamingo",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "4841658000396",
+   "name": "Flamingo Biscuiți Infinity cu aromă de lamâie",
+   "brand": "Flamingo",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "8718907271479",
+   "name": "Choc chip rainbow",
+   "brand": "Albert Heijn",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "4009097021215",
+   "name": "Landbrötchen",
+   "brand": "Kaufland",
+   "gold": "bakery",
+   "accept": [
+    "bakery",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes",
+    "en:breads"
+   ]
+  },
+  {
+   "code": "8718907179409",
+   "name": "Gele splitlinzen",
+   "brand": "Albert Heijn",
+   "gold": "produce",
+   "accept": [
+    "produce",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:legumes-and-their-products",
+    "en:legumes"
+   ]
+  },
+  {
+   "code": "5941000032101",
+   "name": "Laya smantana",
+   "brand": "",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:salty-snacks",
+    "en:appetizers",
+    "en:biscuits-and-crackers"
+   ]
+  },
+  {
+   "code": "5942270006663",
+   "name": "K Classic Apă de Izvor Necarbogazoasă",
+   "brand": "",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:beverages",
+    "en:waters",
+    "en:spring-waters"
+   ]
+  },
+  {
+   "code": "5941346000260",
+   "name": "Betty Ice Moana Vanilie",
+   "brand": "Betty ice",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:desserts",
+    "en:frozen-foods",
+    "en:frozen-desserts",
+    "en:ice-creams-and-sorbets"
+   ]
+  },
+  {
+   "code": "4823077633317",
+   "name": "Lovita",
+   "brand": "Roshen",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "5941047833655",
+   "name": "Kandia Baton de ciocolată cu cremă de brandy și portocale",
+   "brand": "Kandia",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:chocolates"
+   ]
+  },
+  {
+   "code": "8718907108157",
+   "name": "Robuust stokbrood volkoren",
+   "brand": "Albert Heijn Bio",
+   "gold": "bakery",
+   "accept": [
+    "bakery",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes",
+    "en:breads"
+   ]
+  },
+  {
+   "code": "4820008128614",
+   "name": "Start! Corn Flakes natural",
+   "brand": "",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:breakfasts",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4840095009238",
+   "name": "Bucuria Bomboane Folclor",
+   "brand": "Bucuria",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "3119906173835",
+   "name": "Zomerfruit",
+   "brand": "Albert Heijn",
+   "gold": "produce",
+   "accept": [
+    "produce"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:fruits-and-vegetables-based-foods",
+    "en:fruits-based-foods"
+   ]
+  },
+  {
+   "code": "5948517603534",
+   "name": "mustar dulce",
+   "brand": "Knorr",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:condiments",
+    "en:sauces",
+    "en:mustards",
+    "en:groceries"
+   ]
+  },
+  {
+   "code": "8718907382069",
+   "name": "Aardbeien",
+   "brand": "Albert Heijn",
+   "gold": "produce",
+   "accept": [
+    "produce"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:fruits-and-vegetables-based-foods",
+    "en:fruits-based-foods"
+   ]
+  },
+  {
+   "code": "5941047829214",
+   "name": "Praline de ciocolată albă",
+   "brand": "Primola",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "5941047827401",
+   "name": "Milk chocolate with rum",
+   "brand": "Rom",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "5941047808363",
+   "name": "Bomboane cu cremă cappuccino",
+   "brand": "Laura",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "4075700147245",
+   "name": "lifecare panthecare",
+   "brand": "kräurer",
+   "gold": "nonfood",
+   "accept": [
+    "nonfood"
+   ],
+   "offCategories": [
+    "en:non-food-products",
+    "en:open-beauty-facts"
+   ]
+  },
+  {
+   "code": "8715700116433",
+   "name": "Macaroni Volkoren",
+   "brand": "Honig",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes",
+    "en:cereals-and-their-products"
+   ]
+  },
+  {
+   "code": "8710400005094",
+   "name": "Kapucijners",
+   "brand": "Albert Heijn",
+   "gold": "produce",
+   "accept": [
+    "produce",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:legumes-and-their-products",
+    "en:legumes"
+   ]
+  },
+  {
+   "code": "4840013002129",
+   "name": "Champagne",
+   "brand": "",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:alcoholic-beverages",
+    "en:wines",
+    "en:sparkling-wines"
+   ]
+  },
+  {
+   "code": "5941000027381",
+   "name": "Chips",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "7613036160728",
+   "name": "Torchin ketchup",
+   "brand": "",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:condiments",
+    "en:sauces",
+    "en:tomato-sauces",
+    "en:ketchup"
+   ]
+  },
+  {
+   "code": "4820039351791",
+   "name": "Сок. Алпельсин  1л",
+   "brand": "Rich",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-beverages",
+    "en:fruit-based-beverages"
+   ]
+  },
+  {
+   "code": "4605627004194",
+   "name": "Сливки питьевые стерилизованные для кофе порционные. Массовая доля жира 10%",
+   "brand": "Campina",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages",
+    "en:dairies",
+    "en:creams",
+    "en:dairy-drinks"
+   ]
+  },
+  {
+   "code": "8718452475926",
+   "name": "Ongezoet amandeldrink",
+   "brand": "Jumbo",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages-and-beverages-preparations",
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-foods"
+   ]
+  },
+  {
+   "code": "4337185832918",
+   "name": "Organic Soy drink",
+   "brand": "K-take it veggie",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-foods",
+    "en:legumes-and-their-products"
+   ]
+  },
+  {
+   "code": "5941000025622",
+   "name": "Lay's paprika",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4063367282997",
+   "name": "Barista Haferdrink",
+   "brand": "take it veggie",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-foods",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4841509000148",
+   "name": "Afine",
+   "brand": "Savor",
+   "gold": "produce",
+   "accept": [
+    "produce"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:fruits-and-vegetables-based-foods",
+    "en:fruits-based-foods"
+   ]
+  },
+  {
+   "code": "6079585624424",
+   "name": "Milad",
+   "brand": "Okay",
+   "gold": "ready",
+   "accept": [
+    "ready",
+    "pantry"
+   ],
+   "offCategories": [
+    "en:meals",
+    "en:bean-dishes"
+   ]
+  },
+  {
+   "code": "4840361003519",
+   "name": "Sport Lemon",
+   "brand": "AQUA UNIQA",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:beverages"
+   ]
+  },
+  {
+   "code": "5941000025608",
+   "name": "Barbecue",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "3800065781961",
+   "name": "Sugar free mini wafers with lemon",
+   "brand": "",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits"
+   ]
+  },
+  {
+   "code": "5000295157569",
+   "name": "Spring Onion & Cracked Black Pepper Alternative to Soft Cheese",
+   "brand": "Cathedral City",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:spreads",
+    "en:plant-based-spreads"
+   ]
+  },
+  {
+   "code": "5900259056207",
+   "name": "Lay&#8217;s Baked Salt",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "4001757016432",
+   "name": "Dark Chocolate",
+   "brand": "",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:chocolates"
+   ]
+  },
+  {
+   "code": "4337185489419",
+   "name": "Нектар от портокал от концентриран сок 50%",
+   "brand": "K-Classic",
+   "gold": "drinks",
+   "accept": [
+    "drinks"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:beverages",
+    "en:plant-based-beverages",
+    "en:fruit-based-beverages"
+   ]
+  },
+  {
+   "code": "5941047814005",
+   "name": "Magura Prăjitură cu cacao",
+   "brand": "Măgura",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:cakes"
+   ]
+  },
+  {
+   "code": "9100000730653",
+   "name": "Steirische Bio-Heidelbeeren",
+   "brand": "Spar Natur pur",
+   "gold": "produce",
+   "accept": [
+    "produce"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:fruits-and-vegetables-based-foods",
+    "en:fruits-based-foods"
+   ]
+  },
+  {
+   "code": "7610400094917",
+   "name": "Lindor tejcsokoládé",
+   "brand": "Lindt",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:chocolates"
+   ]
+  },
+  {
+   "code": "8410376059380",
+   "name": "zero sin azúcares Barquillos Vainilla",
+   "brand": "Gullón",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:biscuits-and-cakes",
+    "en:biscuits-and-crackers"
+   ]
+  },
+  {
+   "code": "5941000024700",
+   "name": "Lay's Rumeniți în cuptor cu ierburi și iaurt",
+   "brand": "Lay's",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:plant-based-foods-and-beverages",
+    "en:plant-based-foods",
+    "en:snacks",
+    "en:cereals-and-potatoes"
+   ]
+  },
+  {
+   "code": "8000500359815",
+   "name": "Alune de Pădure",
+   "brand": "Ferrero Rocher",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:cocoa-and-its-products",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "4008400553023",
+   "name": "Kinder Maxi King",
+   "brand": "Ferrero",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:confectioneries"
+   ]
+  },
+  {
+   "code": "9100000717609",
+   "name": "Schlemmerfilet Bordelaise",
+   "brand": "S-Budget",
+   "gold": "fish",
+   "accept": [
+    "fish"
+   ],
+   "offCategories": [
+    "en:seafood",
+    "en:frozen-foods",
+    "en:meals",
+    "en:frozen-seafood"
+   ]
+  },
+  {
+   "code": "4840095015000",
+   "name": "Vişină în glazură de ciocolată",
+   "brand": "Bucuria",
+   "gold": "pantry",
+   "accept": [
+    "pantry"
+   ],
+   "offCategories": [
+    "en:snacks",
+    "en:sweet-snacks",
+    "en:confectioneries",
+    "en:candies"
+   ]
+  }
+ ]
+}

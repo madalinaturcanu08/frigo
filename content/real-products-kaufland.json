@@ -1,0 +1,593 @@
+{
+ "_note": "Real product names and categories from Kaufland Moldova public offer pages (kaufland.md), collected with scripts/collect-kaufland.mjs. The category is the shop’s own section, not chosen by us. Used only to test Frigo’s receipt AI (school research).",
+ "products": [
+  {
+   "brand": "Avocado 500g",
+   "name": "Calitatea I BUC",
+   "shopCategory": "Legume, fructe, flori",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Asorti la zeamă 100g",
+   "name": "Calitatea I BUC",
+   "shopCategory": "Legume, fructe, flori",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Carmez",
+   "name": "Ruladă Lancimit kg",
+   "shopCategory": "Carne, mezeluri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Rogob",
+   "name": "Slănină de porc cu piper negru, kg",
+   "shopCategory": "Carne, mezeluri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "KLC",
+   "name": "Cârnați stick 120g",
+   "shopCategory": "Carne, mezeluri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Noel",
+   "name": "Jambon Serrano vrac",
+   "shopCategory": "Carne, mezeluri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "File de macrou în ulei de rapiță",
+   "shopCategory": "Pește",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Năvodul plin",
+   "name": "Sardine în ulei de floarea sorelui",
+   "shopCategory": "Pește",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Rio Mare",
+   "name": "Ton în ulei de măsline",
+   "shopCategory": "Pește",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Primribsnab",
+   "name": "Ficat de cod mărunțit",
+   "shopCategory": "Pește",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Ora",
+   "name": "Sardine bucăți în ulei 240 g",
+   "shopCategory": "Pește",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Ora",
+   "name": "Somon fileuri în suc propriu 200 g",
+   "shopCategory": "Pește",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "President",
+   "name": "Smântână 20% grăsime 350g",
+   "shopCategory": "Lactate, ouă",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "Cremă de brânză 200 g",
+   "shopCategory": "Lactate, ouă",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-classic",
+   "name": "Mozzarella Mini",
+   "shopCategory": "Lactate, ouă",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "Lapte UHT",
+   "shopCategory": "Lactate, ouă",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Moti",
+   "name": "Prăjitură Japoneză căpșună",
+   "shopCategory": "Delicatese, congelate",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "La Minut Barosanu'",
+   "name": "Muștar",
+   "shopCategory": "Delicatese, congelate",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Reaba",
+   "name": "Clasic Provansali Maioneză350g",
+   "shopCategory": "Delicatese, congelate",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-BIO",
+   "name": "Ulei de măsline extra-virgin",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Bunetto",
+   "name": "Linte roșie uscată 500 g",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "START",
+   "name": "Pernuțe cu cacao",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Vis",
+   "name": "Gem de căpșune",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "St.Dalfour",
+   "name": "Gem",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Vis",
+   "name": "Porumb dulce conservat",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Liada",
+   "name": "Pastă de tomate 25%",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Nefis",
+   "name": "Bomboane prună delicioasă kg",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Honey House",
+   "name": "Cremă de miere cu mango",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Roada Gliei",
+   "name": "Tocană din dovlecei sterilizată",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "L'appètit",
+   "name": "Conservă cu conținut de ficat de vită",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "Piure de mere",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "Castraveţi",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Lux Menu",
+   "name": "Șampinioni tăiați conservați 580 ml",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "Năut 425 ml",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "Roşii pasate",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Cegusto",
+   "name": "Compot de cireșe",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Bucegi",
+   "name": "Mazăre",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Olympia",
+   "name": "Zacuscă de vinete 300 g",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Olympia",
+   "name": "Fasole albă cu bob mic",
+   "shopCategory": "Alimente de bază",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Brutaria Bardar",
+   "name": "colac semidulce",
+   "shopCategory": "Brutărie",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Julius Meinl",
+   "name": "Cafea boabe",
+   "shopCategory": "Cafea și ceai",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Nefis",
+   "name": "Bomboane 5 minute /cutie 125 g",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Yaw! Rings",
+   "name": "Snack cu aromă de brânză 60g",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Roshen",
+   "name": "Praline ciocolată",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Milka",
+   "name": "Praline ciocolată",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Toffifee",
+   "name": "Alune în caramel și ciocolată",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Autentic Rom",
+   "name": "Baton arahide şi caramel 29 g",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Nefis",
+   "name": "Bomboane fourtuna 135 g",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Adeli",
+   "name": "Bomboane cu migdale întregi kg",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Bucuria",
+   "name": "Coșuleț cu cireșe 200 g",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Bucuria",
+   "name": "Struguri in ciocolată 250 g",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Soltino",
+   "name": "Arahide",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "K-Classic",
+   "name": "Fistic sărat 250 g",
+   "shopCategory": "Dulciuri, snackuri",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Bergenbier",
+   "name": "Bere blondă",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Kvint Elite Collection",
+   "name": "Divin 0,5 l",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Valahia Silver",
+   "name": "Vodka 1 l",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Label",
+   "name": "Scotch whisky 5 classic black",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Metaxa 5*",
+   "name": "Băutură spirtoasă",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Dumbrava",
+   "name": "Băutură arom tare",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Vreau din România",
+   "name": "Apă minerală carbogazificată 2 l",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Mirgorodskaya",
+   "name": "Apă minerală carbogazoasă 1,5 l",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "VIS",
+   "name": "Suc mere",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Plantation",
+   "name": "Rom",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Buchet Moldavii",
+   "name": "Balsam Cosmic",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Cricova Divin",
+   "name": "Vinars",
+   "shopCategory": "Băuturi",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Molped",
+   "name": "Absorbante igienice ultra 24 buc",
+   "shopCategory": "Cosmetice, îngrijire",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Queen Skin",
+   "name": "Exfoliant corp cu cafea și uleiuri",
+   "shopCategory": "Cosmetice, îngrijire",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Grass G-Oxi",
+   "name": "Spray pete",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Grass Gloss",
+   "name": "Soluție pentru baie 600 ml",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "PAREX",
+   "name": "Lavetă pentru sticlă + lavetă microfibre",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Grass",
+   "name": "Soluţie universală 600 ml",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Grass",
+   "name": "Soluție pentru defundarea țevilor",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "PAREX",
+   "name": "Saci menajeri",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Axion",
+   "name": "Detergent pentru vase",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Ruta",
+   "name": "Saci menajeri 35 l 30 buc",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Grass",
+   "name": "Dezinfectant toaletă",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Chanteclair",
+   "name": "Degresant universal",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Fairy",
+   "name": "Detergent pentru vase lemon",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Chisto",
+   "name": "Burete pentru vase asorti",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Fairy",
+   "name": "Capsule vase platinum / orig 66 / 84 buc",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Scotch Brite",
+   "name": "Mănuşi menaj",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Triumf",
+   "name": "Degresant forte universal",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Mr. Proper",
+   "name": "Spray curățare 800 ml",
+   "shopCategory": "Curățenie, detergenți",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  },
+  {
+   "brand": "Dante",
+   "name": "Hrană umedă câini",
+   "shopCategory": "Animale",
+   "source": "https://www.kaufland.md/ro/oferte/oferte-saptamanale/saptamana-curenta.html",
+   "collected": "2026-11-11"
+  }
+ ]
+}

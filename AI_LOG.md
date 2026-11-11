@@ -297,3 +297,38 @@ design part, no big changes needed just something that stands out a bit".
 - 64 unit tests and 20 browser tests pass.
 
 **Usability test feedback (from me):** classmates found the design a bit too simple; nothing else reported.
+
+---
+
+## 2026-11-11 — Session 12: research upgrade after the teacher's review (7.5/10)
+
+**Tool / model:** Claude Code, Claude Opus 5.5. **Prompt:** screenshots of the teacher's evaluation + "update this
+project to be up to standards and get a 10/10". We told the AI we could not collect real receipts or run a pilot.
+
+**What the AI did**
+- Wrote the hypotheses H1–H3 with fixed thresholds **before** testing on real data (`docs/HYPOTHESIS.md`).
+- Collected **real** Moldovan product data: 84 products from Kaufland Moldova's public offers (the shop's own
+  categories; robots.txt allows it) and 130 products sold in Moldova from Open Food Facts (held out). It did **not**
+  use Linella, whose robots.txt forbids AI crawlers.
+- Built a benchmark of 5 methods (exact dictionary, fuzzy Levenshtein dictionary, MiniLM, e5, Frigo hybrid) with
+  macro-F1, confusion matrices, a threshold curve and speed/memory, plus an in-app speed test for real phones.
+- Result: **H1 rejected** (the AI is no better than a fuzzy dictionary on real data), **H2 rejected** on real data,
+  H3 confirmed. Version 1 results were kept unchanged; the product list was then extended (159 → 196 types) based on
+  the error analysis and tested on the held-out set. All reported in `docs/benchmarks/RESULTS.md`.
+- Verified the shelf-life table against USDA FoodKeeper v128 (archived official file); 18 of 28 values changed.
+- Built the economic model from official sources (UNEP via Our World in Data, NBS, BNM). The 25–35 % reduction is a
+  scenario, not measured. Checked competitor app prices and found the "25–60 €/year" claim could not be confirmed.
+- Found and fixed a critical security vulnerability in Next.js (16.4.0 → 16.4.6).
+- Wrote the code study guide, logbook, pilot plan, 2-page abstract (Word), visual annex, A0 poster draft and pitch.
+
+**Limits (honest):** no real receipts (thermal paper, OCR errors) were tested, only clean product names; no pilot was
+run; phone speed was measured only in laptop browsers emulating phones.
+
+**To do by the team**
+- [ ] Fill in names and the role split ([Elev A] / [Elev B]) in the abstract, logbook, poster, pitch and code guide.
+- [ ] Run the speed test on your own phones (Settings → Receipt AI → Measure the AI speed) and add the numbers to
+      `docs/benchmarks/RESULTS.md`.
+- [ ] Paste `supabase/shelf-life-verified.sql` into the Supabase SQL editor so the live site uses the verified values.
+- [ ] Study `docs/CODE_GUIDE.md` until you can answer every practice question without notes.
+- [ ] Check ansa.gov.md for official Moldovan storage times (`docs/SHELF_LIFE.md`).
+- [ ] Rewrite the 14 recipes in your own words and check them with a family cook.

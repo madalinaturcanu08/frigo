@@ -67,7 +67,9 @@ function getWorker(): Worker {
   return worker;
 }
 
-function embed(texts: string[]): Promise<number[][]> {
+/** Turns texts into vectors in the background worker (also used by the speed test in Settings). */
+export function embed(texts: string[], progress?: (share: number) => void): Promise<number[][]> {
+  if (progress) onProgress = progress;
   const id = nextId++;
   return new Promise((resolve, reject) => {
     waiting.set(id, { resolve, reject });
@@ -76,7 +78,7 @@ function embed(texts: string[]): Promise<number[][]> {
 }
 
 let catalog: Promise<{ vectors: Float32Array[]; owners: number[] }> | null = null;
-function loadCatalog() {
+export function loadCatalog() {
   catalog ??= fetch('/ai/catalog.json')
     .then((r) => r.json())
     .then((c: { revision: string; catalog: string; dims: number; owners: number[]; vectors: string }) => {

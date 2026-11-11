@@ -1,0 +1,13 @@
+{
+ "date": "2026-11-11",
+ "engine": "phone",
+ "machine": "developer laptop (emulated phone screen)",
+ "device": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+ "rows": [
+  "Model ready in\t13 ms",
+  "Per line, one at a time\t11.9 ms",
+  "Per line, whole receipt\t13.9 ms",
+  "Page memory (JS heap)\t11 MB",
+  "Device\t10 cores · 16 GB"
+ ]
+}

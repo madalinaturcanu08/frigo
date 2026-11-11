@@ -171,3 +171,23 @@ test('the language can be switched to Russian and back', async ({ page }) => {
   await page.getByRole('radio', { name: 'English' }).click();
   await expect(page.getByRole('heading', { name: 'Settings', level: 1 })).toBeVisible();
 });
+
+// Research measurement, not a check: runs the on-device AI speed test in each browser engine and saves the numbers
+// to docs/benchmarks/browser-<engine>.json. Downloads the 118 MB model, so it only runs with `npm run benchmark:browser`.
+test('AI speed test (research measurement)', async ({ page }, info) => {
+  test.skip(!process.env.FRIGO_BENCH, 'run with npm run benchmark:browser');
+  test.setTimeout(600_000);
+  await page.goto('/settings/benchmark');
+  await page.getByRole('button', { name: 'Run the speed test' }).click();
+  await expect(page.getByRole('button', { name: 'Copy the results' })).toBeVisible({ timeout: 540_000 });
+  // run it a second time: the first run includes the one-time download
+  await page.getByRole('button', { name: 'Run the speed test' }).click();
+  await expect(page.getByRole('button', { name: 'Copy the results' })).toBeVisible({ timeout: 120_000 });
+  const rows = await page.locator('table tr').allInnerTexts();
+  const device = await page.locator('p.font-mono').innerText();
+  fs.mkdirSync('docs/benchmarks', { recursive: true });
+  fs.writeFileSync(
+    `docs/benchmarks/browser-${info.project.name}.json`,
+    JSON.stringify({ date: new Date().toISOString().slice(0, 10), engine: info.project.name, machine: 'developer laptop (emulated phone screen)', device, rows }, null, 1),
+  );
+});

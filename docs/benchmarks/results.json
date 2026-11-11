@@ -1,0 +1,281 @@
+{
+ "date": "2026-11-11",
+ "machine": "darwin arm64, Node v24.18.0",
+ "sets": {
+  "real · as printed": {
+   "n": 84,
+   "methods": {
+    "1 exact dictionary": {
+     "accuracy": 50,
+     "macroF1": 53
+    },
+    "2 fuzzy dictionary (Levenshtein)": {
+     "accuracy": 69,
+     "macroF1": 74
+    },
+    "3 MiniLM-L12 embeddings": {
+     "accuracy": 61.9,
+     "macroF1": 47.3
+    },
+    "4 e5-small embeddings": {
+     "accuracy": 75,
+     "macroF1": 75.1
+    },
+    "5 hybrid: dictionary + e5 + gating (Frigo)": {
+     "accuracy": 70.2,
+     "macroF1": 72.8,
+     "byConfidence": {
+      "high": {
+       "n": 27,
+       "accuracy": 85.2
+      },
+      "medium": {
+       "n": 48,
+       "accuracy": 70.8
+      },
+      "low": {
+       "n": 9,
+       "accuracy": 22.2
+      }
+     }
+    }
+   }
+  },
+  "real · receipt style": {
+   "n": 84,
+   "methods": {
+    "1 exact dictionary": {
+     "accuracy": 51.2,
+     "macroF1": 54.2
+    },
+    "2 fuzzy dictionary (Levenshtein)": {
+     "accuracy": 71.4,
+     "macroF1": 75.2
+    },
+    "3 MiniLM-L12 embeddings": {
+     "accuracy": 64.3,
+     "macroF1": 53.2
+    },
+    "4 e5-small embeddings": {
+     "accuracy": 73.8,
+     "macroF1": 73.8
+    },
+    "5 hybrid: dictionary + e5 + gating (Frigo)": {
+     "accuracy": 72.6,
+     "macroF1": 74.6,
+     "byConfidence": {
+      "high": {
+       "n": 29,
+       "accuracy": 86.2
+      },
+      "medium": {
+       "n": 50,
+       "accuracy": 68
+      },
+      "low": {
+       "n": 5,
+       "accuracy": 40
+      }
+     }
+    }
+   }
+  },
+  "real held-out · Open Food Facts": {
+   "n": 130,
+   "methods": {
+    "1 exact dictionary": {
+     "accuracy": 67.7,
+     "macroF1": 47.7
+    },
+    "2 fuzzy dictionary (Levenshtein)": {
+     "accuracy": 50.8,
+     "macroF1": 41.1
+    },
+    "3 MiniLM-L12 embeddings": {
+     "accuracy": 43.1,
+     "macroF1": 35.9
+    },
+    "4 e5-small embeddings": {
+     "accuracy": 48.5,
+     "macroF1": 32.8
+    },
+    "5 hybrid: dictionary + e5 + gating (Frigo)": {
+     "accuracy": 66.2,
+     "macroF1": 48.3,
+     "byConfidence": {
+      "high": {
+       "n": 14,
+       "accuracy": 57.1
+      },
+      "medium": {
+       "n": 47,
+       "accuracy": 66
+      },
+      "low": {
+       "n": 69,
+       "accuracy": 68.1
+      }
+     }
+    }
+   }
+  },
+  "synthetic (AI-written)": {
+   "n": 109,
+   "methods": {
+    "1 exact dictionary": {
+     "accuracy": 20.2,
+     "macroF1": 21.4
+    },
+    "2 fuzzy dictionary (Levenshtein)": {
+     "accuracy": 83.5,
+     "macroF1": 84.4
+    },
+    "3 MiniLM-L12 embeddings": {
+     "accuracy": 69.7,
+     "macroF1": 68
+    },
+    "4 e5-small embeddings": {
+     "accuracy": 86.2,
+     "macroF1": 87.2
+    },
+    "5 hybrid: dictionary + e5 + gating (Frigo)": {
+     "accuracy": 86.2,
+     "macroF1": 86.4,
+     "byConfidence": {
+      "high": {
+       "n": 81,
+       "accuracy": 98.8
+      },
+      "medium": {
+       "n": 23,
+       "accuracy": 52.2
+      },
+      "low": {
+       "n": 5,
+       "accuracy": 40
+      }
+     }
+    }
+   }
+  }
+ },
+ "speed": {
+  "MiniLM-L12 embeddings": {
+   "loadMs": 317,
+   "msPerLineSingle": 1.4,
+   "msPerLineBatch": 0.7,
+   "memoryMB": 738
+  },
+  "e5-small embeddings": {
+   "loadMs": 615,
+   "msPerLineSingle": 1.9,
+   "msPerLineBatch": 1,
+   "memoryMB": 761
+  },
+  "fuzzy dictionary (Levenshtein)": {
+   "msPerLineSingle": 0.5
+  }
+ },
+ "thresholds": [
+  {
+   "threshold": 0.8,
+   "coverage": 100,
+   "precision": 69.3
+  },
+  {
+   "threshold": 0.81,
+   "coverage": 99.8,
+   "precision": 69.5
+  },
+  {
+   "threshold": 0.82,
+   "coverage": 98.8,
+   "precision": 69.7
+  },
+  {
+   "threshold": 0.83,
+   "coverage": 96.1,
+   "precision": 70.3
+  },
+  {
+   "threshold": 0.84,
+   "coverage": 92.9,
+   "precision": 72
+  },
+  {
+   "threshold": 0.85,
+   "coverage": 86.2,
+   "precision": 74.9
+  },
+  {
+   "threshold": 0.86,
+   "coverage": 78.4,
+   "precision": 78.7
+  },
+  {
+   "threshold": 0.87,
+   "coverage": 72.5,
+   "precision": 80
+  },
+  {
+   "threshold": 0.88,
+   "coverage": 60.9,
+   "precision": 80.6
+  },
+  {
+   "threshold": 0.89,
+   "coverage": 49.4,
+   "precision": 82.6
+  },
+  {
+   "threshold": 0.9,
+   "coverage": 39.8,
+   "precision": 88.3
+  },
+  {
+   "threshold": 0.91,
+   "coverage": 31.9,
+   "precision": 88.5
+  },
+  {
+   "threshold": 0.92,
+   "coverage": 23.8,
+   "precision": 91.8
+  },
+  {
+   "threshold": 0.93,
+   "coverage": 16.7,
+   "precision": 97.1
+  },
+  {
+   "threshold": 0.94,
+   "coverage": 11.1,
+   "precision": 100
+  },
+  {
+   "threshold": 0.95,
+   "coverage": 8.8,
+   "precision": 100
+  },
+  {
+   "threshold": 0.96,
+   "coverage": 8.4,
+   "precision": 100
+  },
+  {
+   "threshold": 0.97,
+   "coverage": 7.9,
+   "precision": 100
+  },
+  {
+   "threshold": 0.98,
+   "coverage": 7.1,
+   "precision": 100
+  },
+  {
+   "threshold": 0.99,
+   "coverage": 6.4,
+   "precision": 100
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "date": "2026-11-11",
+ "engine": "iphone",
+ "machine": "developer laptop (emulated phone screen)",
+ "device": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+ "rows": [
+  "Model ready in\t9 ms",
+  "Per line, one at a time\t12.6 ms",
+  "Per line, whole receipt\t14.3 ms",
+  "Page memory (JS heap)\tnot shown by this browser",
+  "Device\t8 cores"
+ ]
+}

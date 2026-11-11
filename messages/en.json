@@ -233,7 +233,8 @@
     "aiModel": "Model: {model} · version {version} · license {license} · runs in the browser with Transformers.js",
     "languageLead": "Pick the language for the whole app.",
     "about": "About Frigo",
-    "aboutLead": "A free food-waste coach for families in Moldova, made for InfoMatrix 2027 (UN goal 12.3: halve food waste)."
+    "aboutLead": "A free food-waste coach for families in Moldova, made for InfoMatrix 2027 (UN goal 12.3: halve food waste).",
+    "aiBenchmark": "Measure the AI speed on this device"
   },
   "reminders": {
     "title": "{count, plural, one {# item to use soon} other {# items to use soon}}",
@@ -433,5 +434,24 @@
     "aiUnsure": "AI · not sure",
     "aiNoIdea": "AI didn't recognise it",
     "aiSimilarity": "How close the AI's match is: {value}%"
+  },
+  "benchmark": {
+    "kicker": "Research",
+    "title": "AI speed test",
+    "lead": "Measures how fast the receipt AI runs on this device, for the research report. The first run downloads the model (about {mb} MB, use Wi-Fi). Nothing is uploaded.",
+    "start": "Run the speed test",
+    "running": "Measuring…",
+    "downloading": "Downloading the model… {pct}%",
+    "error": "The test couldn't run on this device.",
+    "modelReady": "Model ready in",
+    "firstDownload": "includes the first download",
+    "perLine": "Per line, one at a time",
+    "perLineBatch": "Per line, whole receipt",
+    "heap": "Page memory (JS heap)",
+    "notAvailable": "not shown by this browser",
+    "device": "Device",
+    "cores": "cores",
+    "copy": "Copy the results",
+    "copied": "Copied"
   }
 }

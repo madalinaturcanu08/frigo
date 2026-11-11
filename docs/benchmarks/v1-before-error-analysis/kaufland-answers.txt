@@ -1,0 +1,84 @@
+Alimente de bază       | Bomboane prună delicioasă kg Nefis            | Sweets             other 0.87
+Alimente de bază       | Castraveţi K-Classic                          | Cucumbers          vegetables 0.92
+Alimente de bază       | Compot de cireșe Cegusto                      | Cherries           fruit 0.90
+Alimente de bază       | Conservă cu conținut de ficat de vită L'appèt | Liver              meat 0.88
+Alimente de bază       | Cremă de miere cu mango Honey House           | Honey              sauces 0.87
+Alimente de bază       | Fasole albă cu bob mic Olympia                | Beans              vegetables 0.86
+Alimente de bază       | Gem St.Dalfour                                | Jam                sauces 0.88
+Alimente de bază       | Gem de căpșune Vis                            | Strawberries       fruit 0.91
+Alimente de bază       | Linte roșie uscată 500 g Bunetto              | Tomato sauce       sauces 0.88
+Alimente de bază       | Mazăre Bucegi                                 | Peas               vegetables 0.93
+Alimente de bază       | Năut 425 ml K-Classic                         | Wafers             other 0.85
+Alimente de bază       | Pastă de tomate 25% Liada                     | Tomato paste       sauces 0.96
+Alimente de bază       | Pernuțe cu cacao START                        | Chocolate          other 0.88
+Alimente de bază       | Piure de mere K-Classic                       | Chicken wings      meat 0.86
+Alimente de bază       | Porumb dulce conservat Vis                    | Corn               vegetables 0.89
+Alimente de bază       | Roşii pasate K-Classic                        | Tomato sauce       sauces 0.87
+Alimente de bază       | Tocană din dovlecei sterilizată Roada Gliei   | Minced meat        meat 0.88
+Alimente de bază       | Ulei de măsline extra-virgin K-BIO            | Olives             sauces 0.86
+Alimente de bază       | Zacuscă de vinete 300 g Olympia               | Vegetable spread   sauces 0.90
+Alimente de bază       | Șampinioni tăiați conservați 580 ml Lux Menu  | Shampoo            NONFOOD 0.87
+Animale                | Hrană umedă câini Dante                       | Pet food           NONFOOD 0.91
+Brutărie               | colac semidulce Brutaria Bardar               | Chocolate          other 0.87
+Băuturi                | Apă minerală carbogazificată 2 l Vreau din Ro | Mineral water      drinks 0.91
+Băuturi                | Apă minerală carbogazoasă 1,5 l Mirgorodskaya | Mineral water      drinks 0.92
+Băuturi                | Balsam Cosmic Buchet Moldavii                 | Oats               other 0.84
+Băuturi                | Bere blondă Bergenbier                        | Glazed curd snack  dairy 0.87
+Băuturi                | Băutură arom tare Dumbrava                    | Fruit yogurt       dairy 0.89
+Băuturi                | Băutură spirtoasă Metaxa 5*                   | Energy drink       drinks 0.90
+Băuturi                | Divin 0,5 l Kvint Elite Collection            | Energy drink       drinks 0.81
+Băuturi                | Rom Plantation                                | Pie                bread 0.83
+Băuturi                | Scotch whisky 5 classic black Label           | Diapers            NONFOOD 0.81
+Băuturi                | Suc mere VIS                                  | Juice              drinks 0.90
+Băuturi                | Vinars Cricova Divin                          | Grapes             fruit 0.85
+Băuturi                | Vodka 1 l Valahia Silver                      | Wafers             other 0.83
+Cafea și ceai          | Cafea boabe Julius Meinl                      | Coffee             other 0.88
+Carne, mezeluri        | Cârnați stick 120g KLC                        | Sausages           meat 0.90
+Carne, mezeluri        | Jambon Serrano vrac Noel                      | Jam                sauces 0.84
+Carne, mezeluri        | Ruladă Lancimit kg Carmez                     | Ready-made salad   leftovers 0.87
+Carne, mezeluri        | Slănină de porc cu piper negru, kg Rogob      | Pet food           NONFOOD 0.86
+Cosmetice, îngrijire   | Absorbante igienice ultra 24 buc Molped       | Toilet paper       NONFOOD 0.85
+Cosmetice, îngrijire   | Exfoliant corp cu cafea și uleiuri Queen Skin | Coffee             other 0.85
+Curățenie, detergenți  | Burete pentru vase asorti Chisto              | Dish sponges       NONFOOD 0.94
+Curățenie, detergenți  | Capsule vase platinum / orig 66 / 84 buc Fair | Dish sponges       NONFOOD 0.86
+Curățenie, detergenți  | Degresant forte universal Triumf              | Watermelon         fruit 0.83
+Curățenie, detergenți  | Degresant universal Chanteclair               | Sour cream         dairy 0.82
+Curățenie, detergenți  | Detergent pentru vase Axion                   | Dish soap          NONFOOD 0.94
+Curățenie, detergenți  | Detergent pentru vase lemon Fairy             | Dish soap          NONFOOD 0.92
+Curățenie, detergenți  | Dezinfectant toaletă Grass                    | Dish soap          NONFOOD 0.89
+Curățenie, detergenți  | Lavetă pentru sticlă + lavetă microfibre PARE | Toothbrush         NONFOOD 0.85
+Curățenie, detergenți  | Mănuşi menaj Scotch Brite                     | Tomato sauce       sauces 0.85
+Curățenie, detergenți  | Saci menajeri 35 l 30 buc Ruta                | Trash bags         NONFOOD 0.87
+Curățenie, detergenți  | Saci menajeri PAREX                           | Trash bags         NONFOOD 0.87
+Curățenie, detergenți  | Soluţie universală 600 ml Grass               | Pet food           NONFOOD 0.85
+Curățenie, detergenți  | Soluție pentru baie 600 ml Grass Gloss        | Dish sponges       NONFOOD 0.85
+Curățenie, detergenți  | Soluție pentru defundarea țevilor Grass       | Dish sponges       NONFOOD 0.85
+Curățenie, detergenți  | Spray curățare 800 ml Mr. Proper              | Toilet paper       NONFOOD 0.85
+Curățenie, detergenți  | Spray pete Grass G-Oxi                        | Melon              fruit 0.83
+Delicatese, congelate  | Clasic Provansali Maioneză350g Reaba          | Ready-made salad   leftovers 0.85
+Delicatese, congelate  | Muștar La Minut Barosanu'                     | Mustard            sauces 0.88
+Delicatese, congelate  | Prăjitură Japoneză căpșună Moti               | Strawberries       fruit 0.88
+Dulciuri, snackuri     | Alune în caramel și ciocolată Toffifee        | Chocolate          other 0.90
+Dulciuri, snackuri     | Arahide Soltino                               | Chicken wings      meat 0.87
+Dulciuri, snackuri     | Baton arahide şi caramel 29 g Autentic Rom    | Fruit yogurt       dairy 0.87
+Dulciuri, snackuri     | Bomboane 5 minute /cutie 125 g Nefis          | Sweets             other 0.88
+Dulciuri, snackuri     | Bomboane cu migdale întregi kg Adeli          | Sweets             other 0.88
+Dulciuri, snackuri     | Bomboane fourtuna 135 g Nefis                 | Sweets             other 0.91
+Dulciuri, snackuri     | Coșuleț cu cireșe 200 g Bucuria               | Cherries           fruit 0.89
+Dulciuri, snackuri     | Fistic sărat 250 g K-Classic                  | Ready-made salad   leftovers 0.85
+Dulciuri, snackuri     | Praline ciocolată Milka                       | Chocolate          other 0.92
+Dulciuri, snackuri     | Praline ciocolată Roshen                      | Chocolate          other 0.90
+Dulciuri, snackuri     | Snack cu aromă de brânză 60g Yaw! Rings       | Cottage cheese     cheese 0.88
+Dulciuri, snackuri     | Struguri in ciocolată 250 g Bucuria           | Chocolate          other 0.91
+Lactate, ouă           | Cremă de brânză 200 g K-Classic               | Glazed curd snack  dairy 0.90
+Lactate, ouă           | Lapte UHT K-Classic                           | Milk               dairy 0.90
+Lactate, ouă           | Mozzarella Mini K-classic                     | Mozzarella         cheese 0.88
+Lactate, ouă           | Smântână 20% grăsime 350g President           | Sour cream         dairy 0.91
+Legume, fructe, flori  | Calitatea I BUC Asorti la zeamă 100g          | Raspberries        fruit 0.84
+Legume, fructe, flori  | Calitatea I BUC Avocado 500g                  | Avocado            fruit 0.88
+Pește                  | Ficat de cod mărunțit Primribsnab             | Liver              meat 0.88
+Pește                  | File de macrou în ulei de rapiță K-Classic    | Chicken wings      meat 0.85
+Pește                  | Sardine bucăți în ulei 240 g Ora              | Sunflower oil      other 0.87
+Pește                  | Sardine în ulei de floarea sorelui Năvodul pl | Cling film         NONFOOD 0.85
+Pește                  | Somon fileuri în suc propriu 200 g Ora        | Salmon             fish 0.88
+Pește                  | Ton în ulei de măsline Rio Mare               | Olives             sauces 0.86

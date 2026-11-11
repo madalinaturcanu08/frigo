@@ -19,7 +19,8 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
 | 9 | Insights & streaks — no-waste streak + personal patterns from your own history (plain rules, no AI) | ✅ done |
 | 11 | Offline mode (changes kept on the device, synced later) + automated tests (Vitest + Playwright) | ✅ done |
 | 7 | Receipt scanning — photo → text in the browser → review screen → fridge; tested, decision GO ([docs/RECEIPT_TEST.md](docs/RECEIPT_TEST.md)) | ✅ done |
-| 8 | On-device AI for receipts — a small multilingual model in the browser suggests product + category with a confidence level; 87 % right vs 7 % for the dictionary alone ([docs/AI.md](docs/AI.md)) | ✅ done |
+| 8 | On-device AI for receipts — a small multilingual model in the browser suggests product + category with a confidence level ([docs/AI.md](docs/AI.md)) | ✅ done |
+| 12 | Research upgrade after the teacher's review: pre-registered hypothesis, 5-method benchmark on 214 **real** Moldovan products (hypothesis rejected, honestly reported), phone speed test, shelf life verified against USDA FoodKeeper, economic ROI from official statistics, MoldSEF documents, security update | ✅ done |
 | 10 | Polish after a usability test with classmates ("design a bit too simple"): Frigo mascot whose mood follows your fridge, colour per food category, confetti for food eaten in time | ✅ done |
 
 ## What works now
@@ -60,9 +61,26 @@ Full project plan: [docs/PLAN.md](docs/PLAN.md). Supabase setup: [docs/SETUP.md]
   the connection is back. Saved pages are wiped on logout.
 - **Settings** — language, notifications (on/off + send a test), offline status, receipt AI (on/off, delete the model), account, log out. Light / dark theme toggle on every page.
 
+## Research and competition documents
+
+| Document | What it is |
+|---|---|
+| [docs/HYPOTHESIS.md](docs/HYPOTHESIS.md) | Research question and hypotheses H1–H3, written before testing on real data |
+| [docs/benchmarks/RESULTS.md](docs/benchmarks/RESULTS.md) | 5 methods × 4 test sets, macro-F1, confusion matrices, threshold curve, speed; verdicts |
+| [docs/ECONOMICS.md](docs/ECONOMICS.md) | Economic benefit (ROI) from UNEP, NBS and BNM data |
+| [docs/SHELF_LIFE.md](docs/SHELF_LIFE.md) | Every shelf-life value with its USDA FoodKeeper citation |
+| [docs/CODE_GUIDE.md](docs/CODE_GUIDE.md) | How the AI maths, offline sync and database security work, with practice questions |
+| [docs/LOGBOOK.md](docs/LOGBOOK.md) | Dated lab logbook (Jurnal de evidență) |
+| [docs/PILOT_PLAN.md](docs/PILOT_PLAN.md) | Plan for a family pilot study (not yet run) |
+| [docs/moldsef/](docs/moldsef/) | 2-page abstract (Word), 1-page visual annex (PDF), A0 poster draft (PDF), 3-minute pitch EN + RO |
+| [AI_LOG.md](AI_LOG.md) | Every AI-assisted step, as InfoMatrix requires |
+
+Reproduce: `npm run collect:kaufland`, `npm run collect:off`, `npm run benchmark`, `npm run benchmark:browser`,
+`npm run verify:shelf-life`.
+
 ## Tech
 
-Next.js 16 (App Router, Server Actions) · TypeScript · ZXing (barcodes) · Open Food Facts API · Tesseract.js (receipt OCR) ·
+Next.js 16.4.6 (App Router, Server Actions) · TypeScript · ZXing (barcodes) · Open Food Facts API · Tesseract.js (receipt OCR) ·
 Transformers.js + multilingual-e5-small (on-device receipt AI) · Tailwind CSS 4 · Supabase (Postgres + Auth + RLS) ·
 next-intl (ro/ru/en, cookie-based, no locale in the URL) · Recharts · Vitest.
 Fonts: Archivo Black, Outfit, Doto (+ Rubik / Onest for Cyrillic).
